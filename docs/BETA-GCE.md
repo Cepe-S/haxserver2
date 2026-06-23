@@ -93,7 +93,8 @@ npm run pm2:delete && ./deploy-linux.sh   # redeploy limpio
 
 | Síntoma | Causa | Fix |
 |---------|-------|-----|
-| Execute sala falla | Chrome/Puppeteer | `./deploy-linux.sh` reinstala deps; `cd core && npx puppeteer browsers install chrome` |
+| Execute sala falla | Chrome/Puppeteer | `bash scripts/install-chrome-deps.sh` → `pm2 restart haxbotron-core` |
+| `libnspr4.so` missing | Deps apt no instaladas | Mismo script arriba |
 | Login 404 | URL incorrecta | Usar `:5173`, no `:3000` |
 | EPERM prisma | node bloqueando DLL | `pm2 stop all` → `npm run db:setup` |
 | Sala no arranca | Token inválido/expirado | Nuevo token en Execute |
