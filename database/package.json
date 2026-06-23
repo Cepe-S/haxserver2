@@ -1,0 +1,24 @@
+{
+  "name": "@mikuserverpro/database",
+  "version": "2.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "setup": "npx prisma generate && npx prisma db push && npx tsx src/setup.ts",
+    "generate": "npx prisma generate",
+    "push": "npx prisma db push",
+    "studio": "npx prisma studio",
+    "clean": "node scripts/clean-database.js",
+    "clean:build": "rimraf dist"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "prisma": "^6.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  }
+}

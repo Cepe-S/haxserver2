@@ -1,0 +1,26 @@
+{
+  "name": "@mikuserverpro/core",
+  "version": "2.0.0",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc && node scripts/copy-data.js",
+    "postinstall": "npx puppeteer browsers install chrome || echo Puppeteer Chrome install skipped",
+    "dev": "tsx watch src/app.ts",
+    "start": "node dist/app.js",
+    "start:prod": "tsx src/app.ts",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@mikuserverpro/database": "2.0.0",
+    "fastify": "^5.1.0",
+    "puppeteer": "^24.1.0",
+    "winston": "^3.17.0",
+    "joi": "^17.13.3",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

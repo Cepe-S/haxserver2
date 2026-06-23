@@ -1,0 +1,19 @@
+---
+description: SystemStatus (activos) + CHANGELOG (cerrados) — actualización obligatoria
+alwaysApply: true
+---
+
+# Documentación de estado — regla obligatoria
+
+Antes de cualquier cambio de código en `haxserver2/`:
+
+1. Leer `SystemStatus.md` (PROBs activos + subsistemas).
+2. Trabajar solo el PROB o subsistema indicado — sin features ni seguridad extra.
+
+Después de cambios que afecten comportamiento, bugs o subsistemas:
+
+1. **`SystemStatus.md`:** actualizar filas de subsistemas; tabla activa **solo PROBs abiertos**.
+2. **Al cerrar un PROB:** eliminarlo de SystemStatus → añadir fila en `CHANGELOG.md` (PROBs resueltos + historial).
+3. **Prohibido:** PROBs resueltos en SystemStatus · changelog en SystemStatus.
+
+Codebase activo: raíz `haxserver2/` (MikuServerPro).

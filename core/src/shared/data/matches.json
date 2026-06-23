@@ -1,0 +1,71 @@
+{
+  "argentina": {
+    "name": "Futbol Argentino",
+    "rate": 40,
+    "classics": [
+      [["BOCA JUNIORS", "tit"], ["RIVER PLATE", "tit"]],
+      [["INDEPENDIENTE", "tit"], ["RACING CLUB", "tit"]],
+      [["SAN LORENZO", "tit"], ["HURACÁN", "tit"]],
+      [["NEWELLS", "tit"], ["ROSARIO CENTRAL", "tit"]],
+      [["VÉLEZ", "tit"], ["FERRO", "tit"]],
+      [["ESTUDIANTES (LP)", "tit"], ["GIMNASIA (LP)", "tit"]],
+      [["BANFIELD", "tit"], ["LANÚS", "tit"]],
+      [["QUILMES", "tit"], ["NUEVA CHICAGO", "tit"]],
+      [["ALL BOYS", "tit"], ["CHACARITA JRS", "tit"]],
+      [["ALDOSIVI", "tit"], ["ALVARADO", "tit"]],
+      [["ATLANTA", "tit"], ["FERRO", "tit"]]
+    ]
+  },
+  "europe": {
+    "name": "UEFA Champions League",
+    "rate": 40,
+    "classics": [
+      [["BARCELONA FC", "tit"], ["REAL MADRID", "tit"]],
+      [["INTER MILAN", "tit"], ["AC MILAN", "tit"]],
+      [["MANCHESTER UNITED", "tit"], ["LIVERPOOL", "tit"]],
+      [["JUVENTUS", "tit"], ["INTER MILAN", "alt"]],
+      [["BAYERN DE MUNICH", "tit"], ["BORUSSIA DORTMUND", "tit"]],
+      [["ARSENAL FC", "tit"], ["TOTTENHAM", "tit"]],
+      [["CHELSEA", "tit"], ["ARSENAL FC", "alt"]],
+      [["PSG", "tit"], ["OLYMPIQUE MARSELLA", "tit"]]
+    ]
+  },
+  "brazil": {
+    "name": "Brasileirão",
+    "rate": 20,
+    "classics": [
+      [["FLAMENGO", "tit"], ["FLUMINENSE", "tit"]],
+      [["CORINTHIANS", "tit"], ["PALMEIRAS", "tit"]]
+    ]
+  },
+  "uruguay": {
+    "name": "Fútbol Uruguayo",
+    "rate": 10,
+    "classics": [
+      [["NACIONAL (UY)", "tit"], ["PEÑAROL", "tit"]]
+    ]
+  },
+  "chile": {
+    "name": "Fútbol Chileno",
+    "rate": 10,
+    "classics": [
+      [["COLO COLO", "tit"], ["U DE CHILE", "tit"]]
+    ]
+  },
+  "international": {
+    "name": "International Football",
+    "rate": 40,
+    "classics": [
+      [["ARGENTINA", "tit"], ["BRASIL", "tit"]],
+      [["ALEMANIA", "tit"], ["HOLANDA", "tit"]],
+      [["INGLATERRA", "tit"], ["ALEMANIA", "tit"]],
+      [["FRANCIA", "tit"], ["ALEMANIA", "tit"]],
+      [["URUGUAY", "tit"], ["ARGENTINA", "tit"]],
+      [["FRANCIA", "tit"], ["ARGENTINA", "tit"]],
+      [["ESPAÑA", "tit"], ["PORTUGAL", "tit"]],
+      [["BRASIL", "tit"], ["URUGUAY", "tit"]],
+      [["ITALIA", "tit"], ["FRANCIA", "tit"]],
+      [["BRASIL", "tit"], ["CHILE", "tit"]]
+    ]
+  }
+}

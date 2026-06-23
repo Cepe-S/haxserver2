@@ -1,0 +1,4529 @@
+{
+  "RIVER PLATE": {
+    "tit": {
+      "angle": 30,
+      "textColour": 2301728,
+      "teamColour1": 16777215,
+      "teamColour2": 15604524,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 64,
+      "textColour": 16777215,
+      "teamColour1": 15737647,
+      "teamColour2": 3222321,
+      "teamColour3": 2629410
+    }
+  },
+  "BOCA JUNIORS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 212870,
+      "teamColour2": 16431360,
+      "teamColour3": 212870
+    },
+    "alt": {
+      "angle": 134,
+      "textColour": 17547,
+      "teamColour1": 4393936,
+      "teamColour2": 13946586,
+      "teamColour3": 13946586
+    }
+  },
+  "SAN LORENZO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 15280173,
+      "teamColour2": 1915734,
+      "teamColour3": 15280173
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1975857,
+      "teamColour1": 15922167,
+      "teamColour2": 15409455,
+      "teamColour3": 1782086
+    }
+  },
+  "RACING CLUB": {
+    "tit": {
+      "angle": 180,
+      "textColour": 10562,
+      "teamColour1": 42467,
+      "teamColour2": 16777215,
+      "teamColour3": 42467
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 927547,
+      "teamColour2": 1942493,
+      "teamColour3": 927547
+    }
+  },
+  "INDEPENDIENTE": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 15473700,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1909852,
+      "teamColour1": 9556,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "ALDOSIVI": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16109312,
+      "teamColour1": 4102220,
+      "teamColour2": 16109312,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16314930,
+      "teamColour1": 12041158,
+      "teamColour2": 11185847,
+      "teamColour3": null
+    }
+  },
+  "GIMNASIA (LP)": {
+    "tit": {
+      "angle": 90,
+      "textColour": 45039,
+      "teamColour1": 1185630,
+      "teamColour2": 16777215,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1713743,
+      "teamColour1": 142484,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "GIMNASIA": {
+    "alt": {
+      "angle": 90,
+      "textColour": 2107203,
+      "teamColour1": 16777215,
+      "teamColour2": 2107203,
+      "teamColour3": null
+    }
+  },
+  "NEWELLS": {
+    "tit": {
+      "angle": 0,
+      "textColour": 15605027,
+      "teamColour1": 0,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 13828130,
+      "teamColour1": 2236962,
+      "teamColour2": 15988730,
+      "teamColour3": null
+    }
+  },
+  "ROSARIO CENTRAL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16570408,
+      "teamColour1": 1327480,
+      "teamColour2": 16570408,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15452160,
+      "teamColour1": 16777215,
+      "teamColour2": 15452160,
+      "teamColour3": null
+    }
+  },
+  "DEFENSA Y JUSTICIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 105311,
+      "teamColour1": 16638209,
+      "teamColour2": 16638209,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 11461220,
+      "teamColour1": 16777215,
+      "teamColour2": 11461220,
+      "teamColour3": null
+    }
+  },
+  "ATLÉTICO MADRID": {
+    "tit": {
+      "angle": 180,
+      "textColour": 2697837,
+      "teamColour1": 14885405,
+      "teamColour2": 16777215,
+      "teamColour3": 14885405
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 2105124,
+      "teamColour1": 15079185,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "SEVILLA FC": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16646144,
+      "teamColour1": 13750737,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "BARCELONA FC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16102918,
+      "teamColour1": 73438,
+      "teamColour2": 13107286,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 2505339,
+      "teamColour1": 13092857,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "REAL MADRID": {
+    "tit": {
+      "angle": 73,
+      "textColour": 991557,
+      "teamColour1": 16761098,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 67,
+      "textColour": 16763211,
+      "teamColour1": 4673124,
+      "teamColour2": 3292498,
+      "teamColour3": 2173754
+    }
+  },
+  "INTER MILAN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 9116,
+      "teamColour2": 0,
+      "teamColour3": 9116
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 88018,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AC MILAN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 14616091,
+      "teamColour2": 0,
+      "teamColour3": 14616091
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 10884902,
+      "teamColour1": 16448250,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CRUZEIRO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 14936048,
+      "teamColour1": 83627,
+      "teamColour2": 281523,
+      "teamColour3": 83627
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 285361,
+      "teamColour1": 15659510,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "PALMEIRAS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 25399,
+      "teamColour2": 28989,
+      "teamColour3": 28989
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 1062698,
+      "teamColour1": 15921650,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "GREMIO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 40674,
+      "teamColour2": 333597,
+      "teamColour3": 40674
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 35006,
+      "teamColour1": 16448252,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "TOTTENHAM": {
+    "tit": {
+      "angle": 90,
+      "textColour": 2041426,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16776959,
+      "teamColour1": 1780043,
+      "teamColour2": 1780043,
+      "teamColour3": 2304342
+    }
+  },
+  "LIVERPOOL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15790322,
+      "teamColour1": 12845597,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 15460560,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ARGENTINA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 1976624,
+      "teamColour1": 10014448,
+      "teamColour2": 16777215,
+      "teamColour3": 10014448
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 13554649,
+      "teamColour1": 730207,
+      "teamColour2": 2179478,
+      "teamColour3": 8286136
+    }
+  },
+  "BÉLGICA": {
+    "tit": {
+      "angle": 44,
+      "textColour": 15853370,
+      "teamColour1": 14418209,
+      "teamColour2": 3740951,
+      "teamColour3": 14418209
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 0,
+      "teamColour1": 16369408,
+      "teamColour2": 16034816,
+      "teamColour3": null
+    }
+  },
+  "BRASIL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 41010,
+      "teamColour1": 16764160,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16177439,
+      "teamColour1": 1854608,
+      "teamColour2": 876721,
+      "teamColour3": 946902
+    }
+  },
+  "CHILE": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 15545378,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "URUGUAY": {
+    "tit": {
+      "angle": 90,
+      "textColour": 3026997,
+      "teamColour1": 8437729,
+      "teamColour2": 7780830,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 75,
+      "textColour": 3618361,
+      "teamColour1": 5417951,
+      "teamColour2": 15922167,
+      "teamColour3": 15922167
+    }
+  },
+  "FRANCIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 15383672,
+      "teamColour1": 1780298,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 620485,
+      "teamColour1": 16777215,
+      "teamColour2": 14871538,
+      "teamColour3": null
+    }
+  },
+  "CROACIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 26057,
+      "teamColour1": 14024734,
+      "teamColour2": 15921395,
+      "teamColour3": 15921395
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16185080,
+      "teamColour1": 15009592,
+      "teamColour2": 86464,
+      "teamColour3": 86464
+    }
+  },
+  "NAPOLI": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 113131,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 299,
+      "textColour": 16777215,
+      "teamColour1": 8291905,
+      "teamColour2": 8291905,
+      "teamColour3": 3356974
+    }
+  },
+  "BAYERN DE MUNICH": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 14419245,
+      "teamColour2": 15532088,
+      "teamColour3": 15532088
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 6449002,
+      "teamColour1": 16185596,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "BORUSSIA DORTMUND": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1907995,
+      "teamColour1": 1907995,
+      "teamColour2": 16438549,
+      "teamColour3": 16438549
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 13553617,
+      "teamColour1": 2434341,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "JUVENTUS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16238850,
+      "teamColour1": 2038304,
+      "teamColour2": 16777215,
+      "teamColour3": 2038304
+    },
+    "alt": {
+      "angle": 126,
+      "textColour": 16777215,
+      "teamColour1": 16425357,
+      "teamColour2": 2434090,
+      "teamColour3": 2434090
+    }
+  },
+  "ESTUDIANTES (LP)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 3289650,
+      "teamColour1": 14948373,
+      "teamColour2": 16777215,
+      "teamColour3": 14948373
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16063010,
+      "teamColour1": 16777215,
+      "teamColour2": 16777215,
+      "teamColour3": 16063010
+    }
+  },
+  "BANFIELD": {
+    "tit": {
+      "angle": 180,
+      "textColour": 11901017,
+      "teamColour1": 30774,
+      "teamColour2": 16777215,
+      "teamColour3": 30774
+    },
+    "alt": {
+      "angle": 44,
+      "textColour": 16777215,
+      "teamColour1": 1842204,
+      "teamColour2": 616778,
+      "teamColour3": 1842204
+    }
+  },
+  "LANÚS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 6955825,
+      "teamColour2": 7608622,
+      "teamColour3": 7608622
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 7084321,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "MANCHESTER UNITED": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 14221593,
+      "teamColour2": 13041946,
+      "teamColour3": 11208984
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1644566,
+      "teamColour1": 14799551,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "MANCHESTER CITY": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 9814502,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": -40,
+      "textColour": 16236800,
+      "teamColour1": 1905687,
+      "teamColour2": 11665683,
+      "teamColour3": 1905687
+    }
+  },
+  "ARSENAL FC": {
+    "tit": {
+      "angle": 69,
+      "textColour": 13869653,
+      "teamColour1": 16777215,
+      "teamColour2": 13698067,
+      "teamColour3": 13698067
+    },
+    "alt": {
+      "angle": 55,
+      "textColour": 2309991,
+      "teamColour1": 16708267,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CHELSEA": {
+    "tit": {
+      "angle": 66,
+      "textColour": 16496384,
+      "teamColour1": 5257,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 52,
+      "textColour": 15229,
+      "teamColour1": 16316664,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "PARANAENSE": {
+    "tit": {
+      "angle": 48,
+      "textColour": 16777215,
+      "teamColour1": 12976428,
+      "teamColour2": 12976428,
+      "teamColour3": 1052175
+    },
+    "alt": {
+      "angle": 48,
+      "textColour": 921102,
+      "teamColour1": 16777215,
+      "teamColour2": 16777215,
+      "teamColour3": 12237498
+    }
+  },
+  "HURACÁN": {
+    "tit": {
+      "angle": 52,
+      "textColour": 16711680,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 13642041,
+      "teamColour2": 10885161,
+      "teamColour3": 13642041
+    }
+  },
+  "TIGRE": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 3163011,
+      "teamColour2": 13310765,
+      "teamColour3": 3163011
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 2965098,
+      "teamColour1": 16777215,
+      "teamColour2": 14886183,
+      "teamColour3": 16777215
+    }
+  },
+  "ALEMANIA": {
+    "tit": {
+      "angle": 0,
+      "textColour": 15781285,
+      "teamColour1": 16777215,
+      "teamColour2": 2628646,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 2236962,
+      "teamColour2": 1776411,
+      "teamColour3": 1776411
+    }
+  },
+  "ESPAÑA": {
+    "tit": {
+      "angle": 70,
+      "textColour": 16760832,
+      "teamColour1": 12258320,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 270,
+      "textColour": 893671,
+      "teamColour1": 11132151,
+      "teamColour2": 12510457,
+      "teamColour3": 14479611
+    }
+  },
+  "PORTUGAL": {
+    "tit": {
+      "angle": 130,
+      "textColour": 16371001,
+      "teamColour1": 11084065,
+      "teamColour2": 11084065,
+      "teamColour3": 87358
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 197379,
+      "teamColour1": 14809848,
+      "teamColour2": 14809848,
+      "teamColour3": 15745622
+    }
+  },
+  "ARGENTINOS JRS.": {
+    "tit": {
+      "angle": 123,
+      "textColour": 23972,
+      "teamColour1": 15411759,
+      "teamColour2": 16777215,
+      "teamColour3": 15411759
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15411759,
+      "teamColour1": 15411759,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "ALL BOYS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 2632231,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 50,
+      "textColour": 14079702,
+      "teamColour1": 16777215,
+      "teamColour2": 1972759,
+      "teamColour3": 16777215
+    }
+  },
+  "ATLANTA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 15580928,
+      "teamColour2": 3425674,
+      "teamColour3": 15580928
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 15586332,
+      "teamColour1": 206414,
+      "teamColour2": 598076,
+      "teamColour3": 598076
+    }
+  },
+  "BELGRANO": {
+    "tit": {
+      "angle": 70,
+      "textColour": 16777215,
+      "teamColour1": 1708556,
+      "teamColour2": 40144,
+      "teamColour3": 40144
+    },
+    "alt": {
+      "angle": 70,
+      "textColour": 0,
+      "teamColour1": 1093887,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "CHACARITA JRS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 0,
+      "teamColour2": 13768990,
+      "teamColour3": 0
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 10263708,
+      "teamColour1": 13768990,
+      "teamColour2": 16777215,
+      "teamColour3": 0
+    }
+  },
+  "TALLERES (C)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 10987947,
+      "teamColour1": 1978714,
+      "teamColour2": 16777215,
+      "teamColour3": 1978714
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 3818598,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "PLATENSE": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16609057,
+      "teamColour1": 16777215,
+      "teamColour2": 5914146,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16479233,
+      "teamColour1": 4996667,
+      "teamColour2": 16777215,
+      "teamColour3": 4996667
+    }
+  },
+  "OLIMPO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2697513,
+      "teamColour2": 15582778,
+      "teamColour3": 2697513
+    }
+  },
+  "SAN MARTÍN (T)": {
+    "tit": {
+      "angle": 0,
+      "textColour": 986895,
+      "teamColour1": 14752293,
+      "teamColour2": 16777215,
+      "teamColour3": 14752293
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 14882069,
+      "teamColour2": 2302758,
+      "teamColour3": 2302758
+    }
+  },
+  "ATL. TUCUMÁN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 5724763,
+      "teamColour1": 7450587,
+      "teamColour2": 16777215,
+      "teamColour3": 7450587
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 13424102,
+      "teamColour1": 1382967,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "FERRO": {
+    "tit": {
+      "angle": 66,
+      "textColour": 16777215,
+      "teamColour1": 289859,
+      "teamColour2": 2202199,
+      "teamColour3": 2995555
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 93246,
+      "teamColour1": 16449023,
+      "teamColour2": 12770521,
+      "teamColour3": 5356963
+    }
+  },
+  "NACIONAL (UY)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16318986,
+      "teamColour1": 16447999,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 55,
+      "textColour": 13636652,
+      "teamColour1": 14485,
+      "teamColour2": 16777215,
+      "teamColour3": 14485
+    }
+  },
+  "PEÑAROL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2565413,
+      "teamColour2": 16240384,
+      "teamColour3": 2565413
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15383047,
+      "teamColour1": 16110085,
+      "teamColour2": 2169627,
+      "teamColour3": 2169627
+    }
+  },
+  "QUILMES": {
+    "tit": {
+      "angle": 90,
+      "textColour": 204881,
+      "teamColour1": 10202556,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 20422,
+      "teamColour2": 8542,
+      "teamColour3": 8542
+    }
+  },
+  "NUEVA CHICAGO": {
+    "tit": {
+      "angle": 360,
+      "textColour": 16777215,
+      "teamColour1": 3852689,
+      "teamColour2": 0,
+      "teamColour3": 3852689
+    }
+  },
+  "MORÓN": {
+    "tit": {
+      "angle": 90,
+      "textColour": 2370357,
+      "teamColour1": 16777215,
+      "teamColour2": 14818332,
+      "teamColour3": 16777215
+    }
+  },
+  "UNIÓN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 32726,
+      "teamColour1": 14296349,
+      "teamColour2": 16777215,
+      "teamColour3": 14296349
+    },
+    "alt": {
+      "angle": 129,
+      "textColour": 15922165,
+      "teamColour1": 15540009,
+      "teamColour2": 96207,
+      "teamColour3": 169443
+    }
+  },
+  "COLÓN": {
+    "tit": {
+      "angle": 0,
+      "textColour": 14729321,
+      "teamColour1": 13107200,
+      "teamColour2": 0,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 61,
+      "textColour": 0,
+      "teamColour1": 8064029,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "ARSENAL DE SARANDÍ": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 44783,
+      "teamColour2": 15613492,
+      "teamColour3": 44783
+    },
+    "alt": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 1908254,
+      "teamColour2": 16066086,
+      "teamColour3": 1908254
+    }
+  },
+  "DOCK SUD": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2442388,
+      "teamColour2": 15976198,
+      "teamColour3": 2442388
+    }
+  },
+  "COLOMBIA": {
+    "tit": {
+      "angle": 240,
+      "textColour": 3949666,
+      "teamColour1": 16645378,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 15854422,
+      "teamColour1": 3568047,
+      "teamColour2": 3238048,
+      "teamColour3": 1984380
+    }
+  },
+  "PERÚ": {
+    "tit": {
+      "angle": 52,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 14618903,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 52,
+      "textColour": 0,
+      "teamColour1": 14425630,
+      "teamColour2": 16777215,
+      "teamColour3": 14425630
+    }
+  },
+  "WEST BROM": {
+    "tit": {
+      "angle": 180,
+      "textColour": 14560046,
+      "teamColour1": 16777215,
+      "teamColour2": 1780289,
+      "teamColour3": 16777215
+    }
+  },
+  "ASTON VILLA": {
+    "tit": {
+      "angle": 130,
+      "textColour": 16777215,
+      "teamColour1": 12966899,
+      "teamColour2": 9896239,
+      "teamColour3": 6950186
+    }
+  },
+  "FULHAM FC": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1974316,
+      "teamColour1": 15790069,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 13048617,
+      "teamColour2": 3614505,
+      "teamColour3": 13048617
+    }
+  },
+  "LEICESTER": {
+    "tit": {
+      "angle": 270,
+      "textColour": 16777215,
+      "teamColour1": 3558650,
+      "teamColour2": 3159551,
+      "teamColour3": null
+    }
+  },
+  "DANUBIO": {
+    "tit": {
+      "angle": 50,
+      "textColour": 14355748,
+      "teamColour1": 16777215,
+      "teamColour2": 1250580,
+      "teamColour3": 16777215
+    }
+  },
+  "RAMPLA JRS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16723515,
+      "teamColour2": 1934189,
+      "teamColour3": 16723515
+    }
+  },
+  "SACACHISPAS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 2103142,
+      "teamColour1": 13154552,
+      "teamColour2": 16777215,
+      "teamColour3": 13154552
+    },
+    "alt": {
+      "angle": 56,
+      "textColour": 16777215,
+      "teamColour1": 5850277,
+      "teamColour2": 11506905,
+      "teamColour3": null
+    }
+  },
+  "HOLANDA": {
+    "tit": {
+      "angle": 66,
+      "textColour": 2234391,
+      "teamColour1": 16687876,
+      "teamColour2": 16693022,
+      "teamColour3": 16769124
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16741129,
+      "teamColour1": 1907999,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "BOLIVIA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2531415,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ITALIA": {
+    "tit": {
+      "angle": 65,
+      "textColour": 15856626,
+      "teamColour1": 1474256,
+      "teamColour2": 1206463,
+      "teamColour3": 612792
+    },
+    "alt": {
+      "angle": 69,
+      "textColour": 20396,
+      "teamColour1": 2176593,
+      "teamColour2": 16053490,
+      "teamColour3": 16053490
+    }
+  },
+  "INGLATERRA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15925519,
+      "teamColour1": 16316664,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 15922419,
+      "teamColour1": 15992842,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "PARAGUAY": {
+    "tit": {
+      "angle": 180,
+      "textColour": 229596,
+      "teamColour1": 16127271,
+      "teamColour2": 16777215,
+      "teamColour3": 16127271
+    },
+    "alt": {
+      "angle": 55,
+      "textColour": 16777215,
+      "teamColour1": 151214,
+      "teamColour2": 151214,
+      "teamColour3": 212122
+    }
+  },
+  "VENEZUELA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 9372189,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 9382199,
+      "teamColour1": 16317177,
+      "teamColour2": 16317177,
+      "teamColour3": 15988212
+    }
+  },
+  "QATAR": {
+    "tit": {
+      "angle": 90,
+      "textColour": 15855604,
+      "teamColour1": 10158140,
+      "teamColour2": 9699641,
+      "teamColour3": 9699641
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 10167087,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AJAX": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12106946,
+      "teamColour1": 16579324,
+      "teamColour2": 14749733,
+      "teamColour3": 16579324
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15626276,
+      "teamColour1": 2446425,
+      "teamColour2": 356476,
+      "teamColour3": 2446425
+    }
+  },
+  "PSV": {
+    "tit": {
+      "angle": 180,
+      "textColour": 197379,
+      "teamColour1": 16777215,
+      "teamColour2": 16394055,
+      "teamColour3": 16777215
+    }
+  },
+  "FEYENOORD": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 16392251,
+      "teamColour3": null
+    }
+  },
+  "PSG": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16053751,
+      "teamColour1": 2441324,
+      "teamColour2": 2112613,
+      "teamColour3": 2441324
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 3880508,
+      "teamColour1": 16119033,
+      "teamColour2": 16766181,
+      "teamColour3": 16119033
+    }
+  },
+  "DEP. RIESTRA": {
+    "tit": {
+      "angle": 40,
+      "textColour": 16777215,
+      "teamColour1": 1907745,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 40,
+      "textColour": 1644059,
+      "teamColour1": 16645629,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CENTRAL CÓRDOBA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12725044,
+      "teamColour1": 2301728,
+      "teamColour2": 16777215,
+      "teamColour3": 2301728
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 10229788,
+      "teamColour2": 10229788,
+      "teamColour3": 12591394
+    }
+  },
+  "OGC NICE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16590629,
+      "teamColour2": 789777,
+      "teamColour3": 16590629
+    }
+  },
+  "OLYMPIQUE MARSELLA": {
+    "tit": {
+      "angle": 72,
+      "textColour": 4443884,
+      "teamColour1": 2739441,
+      "teamColour2": 16184572,
+      "teamColour3": 16184572
+    },
+    "alt": {
+      "angle": 61,
+      "textColour": 16777215,
+      "teamColour1": 2403818,
+      "teamColour2": 1340389,
+      "teamColour3": null
+    }
+  },
+  "AS ROMA": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16757248,
+      "teamColour1": 9371676,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 7212825,
+      "teamColour1": 16185338,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "FIORENTINA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 5583754,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 8739261,
+      "teamColour1": 16777215,
+      "teamColour2": 4336238,
+      "teamColour3": 16777215
+    }
+  },
+  "LAZIO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 8505070,
+      "teamColour2": 9226990,
+      "teamColour3": 8505070
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1977936,
+      "teamColour1": 16777215,
+      "teamColour2": 8829935,
+      "teamColour3": 16777215
+    }
+  },
+  "SAN MARTIN (SJ)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 1250065,
+      "teamColour2": 5153408,
+      "teamColour3": 1250065
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 197379,
+      "teamColour1": 16777215,
+      "teamColour2": 4767865,
+      "teamColour3": 16777215
+    }
+  },
+  "GODOY CRUZ": {
+    "tit": {
+      "angle": 180,
+      "textColour": 7581921,
+      "teamColour1": 618444,
+      "teamColour2": 16777215,
+      "teamColour3": 618444
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 351186,
+      "teamColour1": 24775,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "VÉLEZ": {
+    "tit": {
+      "angle": 180,
+      "textColour": 25512,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 2899618,
+      "teamColour2": 3031733,
+      "teamColour3": 3295428
+    }
+  },
+  "FLAMENGO": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 14483749,
+      "teamColour2": 2170661,
+      "teamColour3": 14483749
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 14553374,
+      "teamColour1": 15658993,
+      "teamColour2": 1777439,
+      "teamColour3": 8858674
+    }
+  },
+  "SC INTERNACIONAL": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16712204,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 64,
+      "textColour": 6685194,
+      "teamColour1": 16382458,
+      "teamColour2": 13048608,
+      "teamColour3": 16382458
+    }
+  },
+  "SANTOS FC": {
+    "tit": {
+      "angle": 90,
+      "textColour": 3883075,
+      "teamColour1": 15857142,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 14073186,
+      "teamColour1": 2894643,
+      "teamColour2": 16382205,
+      "teamColour3": 2894643
+    }
+  },
+  "SAO PAULO": {
+    "tit": {
+      "angle": 90,
+      "textColour": 3947326,
+      "teamColour1": 16326155,
+      "teamColour2": 16119285,
+      "teamColour3": 1842465
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15869754,
+      "teamColour1": 2235422,
+      "teamColour2": 15395051,
+      "teamColour3": 15541302
+    }
+  },
+  "CORINTHIANS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 0,
+      "teamColour1": 16053494,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 360,
+      "textColour": 16777215,
+      "teamColour1": 2039328,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "VASCO DA GAMA": {
+    "tit": {
+      "angle": 29,
+      "textColour": 13904426,
+      "teamColour1": 1644571,
+      "teamColour2": 15132388,
+      "teamColour3": 1644571
+    },
+    "alt": {
+      "angle": 29,
+      "textColour": 13904426,
+      "teamColour1": 16711422,
+      "teamColour2": 1842204,
+      "teamColour3": 16711422
+    }
+  },
+  "BOTAFOGO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 7830407,
+      "teamColour1": 1842982,
+      "teamColour2": 16777215,
+      "teamColour3": 1842982
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 1447705,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "FLUMINENSE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 10355748,
+      "teamColour2": 1859895,
+      "teamColour3": 10355748
+    }
+  },
+  "MINEIRO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15865896,
+      "teamColour1": 15725303,
+      "teamColour2": 2827561,
+      "teamColour3": 15725303
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 1908260,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ATL. NACIONAL (COL)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 11717051,
+      "teamColour1": 1542966,
+      "teamColour2": 16579836,
+      "teamColour3": 1542966
+    },
+    "alt": {
+      "angle": -136,
+      "textColour": 35366,
+      "teamColour1": 16185080,
+      "teamColour2": 15132906,
+      "teamColour3": null
+    }
+  },
+  "MILLONARIOS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 542381,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 604052,
+      "teamColour1": 16250871,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AMÉRICA DE CALI": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 15211293,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 13177362,
+      "teamColour1": 16316664,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "SANTA FE (COL)": {
+    "tit": {
+      "angle": 90,
+      "textColour": 14737632,
+      "teamColour1": 16185080,
+      "teamColour2": 15402245,
+      "teamColour3": 15402245
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15402245,
+      "teamColour1": 15402245,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "DEPORTIVO CALI": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 342332,
+      "teamColour2": 77879,
+      "teamColour3": 342332
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1787723,
+      "teamColour1": 15724527,
+      "teamColour2": 16777215,
+      "teamColour3": 15724527
+    }
+  },
+  "ONCE CALDAS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 1513239,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 40,
+      "textColour": 16777215,
+      "teamColour1": 1513239,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CERRO PORTEÑO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 14747138,
+      "teamColour2": 5516,
+      "teamColour3": 14747138
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 1719930,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "OLIMPIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 10649638,
+      "teamColour1": 16777215,
+      "teamColour2": 855309,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 40,
+      "textColour": 16777215,
+      "teamColour1": 4735564,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "GUARANÍ": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16635191,
+      "teamColour2": 1841942,
+      "teamColour3": 16635191
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 5262152,
+      "teamColour2": 2105115,
+      "teamColour3": 5262152
+    }
+  },
+  "LIBERTAD": {
+    "tit": {
+      "angle": 180,
+      "textColour": 6120302,
+      "teamColour1": 16777215,
+      "teamColour2": 1447454,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 40,
+      "textColour": 16777215,
+      "teamColour1": 1514270,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "SOUTHAMPTON": {
+    "tit": {
+      "angle": 180,
+      "textColour": 1645343,
+      "teamColour1": 16711720,
+      "teamColour2": 16777215,
+      "teamColour3": 16711720
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 14875456,
+      "teamColour1": 16645707,
+      "teamColour2": 2635321,
+      "teamColour3": 2635321
+    }
+  },
+  "WATFORD": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16068887,
+      "teamColour1": 16441097,
+      "teamColour2": 1447446,
+      "teamColour3": null
+    }
+  },
+  "WILLEM II": {
+    "tit": {
+      "angle": 180,
+      "textColour": 657930,
+      "teamColour1": 2241123,
+      "teamColour2": 16777215,
+      "teamColour3": 16187724
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 10760034,
+      "teamColour2": 7029615,
+      "teamColour3": 10760034
+    }
+  },
+  "ALVARADO": {
+    "tit": {
+      "angle": 44,
+      "textColour": 593953,
+      "teamColour1": 1978197,
+      "teamColour2": 16777215,
+      "teamColour3": 1978197
+    },
+    "alt": {
+      "angle": 33,
+      "textColour": 593953,
+      "teamColour1": 16777215,
+      "teamColour2": 142455,
+      "teamColour3": 16777215
+    }
+  },
+  "AGROPECUARIO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16579836,
+      "teamColour1": 1477707,
+      "teamColour2": 12200996,
+      "teamColour3": 1477707
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 1381653,
+      "teamColour1": 1859386,
+      "teamColour2": 16777215,
+      "teamColour3": 12200996
+    }
+  },
+  "RIVER (UY)": {
+    "tit": {
+      "angle": 360,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 13763842,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16646146,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "GALATASARAY": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 16497152,
+      "teamColour2": 11209006,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 9248029,
+      "teamColour1": 14929843,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "FENERBAHCE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 134687,
+      "teamColour1": 16773376,
+      "teamColour2": 83330,
+      "teamColour3": 16773376
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 3095143,
+      "teamColour1": 16050176,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "BESIKTAS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 16462643,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AMÉRICA (MX)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 2241350,
+      "teamColour1": 16513427,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15921906,
+      "teamColour1": 1715256,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CRUZ AZUL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2506138,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 3224958,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "MONTERREY": {
+    "tit": {
+      "angle": 180,
+      "textColour": 8224384,
+      "teamColour1": 2307407,
+      "teamColour2": 16777215,
+      "teamColour3": 2307407
+    }
+  },
+  "CHIVAS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 339534,
+      "teamColour1": 16777215,
+      "teamColour2": 16659784,
+      "teamColour3": 16777215
+    }
+  },
+  "TIGRES": {
+    "tit": {
+      "angle": 90,
+      "textColour": 278650,
+      "teamColour1": 16498726,
+      "teamColour2": 97497,
+      "teamColour3": 16498726
+    }
+  },
+  "LIGA DE QUITO": {
+    "tit": {
+      "angle": 360,
+      "textColour": 394561,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 13746008,
+      "teamColour1": 14157326,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "BARCELONA SC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 13174291,
+      "teamColour1": 16373042,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16606720,
+      "teamColour1": 6750735,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "EMELEC": {
+    "tit": {
+      "angle": 148,
+      "textColour": 16777215,
+      "teamColour1": 154828,
+      "teamColour2": 17296,
+      "teamColour3": 154828
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 86466,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "INDEPENDIENTE DEL VALLE": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 5688,
+      "teamColour2": 5688,
+      "teamColour3": 5688
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 15495340,
+      "teamColour2": 15489439,
+      "teamColour3": 14963093
+    }
+  },
+  "OLYMPIQUE LYON": {
+    "tit": {
+      "angle": 60,
+      "textColour": 1129088,
+      "teamColour1": 16514556,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 15264234,
+      "teamColour1": 2174034,
+      "teamColour2": 1916031,
+      "teamColour3": 2174034
+    }
+  },
+  "SAN TELMO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 3976702,
+      "teamColour2": 2373196,
+      "teamColour3": 3976702
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 863043,
+      "teamColour2": 3777278,
+      "teamColour3": 16777215
+    }
+  },
+  "DEP. MERLO": {
+    "tit": {
+      "angle": 45,
+      "textColour": 6711928,
+      "teamColour1": 16777215,
+      "teamColour2": 330816,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 45,
+      "textColour": 16777215,
+      "teamColour1": 328965,
+      "teamColour2": 266557,
+      "teamColour3": 328965
+    }
+  },
+  "ARGENTINO DE QUILMES": {
+    "tit": {
+      "angle": 180,
+      "textColour": 657930,
+      "teamColour1": 16777215,
+      "teamColour2": 7783664,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 7830153,
+      "teamColour2": 0,
+      "teamColour3": 7830153
+    }
+  },
+  "VALENCIA": {
+    "tit": {
+      "angle": 33,
+      "textColour": 1315333,
+      "teamColour1": 16675075,
+      "teamColour2": 16316408,
+      "teamColour3": 16316408
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16738078,
+      "teamColour1": 15031321,
+      "teamColour2": 1446937,
+      "teamColour3": 1446937
+    }
+  },
+  "REAL BETIS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 2930532,
+      "teamColour2": 16777215,
+      "teamColour3": 2930532
+    }
+  },
+  "CRYSTAL PALACE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 12654896,
+      "teamColour2": 83099,
+      "teamColour3": 12654896
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2368039,
+      "teamColour2": 83099,
+      "teamColour3": 2368039
+    }
+  },
+  "JUVENTUD ANTONIANA": {
+    "tit": {
+      "angle": 45,
+      "textColour": 8950438,
+      "teamColour1": 16777215,
+      "teamColour2": 3162728,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 1517678,
+      "teamColour2": 3162728,
+      "teamColour3": 1517678
+    }
+  },
+  "GIMNASIA Y TIRO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 11067641,
+      "teamColour2": 16777215,
+      "teamColour3": 11067641
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 1316439,
+      "teamColour2": 1579365,
+      "teamColour3": 1316439
+    }
+  },
+  "PATRONATO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 11665408,
+      "teamColour2": 789516,
+      "teamColour3": 11665408
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 15210271,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "RAYO VALLECANO": {
+    "tit": {
+      "angle": 28,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 16723497,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 28,
+      "textColour": 16777215,
+      "teamColour1": 16658987,
+      "teamColour2": 1249040,
+      "teamColour3": 16658987
+    }
+  },
+  "LEVANTE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 663191,
+      "teamColour2": 10880807,
+      "teamColour3": 663191
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 1644311,
+      "teamColour1": 16777215,
+      "teamColour2": 3544,
+      "teamColour3": 16777215
+    }
+  },
+  "GETAFE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 551891,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 15944744,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ZENIT": {
+    "tit": {
+      "angle": 146,
+      "textColour": 16777215,
+      "teamColour1": 1815011,
+      "teamColour2": 953281,
+      "teamColour3": 1008794
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 39363,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CSKA MOSCÚ": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16719929,
+      "teamColour2": 92887,
+      "teamColour3": 16719929
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 151483,
+      "teamColour1": 16777215,
+      "teamColour2": 16719929,
+      "teamColour3": 16777215
+    }
+  },
+  "LOKOMOTIV": {
+    "tit": {
+      "angle": 236,
+      "textColour": 16777215,
+      "teamColour1": 153928,
+      "teamColour2": 153928,
+      "teamColour3": 13044516
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15143448,
+      "teamColour1": 155730,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "SPARTAK MOSCÚ": {
+    "tit": {
+      "angle": 90,
+      "textColour": 9081758,
+      "teamColour1": 13893661,
+      "teamColour2": 16514813,
+      "teamColour3": 13893661
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 5177344,
+      "teamColour1": 16777215,
+      "teamColour2": 13507889,
+      "teamColour3": 16777215
+    }
+  },
+  "DYNAMO MOSCOW": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16646142,
+      "teamColour1": 26317,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 2060759,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "DYNAMO KIEV": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1338835,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 92082,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "SHAKHTAR DONETSK": {
+    "tit": {
+      "angle": 1,
+      "textColour": 0,
+      "teamColour1": 15965261,
+      "teamColour2": 15678244,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 1,
+      "textColour": 0,
+      "teamColour1": 11312795,
+      "teamColour2": 14340303,
+      "teamColour3": 11312795
+    }
+  },
+  "JAPÓN": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16004667,
+      "teamColour1": 2106673,
+      "teamColour2": 3168151,
+      "teamColour3": 3705831
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 11870244,
+      "teamColour1": 16252415,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "NUEVA ZELANDA": {
+    "tit": {
+      "angle": 33,
+      "textColour": 1646114,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 16119285,
+      "teamColour1": 2302755,
+      "teamColour2": 2302755,
+      "teamColour3": 3026739
+    }
+  },
+  "COREA DEL NORTE": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 16711680,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 16711680,
+      "teamColour1": 16120319,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AUSTRIA": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 14158634,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ATLANTA UNITED": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12759694,
+      "teamColour1": 2236449,
+      "teamColour2": 13044801,
+      "teamColour3": 2236449
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 16742221,
+      "teamColour1": 14804454,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "LA GALAXY": {
+    "tit": {
+      "angle": 35,
+      "textColour": 16632068,
+      "teamColour1": 16777215,
+      "teamColour2": 2304321,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2706035,
+      "teamColour2": 1974327,
+      "teamColour3": 2706035
+    }
+  },
+  "TORONTO FC": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 15008038,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 1907745,
+      "teamColour1": 15133679,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "NEW YORK CITY": {
+    "tit": {
+      "angle": 33,
+      "textColour": 1059419,
+      "teamColour1": 8568044,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 8175338,
+      "teamColour1": 5067617,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "LOS ANGELES FC": {
+    "tit": {
+      "angle": 33,
+      "textColour": 13348207,
+      "teamColour1": 3288619,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 11448241,
+      "teamColour1": 15724275,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "SEATTLE SOUNDERS": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 10010727,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 16777215,
+      "teamColour1": 2894383,
+      "teamColour2": 2894383,
+      "teamColour3": 14779032
+    }
+  },
+  "NEW YORK RB": {
+    "tit": {
+      "angle": 33,
+      "textColour": 9178157,
+      "teamColour1": 13684946,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 16777215,
+      "teamColour1": 15804221,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "PORTLAND TIMBERS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 14660145,
+      "teamColour1": 2701096,
+      "teamColour2": 3229999,
+      "teamColour3": 2701096
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 4744529,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "COLO COLO": {
+    "tit": {
+      "angle": 33,
+      "textColour": 0,
+      "teamColour1": 16185079,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 240,
+      "textColour": 13619151,
+      "teamColour1": 2171427,
+      "teamColour2": 2171427,
+      "teamColour3": 16777215
+    }
+  },
+  "U DE CHILE": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16053492,
+      "teamColour1": 1844293,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16250871,
+      "teamColour1": 15937844,
+      "teamColour2": 6364188,
+      "teamColour3": 15937844
+    }
+  },
+  "STRONGEST": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16698925,
+      "teamColour2": 1907486,
+      "teamColour3": 16698925
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 197379,
+      "teamColour1": 16777215,
+      "teamColour2": 15576576,
+      "teamColour3": 16777215
+    }
+  },
+  "WILSTERMANN": {
+    "tit": {
+      "angle": 33,
+      "textColour": 16777215,
+      "teamColour1": 15539772,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2047600,
+      "teamColour2": 1454156,
+      "teamColour3": 2047600
+    }
+  },
+  "BOLIVAR": {
+    "tit": {
+      "angle": 33,
+      "textColour": 2179179,
+      "teamColour1": 9626367,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 14212590,
+      "teamColour1": 3357509,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "EVERTON FC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16382457,
+      "teamColour1": 1393290,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 791624,
+      "teamColour1": 16410452,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "AS MONACO": {
+    "tit": {
+      "angle": 61,
+      "textColour": 16692746,
+      "teamColour1": 12067886,
+      "teamColour2": 11346734,
+      "teamColour3": 16711422
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 14001745,
+      "teamColour1": 2039843,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ATALANTA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 158136,
+      "teamColour2": 2432549,
+      "teamColour3": 158136
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 3506175,
+      "teamColour1": 3109346,
+      "teamColour2": 1579032,
+      "teamColour3": 16777215
+    }
+  },
+  "FC BASEL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 12322079,
+      "teamColour2": 12322079,
+      "teamColour3": 1785734
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 1710618,
+      "teamColour1": 14803425,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "U CATÓLICA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16646144,
+      "teamColour1": 16777215,
+      "teamColour2": 2181280,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 13774622,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "COBRELOA": {
+    "tit": {
+      "angle": 30,
+      "textColour": 16777215,
+      "teamColour1": 16730901,
+      "teamColour2": 13383936,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 30,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 13619151,
+      "teamColour3": null
+    }
+  },
+  "PALESTINO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 293710,
+      "teamColour3": 14876672
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16448250,
+      "teamColour1": 14876672,
+      "teamColour2": 1283,
+      "teamColour3": 293710
+    }
+  },
+  "MELGAR": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 15473456,
+      "teamColour2": 2763306,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 2763306,
+      "teamColour1": 15527924,
+      "teamColour2": 15473457,
+      "teamColour3": 15527924
+    }
+  },
+  "UNIVERSITARIO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 8462628,
+      "teamColour1": 14802117,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 9448504,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ALIANZA LIMA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 14222095,
+      "teamColour1": 401991,
+      "teamColour2": 16777215,
+      "teamColour3": 401991
+    },
+    "alt": {
+      "angle": 40,
+      "textColour": 16053492,
+      "teamColour1": 1713721,
+      "teamColour2": 2437443,
+      "teamColour3": 2437443
+    }
+  },
+  "SPORTING CRISTAL": {
+    "tit": {
+      "angle": 0,
+      "textColour": 206147,
+      "teamColour1": 6407661,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": -90,
+      "textColour": 16777215,
+      "teamColour1": 2174027,
+      "teamColour2": 3361407,
+      "teamColour3": null
+    }
+  },
+  "RUSIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 12845597,
+      "teamColour2": 12857919,
+      "teamColour3": 13908289
+    },
+    "alt": {
+      "angle": -90,
+      "textColour": 1131895,
+      "teamColour1": 15724528,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "EEUU": {
+    "tit": {
+      "angle": 122,
+      "textColour": 21896,
+      "teamColour1": 16777215,
+      "teamColour2": 16777215,
+      "teamColour3": 11731225
+    },
+    "alt": {
+      "angle": -122,
+      "textColour": 15922421,
+      "teamColour1": 14877202,
+      "teamColour2": 2571655,
+      "teamColour3": 2571655
+    }
+  },
+  "ALMAGRO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 79829,
+      "teamColour2": 1579034,
+      "teamColour3": 79829
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1541119,
+      "teamColour1": 15579,
+      "teamColour2": 2039585,
+      "teamColour3": 16645629
+    }
+  },
+  "NIGERIA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 1925948,
+      "teamColour2": 16251639,
+      "teamColour3": 1925948
+    },
+    "alt": {
+      "angle": -90,
+      "textColour": 16777215,
+      "teamColour1": 2703424,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ECUADOR": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1976914,
+      "teamColour1": 273045,
+      "teamColour2": 15454977,
+      "teamColour3": 15454977
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15597101,
+      "teamColour1": 7830382,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CADU": {
+    "tit": {
+      "angle": 180,
+      "textColour": 986895,
+      "teamColour1": 693468,
+      "teamColour2": 2935544,
+      "teamColour3": 693468
+    },
+    "alt": {
+      "angle": 135,
+      "textColour": 32508,
+      "teamColour1": 16777215,
+      "teamColour2": 4703483,
+      "teamColour3": 16777215
+    }
+  },
+  "URSS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 11536409,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 11208728,
+      "teamColour1": 16448250,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "YUGOSLAVIA": {
+    "tit": {
+      "angle": 153,
+      "textColour": 16777215,
+      "teamColour1": 1002401,
+      "teamColour2": 1002401,
+      "teamColour3": 14548992
+    },
+    "alt": {
+      "angle": 153,
+      "textColour": 871346,
+      "teamColour1": 16777215,
+      "teamColour2": 16777215,
+      "teamColour3": 14492957
+    }
+  },
+  "ALUMNI": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 16711680,
+      "teamColour2": 16777215,
+      "teamColour3": 16711680
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 0,
+      "teamColour1": 14880528,
+      "teamColour2": 16777215,
+      "teamColour3": 14880528
+    }
+  },
+  "VILLA SAN CARLOS": {
+    "tit": {
+      "angle": 42,
+      "textColour": 1252138,
+      "teamColour1": 4765925,
+      "teamColour2": 16777215,
+      "teamColour3": 4765925
+    },
+    "alt": {
+      "angle": 56,
+      "textColour": 15790320,
+      "teamColour1": 116991,
+      "teamColour2": 2698292,
+      "teamColour3": 2698292
+    }
+  },
+  "LOMAS ATHLETIC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16112640,
+      "teamColour1": 3368499,
+      "teamColour2": 14221312,
+      "teamColour3": 3368499
+    }
+  },
+  "CHECOSLOVAQUIA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 12461600,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 11276307,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "FC NANTES": {
+    "tit": {
+      "angle": 180,
+      "textColour": 28727,
+      "teamColour1": 16703536,
+      "teamColour2": 1748327,
+      "teamColour3": 16703536
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 16776960,
+      "teamColour1": 2263911,
+      "teamColour2": 1471828,
+      "teamColour3": 1471828
+    }
+  },
+  "SAINT ETIENNE": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 1010502,
+      "teamColour2": 1807205,
+      "teamColour3": 1807205
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 5008989,
+      "teamColour1": 1341528,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "RENNES": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15790320,
+      "teamColour1": 0,
+      "teamColour2": 14421269,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2584022,
+      "teamColour2": 1790133,
+      "teamColour3": 2584022
+    }
+  },
+  "FC NYVA VINNYTSIA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 4366689,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 4430707,
+      "teamColour1": 3842160,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "ORLANDO CITY": {
+    "tit": {
+      "angle": 70,
+      "textColour": 16777215,
+      "teamColour1": 4131700,
+      "teamColour2": 3541347,
+      "teamColour3": 3541347
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 4131700,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "ESTUDIANTES (BA)": {
+    "tit": {
+      "angle": 180,
+      "textColour": 9211020,
+      "teamColour1": 16777215,
+      "teamColour2": 0,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 115,
+      "textColour": 328965,
+      "teamColour1": 15394022,
+      "teamColour2": 16777215,
+      "teamColour3": 11050395
+    }
+  },
+  "ALMIRANTE BROWN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 15452174,
+      "teamColour2": 0,
+      "teamColour3": 15452174
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16773967,
+      "teamColour1": 1250067,
+      "teamColour2": 1250067,
+      "teamColour3": 15452174
+    }
+  },
+  "CENTRO DEP. ROCA": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16249855,
+      "teamColour1": 14425655,
+      "teamColour2": 1841702,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 0,
+      "teamColour1": 16523850,
+      "teamColour2": 16777215,
+      "teamColour3": 12916289
+    }
+  },
+  "BOCHOFILO BOCHAZO": {
+    "tit": {
+      "angle": 40,
+      "textColour": 3356523,
+      "teamColour1": 12462131,
+      "teamColour2": 16777215,
+      "teamColour3": 2312352
+    }
+  },
+  "DINAMO ZAGREB": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 284358,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 1777424,
+      "teamColour1": 14548817,
+      "teamColour2": 14810459,
+      "teamColour3": null
+    }
+  },
+  "BAYER LEVERKUSEN": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16185591,
+      "teamColour1": 2434342,
+      "teamColour2": 3552822,
+      "teamColour3": 2434342
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 15856372,
+      "teamColour1": 14878496,
+      "teamColour2": 15805745,
+      "teamColour3": 14878496
+    }
+  },
+  "VENEZIA FC": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 16675328,
+      "teamColour2": 1449000,
+      "teamColour3": 35158
+    }
+  },
+  "ATHLETIC BILBAO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 131840,
+      "teamColour1": 15335710,
+      "teamColour2": 16777215,
+      "teamColour3": 15335710
+    },
+    "alt": {
+      "angle": 121,
+      "textColour": 14601097,
+      "teamColour1": 2252606,
+      "teamColour2": 2252606,
+      "teamColour3": 3175242
+    }
+  },
+  "ESPANYOL": {
+    "tit": {
+      "angle": 0,
+      "textColour": 2565668,
+      "teamColour1": 16777215,
+      "teamColour2": 28085,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 2580310,
+      "teamColour2": 1802707,
+      "teamColour3": 15461874
+    }
+  },
+  "RB LEIPZIG": {
+    "tit": {
+      "angle": 60,
+      "textColour": 14419777,
+      "teamColour1": 15789550,
+      "teamColour2": 14934241,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 14419777,
+      "teamColour1": 859693,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "MONTEVIDEO CITY": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 7779298,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 3288362,
+      "teamColour2": 4275257,
+      "teamColour3": 4736835
+    }
+  },
+  "MONTEVIDEO WANDERERS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12105912,
+      "teamColour1": 16777215,
+      "teamColour2": 0,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 7921401,
+      "teamColour2": 10937081,
+      "teamColour3": 7921401
+    }
+  },
+  "HAMBURGER SV": {
+    "tit": {
+      "angle": 90,
+      "textColour": 29143,
+      "teamColour1": 13893921,
+      "teamColour2": 15921655,
+      "teamColour3": 15921655
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16496341,
+      "teamColour2": 7167612,
+      "teamColour3": 16496341
+    }
+  },
+  "NEWCASTLE UNITED": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15348286,
+      "teamColour1": 16184826,
+      "teamColour2": 2696234,
+      "teamColour3": 16184826
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 1843235,
+      "teamColour2": 1324089,
+      "teamColour3": 1324089
+    }
+  },
+  "WEST HAM": {
+    "tit": {
+      "angle": 90,
+      "textColour": 15987447,
+      "teamColour1": 12902636,
+      "teamColour2": 8129573,
+      "teamColour3": 8129573
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 7871026,
+      "teamColour1": 11064831,
+      "teamColour2": 16053492,
+      "teamColour3": 16053492
+    }
+  },
+  "INTER MIAMI": {
+    "tit": {
+      "angle": 180,
+      "textColour": 3023650,
+      "teamColour1": 16688052,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16501972,
+      "teamColour1": 2171171,
+      "teamColour2": 3026480,
+      "teamColour3": 2171171
+    }
+  },
+  "DEP. ESPAÑOL": {
+    "tit": {
+      "angle": 66,
+      "textColour": 16777215,
+      "teamColour1": 16761088,
+      "teamColour2": 13434880,
+      "teamColour3": 13434880
+    },
+    "alt": {
+      "angle": 66,
+      "textColour": 2370897,
+      "teamColour1": 13107200,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "SPORTIVO ITALIANO": {
+    "tit": {
+      "angle": 307,
+      "textColour": 16777215,
+      "teamColour1": 1271744,
+      "teamColour2": 1271744,
+      "teamColour3": 3623561
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 1977492,
+      "teamColour1": 866694,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "DEP. MANDIYÚ": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1748329,
+      "teamColour1": 1159269,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 8508264,
+      "teamColour2": 6408805,
+      "teamColour3": 6408805
+    }
+  },
+  "HULL CITY": {
+    "tit": {
+      "angle": 247,
+      "textColour": 0,
+      "teamColour1": 16219925,
+      "teamColour2": 16219925,
+      "teamColour3": 1574402
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "WOLVERHAMPTON": {
+    "tit": {
+      "angle": 90,
+      "textColour": 0,
+      "teamColour1": 16354857,
+      "teamColour2": 16490291,
+      "teamColour3": 16624955
+    },
+    "alt": {
+      "angle": 61,
+      "textColour": 16777215,
+      "teamColour1": 16359171,
+      "teamColour2": 2105376,
+      "teamColour3": 2105376
+    }
+  },
+  "CERRO LARGO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 2039334,
+      "teamColour1": 16777215,
+      "teamColour2": 2381023,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 61,
+      "textColour": 2039334,
+      "teamColour1": 39114,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "OLD CALEDONIANS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1644825,
+      "teamColour1": 16250619,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "DEFENSOR SPORTING": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 7163316,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 4206187,
+      "teamColour1": 16777215,
+      "teamColour2": 7163316,
+      "teamColour3": 16777215
+    }
+  },
+  "EVERTON VIÑA DEL MAR": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 2172487,
+      "teamColour2": 16770897,
+      "teamColour3": 2172487
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16766819,
+      "teamColour2": 3159124,
+      "teamColour3": 16766819
+    }
+  },
+  "UNIÓN LA CALERA": {
+    "tit": {
+      "angle": 50,
+      "textColour": 16777215,
+      "teamColour1": 12197176,
+      "teamColour2": 14090496,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 66,
+      "textColour": 0,
+      "teamColour1": 14884153,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "AUDAX ITALIANO": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 285393,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 1147463,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "HUACHIPATO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16513821,
+      "teamColour1": 2849271,
+      "teamColour2": 2039585,
+      "teamColour3": 2849271
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16579327,
+      "teamColour1": 12394294,
+      "teamColour2": 7413549,
+      "teamColour3": 12394294
+    }
+  },
+  "DEPORTES IQUIQUE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 10867966,
+      "teamColour2": 10343423,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 2447322,
+      "teamColour2": 16717607,
+      "teamColour3": 2447322
+    }
+  },
+  "O'HIGGINS": {
+    "tit": {
+      "angle": 60,
+      "textColour": 0,
+      "teamColour1": 9487595,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 1973791,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "UNIÓN ESPAÑOLA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 12915758,
+      "teamColour2": 13569319,
+      "teamColour3": 14686771
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 6118749,
+      "teamColour2": 7434611,
+      "teamColour3": 8684676
+    }
+  },
+  "SANTIAGO WANDERERS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 7929640,
+      "teamColour1": 94304,
+      "teamColour2": 150078,
+      "teamColour3": 150078
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1392962,
+      "teamColour1": 16777215,
+      "teamColour2": 13158348,
+      "teamColour3": 16777215
+    }
+  },
+  "CURICÓ UNIDO": {
+    "tit": {
+      "angle": 35,
+      "textColour": 7213072,
+      "teamColour1": 16777215,
+      "teamColour2": 14231572,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 35,
+      "textColour": 11250603,
+      "teamColour1": 14231572,
+      "teamColour2": 16777215,
+      "teamColour3": 14231572
+    }
+  },
+  "DEP. ANTOFAGASTA": {
+    "tit": {
+      "angle": 0,
+      "textColour": 1598885,
+      "teamColour1": 16777215,
+      "teamColour2": 3312376,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 1710618,
+      "teamColour2": 14098217,
+      "teamColour3": null
+    }
+  },
+  "U. DE CONCEPCIÓN": {
+    "tit": {
+      "angle": 90,
+      "textColour": 2897236,
+      "teamColour1": 15853118,
+      "teamColour2": 15853118,
+      "teamColour3": 15853118
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 16706348,
+      "teamColour1": 6456813,
+      "teamColour2": 2699605,
+      "teamColour3": 2699605
+    }
+  },
+  "DEP. LA SERENA": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16711422,
+      "teamColour1": 5441832,
+      "teamColour2": 4523810,
+      "teamColour3": 4523810
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 6094887,
+      "teamColour1": 16777215,
+      "teamColour2": 15658734,
+      "teamColour3": 15658734
+    }
+  },
+  "COQUIMBO UNIDO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 0,
+      "teamColour1": 2105376,
+      "teamColour2": 16041221,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 55,
+      "textColour": 0,
+      "teamColour1": 15198183,
+      "teamColour2": 15198183,
+      "teamColour3": 16041478
+    }
+  },
+  "TEAM SPIDERMAN": {},
+  "TEAM HULK": {},
+  "TEAM CAPITÁN AMÉRICA": {},
+  "TEAM BATMAN": {},
+  "BELGRANO ATHLETIC CLUB": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16763904,
+      "teamColour2": 10046464,
+      "teamColour3": 16763904
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16771872,
+      "teamColour1": 1800551,
+      "teamColour2": 16658501,
+      "teamColour3": 1800551
+    }
+  },
+  "ROSARIO ATHLETIC CLUB": {
+    "tit": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 9386578,
+      "teamColour2": 2268376,
+      "teamColour3": null
+    }
+  },
+  "CA. PORTEÑO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 2829099,
+      "teamColour1": 16777215,
+      "teamColour2": 4937177,
+      "teamColour3": 16777215
+    }
+  },
+  "VILLAREAL": {
+    "tit": {
+      "angle": 90,
+      "textColour": 1656423,
+      "teamColour1": 16378475,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 14801926,
+      "teamColour1": 1323345,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CELTA DE VIGO": {
+    "tit": {
+      "angle": 136,
+      "textColour": 1315860,
+      "teamColour1": 4437492,
+      "teamColour2": 9297406,
+      "teamColour3": 9297406
+    }
+  },
+  "MALLORCA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16667457,
+      "teamColour2": 13904426,
+      "teamColour3": 13904426
+    }
+  },
+  "LEEDS UNITED": {
+    "tit": {
+      "angle": 123,
+      "textColour": 0,
+      "teamColour1": 15203944,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 123,
+      "textColour": 16777215,
+      "teamColour1": 4413,
+      "teamColour2": 137862,
+      "teamColour3": 137862
+    }
+  },
+  "SUIZA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 15986161,
+      "teamColour1": 16316664,
+      "teamColour2": 16131887,
+      "teamColour3": 16131887
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 10561080,
+      "teamColour1": 16185340,
+      "teamColour2": 16378869,
+      "teamColour3": 15850980
+    }
+  },
+  "SUECIA": {
+    "tit": {
+      "angle": 123,
+      "textColour": 2966630,
+      "teamColour1": 15984433,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15985245,
+      "teamColour1": 15788811,
+      "teamColour2": 1387081,
+      "teamColour3": 1781326
+    }
+  },
+  "CRUCERO DEL NORTE": {
+    "tit": {
+      "angle": 90,
+      "textColour": 0,
+      "teamColour1": 16706923,
+      "teamColour2": 16706923,
+      "teamColour3": 6249816
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 1973549,
+      "teamColour1": 15424562,
+      "teamColour2": 15658291,
+      "teamColour3": null
+    }
+  },
+  "SC BRAGA": {
+    "tit": {
+      "angle": 127,
+      "textColour": 12763842,
+      "teamColour1": 16777215,
+      "teamColour2": 16592674,
+      "teamColour3": 16592674
+    }
+  },
+  "SPORTING CP": {
+    "tit": {
+      "angle": 90,
+      "textColour": 2435632,
+      "teamColour1": 1016937,
+      "teamColour2": 16777215,
+      "teamColour3": 1016937
+    }
+  },
+  "FC PORTO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16266553,
+      "teamColour1": 81851,
+      "teamColour2": 16777215,
+      "teamColour3": 81851
+    }
+  },
+  "SL BENFICA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 15084338,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "CAMERÚN": {
+    "tit": {
+      "angle": 110,
+      "textColour": 16241924,
+      "teamColour1": 13573924,
+      "teamColour2": 93500,
+      "teamColour3": 93500
+    },
+    "alt": {
+      "angle": 110,
+      "textColour": 295760,
+      "teamColour1": 14822193,
+      "teamColour2": 16179200,
+      "teamColour3": 16439041
+    }
+  },
+  "COSTA DE MARFIL": {
+    "tit": {
+      "angle": 90,
+      "textColour": 15658734,
+      "teamColour1": 230992,
+      "teamColour2": 16686337,
+      "teamColour3": 15886601
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16756015,
+      "teamColour1": 16250873,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "UCRANIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 33749,
+      "teamColour1": 106464,
+      "teamColour2": 16443993,
+      "teamColour3": 16443993
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15654192,
+      "teamColour1": 1219818,
+      "teamColour2": 1223149,
+      "teamColour3": 1223149
+    }
+  },
+  "SAN MIGUEL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 222913,
+      "teamColour1": 37695,
+      "teamColour2": 16777215,
+      "teamColour3": 37695
+    },
+    "alt": {
+      "angle": 55,
+      "textColour": 8447910,
+      "teamColour1": 3098718,
+      "teamColour2": 2438989,
+      "teamColour3": 2371909
+    }
+  },
+  "LAFERRERE": {
+    "tit": {
+      "angle": 180,
+      "textColour": 14097982,
+      "teamColour1": 3434552,
+      "teamColour2": 16777215,
+      "teamColour3": 3434552
+    }
+  },
+  "MÉXICO": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 286037,
+      "teamColour2": 424279,
+      "teamColour3": 566636
+    },
+    "alt": {
+      "angle": 70,
+      "textColour": 15022668,
+      "teamColour1": 296261,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "SENEGAL": {
+    "tit": {
+      "angle": 90,
+      "textColour": 107139,
+      "teamColour1": 14938098,
+      "teamColour2": 16052963,
+      "teamColour3": 16377836
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 12839985,
+      "teamColour1": 12642611,
+      "teamColour2": 3691583,
+      "teamColour3": 3691583
+    }
+  },
+  "IRÁN": {
+    "tit": {
+      "angle": 120,
+      "textColour": 12921142,
+      "teamColour1": 6079086,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 120,
+      "textColour": 16777215,
+      "teamColour1": 8969361,
+      "teamColour2": 15738682,
+      "teamColour3": 15738682
+    }
+  },
+  "POLONIA": {
+    "tit": {
+      "angle": 63,
+      "textColour": 11209768,
+      "teamColour1": 15856375,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 63,
+      "textColour": 16777215,
+      "teamColour1": 11338011,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "COSTA RICA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 152240,
+      "teamColour2": 14156066,
+      "teamColour3": 14156066
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 2504777,
+      "teamColour1": 1190465,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "CANADÁ": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 15801652,
+      "teamColour2": 14811173,
+      "teamColour3": 14811173
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 15549529,
+      "teamColour1": 14090533,
+      "teamColour2": 16316666,
+      "teamColour3": 16316666
+    }
+  },
+  "MARRUECOS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 232010,
+      "teamColour2": 15990810,
+      "teamColour3": 15990810
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 623720,
+      "teamColour1": 8333360,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "SERBIA": {
+    "tit": {
+      "angle": 120,
+      "textColour": 14792822,
+      "teamColour1": 11468819,
+      "teamColour2": 13566497,
+      "teamColour3": 13566497
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 13098565,
+      "teamColour1": 2041157,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "GHANA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 685148,
+      "teamColour1": 2169890,
+      "teamColour2": 13882073,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 28233,
+      "teamColour1": 1713180,
+      "teamColour2": 16048384,
+      "teamColour3": 16048384
+    }
+  },
+  "TÚNEZ": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16665679,
+      "teamColour1": 15856376,
+      "teamColour2": 16777215,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16524601,
+      "teamColour2": 15403567,
+      "teamColour3": null
+    }
+  },
+  "DINAMARCA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 15921655,
+      "teamColour2": 12386837,
+      "teamColour3": 14483491
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 14689333,
+      "teamColour1": 13241132,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "ARABIA SAUDITA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 168042,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 130,
+      "textColour": 15462643,
+      "teamColour1": 212273,
+      "teamColour2": 212273,
+      "teamColour3": 168042
+    }
+  },
+  "COREA DEL SUR": {
+    "tit": {
+      "angle": 90,
+      "textColour": 986127,
+      "teamColour1": 16758481,
+      "teamColour2": 16745886,
+      "teamColour3": 15678022
+    },
+    "alt": {
+      "angle": 76,
+      "textColour": 14598016,
+      "teamColour1": 1842468,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "PLAZA COLONIA": {
+    "tit": {
+      "angle": 114,
+      "textColour": 611104,
+      "teamColour1": 6271622,
+      "teamColour2": 11060146,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 63,
+      "textColour": 1811568,
+      "teamColour1": 1384233,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "DEPORTIVO TACHIRA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16765953,
+      "teamColour2": 1513752,
+      "teamColour3": 16765953
+    },
+    "alt": {
+      "angle": 124,
+      "textColour": 256,
+      "teamColour1": 16764160,
+      "teamColour2": 13552594,
+      "teamColour3": 15856113
+    }
+  },
+  "CARACAS": {
+    "tit": {
+      "angle": 128,
+      "textColour": 16777215,
+      "teamColour1": 2562845,
+      "teamColour2": 13053740,
+      "teamColour3": 13053740
+    },
+    "alt": {
+      "angle": 128,
+      "textColour": 0,
+      "teamColour1": 16777215,
+      "teamColour2": 15395562,
+      "teamColour3": null
+    }
+  },
+  "MONAGAS": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 69,
+      "teamColour2": 10551296,
+      "teamColour3": 69
+    },
+    "alt": {
+      "angle": 128,
+      "textColour": 0,
+      "teamColour1": 14548736,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "DEP. LARA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15790320,
+      "teamColour1": 15138854,
+      "teamColour2": 3156526,
+      "teamColour3": 15138854
+    },
+    "alt": {
+      "angle": 128,
+      "textColour": 11738923,
+      "teamColour1": 16777215,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "U. CESAR VALLEJO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 16341277,
+      "teamColour2": 16606743,
+      "teamColour3": 16606743
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 203591,
+      "teamColour2": 202557,
+      "teamColour3": 202557
+    }
+  },
+  "CLUB DEP. UNIVERSIDAD CATOLICA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 271684,
+      "teamColour1": 10341601,
+      "teamColour2": 9881825,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 14281716,
+      "teamColour1": 1315860,
+      "teamColour2": 0,
+      "teamColour3": 1315860
+    }
+  },
+  "DEPORTES TOLIMA": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12556874,
+      "teamColour1": 7342621,
+      "teamColour2": 7803172,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 7803172,
+      "teamColour1": 12556874,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "INDEPENDIENTE PETROLERO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 6513507,
+      "teamColour1": 11142421,
+      "teamColour2": 16777215,
+      "teamColour3": 11142421
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 9047317,
+      "teamColour2": 12980766,
+      "teamColour3": 9047317
+    }
+  },
+  "ALWAYS READY": {
+    "tit": {
+      "angle": 33,
+      "textColour": 1710620,
+      "teamColour1": 16777215,
+      "teamColour2": 16659005,
+      "teamColour3": 16777215
+    },
+    "alt": {
+      "angle": 34,
+      "textColour": 16777215,
+      "teamColour1": 10428992,
+      "teamColour2": 13907778,
+      "teamColour3": 10428992
+    }
+  },
+  "FORTALEZA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 16324664,
+      "teamColour2": 1127055,
+      "teamColour3": 16324664
+    },
+    "alt": {
+      "angle": 34,
+      "textColour": 264798,
+      "teamColour1": 16448250,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "RB BRAGANTINO": {
+    "tit": {
+      "angle": -50,
+      "textColour": 16646914,
+      "teamColour1": 15329769,
+      "teamColour2": 16777215,
+      "teamColour3": 15329769
+    },
+    "alt": {
+      "angle": -50,
+      "textColour": 16777215,
+      "teamColour1": 0,
+      "teamColour2": 1381653,
+      "teamColour3": 0
+    }
+  },
+  "AMÉRICA MINEIRO": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 7259510,
+      "teamColour2": 2565935,
+      "teamColour3": 7259510
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1079351,
+      "teamColour1": 158510,
+      "teamColour2": 15724527,
+      "teamColour3": 16448250
+    }
+  },
+  "TORINO": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16513784,
+      "teamColour1": 9439779,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 60,
+      "textColour": 10630987,
+      "teamColour1": 15790582,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "GENOA": {
+    "tit": {
+      "angle": 0,
+      "textColour": 14860129,
+      "teamColour1": 14352414,
+      "teamColour2": 2502213,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 16177411,
+      "teamColour1": 16777215,
+      "teamColour2": 16253214,
+      "teamColour3": 2568283
+    }
+  },
+  "PALERMO": {
+    "tit": {
+      "angle": 0,
+      "textColour": 3024686,
+      "teamColour1": 16303841,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 3091507,
+      "teamColour1": 16631775,
+      "teamColour2": 15791098,
+      "teamColour3": 15791098
+    }
+  },
+  "CHIEVO VERONA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 762862,
+      "teamColour1": 16303841,
+      "teamColour2": 16052063,
+      "teamColour3": 16052063
+    },
+    "alt": {
+      "angle": 0,
+      "textColour": 16777215,
+      "teamColour1": 437498,
+      "teamColour2": 433648,
+      "teamColour3": 437498
+    }
+  },
+  "BARRACAS CENTRAL": {
+    "tit": {
+      "angle": 180,
+      "textColour": 8197666,
+      "teamColour1": 14812691,
+      "teamColour2": 16777215,
+      "teamColour3": 14812691
+    },
+    "alt": {
+      "angle": 180,
+      "textColour": 15671859,
+      "teamColour1": 15263976,
+      "teamColour2": 16777215,
+      "teamColour3": 15263976
+    }
+  },
+  "GALES": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 15533343,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 15992601,
+      "teamColour1": 95319,
+      "teamColour2": 16376079,
+      "teamColour3": 16376079
+    }
+  },
+  "AUSTRALIA": {
+    "tit": {
+      "angle": 90,
+      "textColour": 2116420,
+      "teamColour1": 16042266,
+      "teamColour2": null,
+      "teamColour3": null
+    },
+    "alt": {
+      "angle": 70,
+      "textColour": 16638272,
+      "teamColour1": 3290454,
+      "teamColour2": 1738386,
+      "teamColour3": 1738386
+    }
+  },
+  "SARMIENTO DE JUNÍN": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16777215,
+      "teamColour1": 3633209,
+      "teamColour2": 2974514,
+      "teamColour3": 2249256
+    },
+    "alt": {
+      "angle": 90,
+      "textColour": 1392687,
+      "teamColour1": 10474179,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  },
+  "1K": {
+    "tit": {
+      "angle": 60,
+      "textColour": 16777215,
+      "teamColour1": 15233971,
+      "teamColour2": 3483504,
+      "teamColour3": 3483504
+    }
+  },
+  "ANIQUILADORES FC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 1117711,
+      "teamColour1": 13315127,
+      "teamColour2": 16777215,
+      "teamColour3": 13315127
+    }
+  },
+  "JIJANTES FC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 78206,
+      "teamColour2": 11865642,
+      "teamColour3": 78206
+    }
+  },
+  "ULTIMATE MOSTOLES": {
+    "tit": {
+      "angle": 180,
+      "textColour": 12492909,
+      "teamColour1": 657932,
+      "teamColour2": 1513244,
+      "teamColour3": 657932
+    }
+  },
+  "XBUYER TEAM": {
+    "tit": {
+      "angle": 180,
+      "textColour": 15658597,
+      "teamColour1": 2312058,
+      "teamColour2": 1334955,
+      "teamColour3": 684496
+    }
+  },
+  "RAYO DE BARCELONA": {
+    "tit": {
+      "angle": 66,
+      "textColour": 16116999,
+      "teamColour1": 1513239,
+      "teamColour2": 1513239,
+      "teamColour3": 16116999
+    }
+  },
+  "PÍO FC": {
+    "tit": {
+      "angle": 1,
+      "textColour": 1907997,
+      "teamColour1": 15000552,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "9Z TEAM": {
+    "tit": {
+      "angle": 62,
+      "textColour": 16777215,
+      "teamColour1": 3418481,
+      "teamColour2": 4335215,
+      "teamColour3": null
+    }
+  },
+  "FURIA": {
+    "tit": {
+      "angle": 62,
+      "textColour": 16777215,
+      "teamColour1": 1909031,
+      "teamColour2": 1909031,
+      "teamColour3": 6382700
+    }
+  },
+  "ISURUS GAMING": {
+    "tit": {
+      "angle": 180,
+      "textColour": 0,
+      "teamColour1": 15461355,
+      "teamColour2": 65467,
+      "teamColour3": 15461355
+    }
+  },
+  "FURIUS GAMING": {
+    "tit": {
+      "angle": 40,
+      "textColour": 11477608,
+      "teamColour1": 1647403,
+      "teamColour2": null,
+      "teamColour3": null
+    }
+  },
+  "TRONCOS FC": {
+    "tit": {
+      "angle": 180,
+      "textColour": 1068347,
+      "teamColour1": 504175,
+      "teamColour2": 16777215,
+      "teamColour3": 504175
+    }
+  },
+  "KUNISPORTS": {
+    "tit": {
+      "angle": 90,
+      "textColour": 16712037,
+      "teamColour1": 16777215,
+      "teamColour2": 7960183,
+      "teamColour3": 1643544
+    }
+  },
+  "SAIYANS FC": {
+    "tit": {
+      "angle": 56,
+      "textColour": 16777215,
+      "teamColour1": 211092,
+      "teamColour2": 15025944,
+      "teamColour3": 14826773
+    }
+  },
+  "PORCINOS FC": {
+    "tit": {
+      "angle": 65,
+      "textColour": 16777215,
+      "teamColour1": 16759508,
+      "teamColour2": 16759508,
+      "teamColour3": 16639987
+    }
+  },
+  "EL BARRIO FC": {
+    "tit": {
+      "angle": 65,
+      "textColour": 16777215,
+      "teamColour1": 74088,
+      "teamColour2": 74088,
+      "teamColour3": 6204
+    }
+  },
+  "DOUGLAS HAIG": {
+    "tit": {
+      "angle": 180,
+      "textColour": 16777215,
+      "teamColour1": 0,
+      "teamColour2": 16716049,
+      "teamColour3": 0
+    },
+    "alt": {
+      "angle": 65,
+      "textColour": 0,
+      "teamColour1": 16716049,
+      "teamColour2": 16777215,
+      "teamColour3": 16777215
+    }
+  }
+}

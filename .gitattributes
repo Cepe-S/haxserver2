@@ -1,0 +1,15 @@
+# Handle line endings automatically for files detected as text
+* text=auto
+
+# Force LF for shell scripts
+*.sh text eol=lf
+
+# Force LF for TypeScript/JavaScript files
+*.ts text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+
+# Force LF for config files
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

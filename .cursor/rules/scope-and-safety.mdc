@@ -1,0 +1,27 @@
+---
+description: Límites de alcance para evitar errores en acciones simples
+alwaysApply: true
+---
+
+# Alcance y seguridad operativa
+
+## Prohibido sin orden humana explícita
+
+- Nuevas funcionalidades (!map, votaciones, etc.)
+- Mejoras de ciberseguridad (auth, CORS, JWT)
+- Refactors que no resuelven un PROB-xxx
+- Borrar o resetear BD de jugadores
+- Commits git (salvo que el humano lo pida)
+
+## Siempre
+
+- Paths bajo la raíz del repo `haxserver2/` (legacy externo ya eliminado)
+- Fix mínimo: el diff más chico que resuelve el PROB
+- Verificar con `npm run build` si tocaste TypeScript
+- Respetar `HUMAN_TODO_LIST_NOT_FOR_IA.md` (no automatizar esos items)
+
+## Ante duda
+
+- Consultar `SystemStatus.md` → matriz operativa y PROBs activos
+- PROBs cerrados → `CHANGELOG.md`
+- No inventar requisitos no documentados en PROB o SystemStatus

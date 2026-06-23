@@ -1,0 +1,273 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native"]
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./mikuserverpro.db"
+}
+
+// FASE 1: Server Images System
+model ServerImage {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  config      String   // JSON config from defaultroomconfig.json
+  status      String   @default("inactive") // inactive, running, error
+  ruid        String?  // Room ID when running
+  roomLink    String?  // Haxball room link when running
+  token       String?  // Token used for current session
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relaciones
+  adminPasswords AdminPassword[]
+  
+  @@map("server_images")
+}
+
+// Contraseñas de administrador por imagen de servidor
+model AdminPassword {
+  id            String      @id @default(cuid())
+  serverImageId String
+  password      String
+  description   String
+  level         String      // 'admin' | 'superadmin'
+  isActive      Boolean     @default(true)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  serverImage   ServerImage @relation(fields: [serverImageId], references: [id], onDelete: Cascade)
+  
+  @@index([serverImageId])
+  @@map("admin_passwords")
+}
+
+// SISTEMA SÓLIDO DE IDENTIFICACIÓN DE JUGADORES
+
+// Identidad única de jugador (basada en auth cuando existe, conn como fallback)
+model PlayerIdentity {
+  id          String   @id @default(cuid())
+  
+  // Identificadores primarios
+  primaryAuth String?  // Auth principal (el más reciente válido)
+  primaryConn String   // Conn principal (para bans)
+  
+  // Metadatos
+  firstSeen   DateTime @default(now())
+  lastSeen    DateTime @updatedAt
+  
+  // Relaciones
+  auths       PlayerAuth[]
+  connections PlayerConnection[]
+  names       PlayerName[]
+  stats       PlayerStats[]
+  gameConnections Connection[]
+  sanctions   PlayerSanction[]
+  permissions PlayerPermission[]
+  
+  @@unique([primaryConn])
+  @@index([primaryAuth])
+  @@map("player_identities")
+}
+
+// Todos los auths que ha tenido un jugador
+model PlayerAuth {
+  id         String   @id @default(cuid())
+  identityId String
+  auth       String
+  firstSeen  DateTime @default(now())
+  lastSeen   DateTime @updatedAt
+  
+  identity   PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  
+  @@unique([auth])
+  @@index([identityId])
+  @@map("player_auths")
+}
+
+// Todas las conexiones que ha tenido un jugador
+model PlayerConnection {
+  id         String   @id @default(cuid())
+  identityId String
+  conn       String
+  ipAddress  String?  // Si podemos obtenerla
+  userAgent  String?  // Si podemos obtenerla
+  
+  // Geolocalización
+  country    String?
+  region     String?
+  city       String?
+  timezone   String?
+  isp        String?
+  
+  // Detección de VPN/Proxy
+  isVpn      Boolean? @default(false)
+  isProxy    Boolean? @default(false)
+  isTor      Boolean? @default(false)
+  threatLevel String? // low, medium, high
+  
+  firstSeen  DateTime @default(now())
+  lastSeen   DateTime @updatedAt
+  useCount   Int      @default(1)
+  
+  identity   PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  
+  @@unique([conn])
+  @@index([identityId])
+  @@index([ipAddress])
+  @@map("player_connections")
+}
+
+// Todos los nombres que ha usado un jugador
+model PlayerName {
+  id         String   @id @default(cuid())
+  identityId String
+  name       String
+  firstSeen  DateTime @default(now())
+  lastSeen   DateTime @updatedAt
+  useCount   Int      @default(1)
+  
+  identity   PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  
+  @@unique([identityId, name])
+  @@index([identityId])
+  @@index([name])
+  @@map("player_names")
+}
+
+// Estadísticas acumuladas por jugador y sala
+model PlayerStats {
+  id         String   @id @default(cuid())
+  ruid       String   // Server room ID
+  playerId   String   // Referencia a PlayerIdentity.id
+  
+  // Estadísticas acumuladas
+  rating     Int      @default(1000)
+  totals     Int      @default(0)     // Partidos jugados
+  wins       Int      @default(0)     // Partidos ganados
+  goals      Int      @default(0)     // Goles
+  assists    Int      @default(0)     // Asistencias
+  ogs        Int      @default(0)     // Goles en contra
+  balltouch  Int      @default(0)     // Toques de balón
+  saves      Int      @default(0)     // Salvadas
+  disconns   Int      @default(0)     // Desconexiones
+  losePoints Int      @default(0)     // Puntos perdidos
+  passed     Int      @default(0)     // Pases
+  malActCount Int     @default(0)     // Mal comportamiento
+  rejoinCount Int     @default(0)     // Reconexiones
+  
+  // Metadatos
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  // Relación
+  player     PlayerIdentity @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  
+  @@unique([ruid, playerId])
+  @@index([ruid, rating])
+  @@map("player_stats")
+}
+
+// Conexiones individuales de jugadores
+model Connection {
+  id         String   @id @default(cuid())
+  ruid       String   // Server room ID
+  playerId   String   // Referencia a PlayerIdentity.id
+  
+  // Datos de conexión
+  haxballId  Int      // ID temporal de Haxball
+  auth       String?  // Auth usado en esta conexión
+  conn       String   // Conn usado en esta conexión
+  name       String   // Nombre de Haxball usado en esta conexión
+  
+  // Tiempos
+  joinedAt   DateTime @default(now())
+  leftAt     DateTime?
+  
+  // Datos de red
+  ipAddress  String?
+  country    String?
+  region     String?
+  city       String?
+  isp        String?
+  isVpn      Boolean? @default(false)
+  isProxy    Boolean? @default(false)
+  threatLevel String?
+  
+  // Relación
+  player     PlayerIdentity @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  
+  @@index([ruid, playerId])
+  @@index([ruid, joinedAt])
+  @@map("connections")
+}
+
+// Sanciones aplicadas a un jugador
+model PlayerSanction {
+  id         String   @id @default(cuid())
+  ruid       String   // Server room ID
+  identityId String
+  
+  // Detalles de la sanción
+  type       String   // ban, mute, kick, warning
+  reason     String?
+  duration   Int      @default(0) // minutos (0 = permanente)
+  
+  // Admin que aplicó la sanción
+  adminAuth  String?
+  adminName  String?
+  
+  // Estado
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime?
+  
+  identity   PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  
+  @@index([ruid, identityId])
+  @@index([ruid, type, isActive])
+  @@index([expiresAt])
+  @@map("player_sanctions")
+}
+
+// Permisos de jugador por servidor
+model PlayerPermission {
+  id           String   @id @default(cuid())
+  ruid         String   // Server room ID
+  identityId   String
+  
+  // Permisos
+  isAdmin      Boolean  @default(false)
+  isSuperAdmin Boolean  @default(false)
+  
+  // Otorgado por
+  grantedBy    String?
+  grantedAt    DateTime @default(now())
+  
+  identity     PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  
+  @@unique([ruid, identityId])
+  @@map("player_permissions")
+}
+
+// Webhooks para notificaciones
+model Webhook {
+  id          String   @id
+  name        String
+  url         String
+  enabled     Boolean  @default(true)
+  levels      String   // JSON array: ["error", "warn", "critical"]
+  rateLimit   Int      @default(10)
+  format      String   @default("compact") // compact | detailed
+  services    String?  // JSON array opcional: ["CORE", "WEB"]
+  createdAt   String
+  updatedAt   String?
+  
+  @@map("webhooks")
+}
