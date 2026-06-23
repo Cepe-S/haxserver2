@@ -7,7 +7,9 @@ cd "$ROOT"
 
 echo "==> MikuServerPro — deploy Linux"
 
-# --- Dependencias del sistema (Chrome/Puppeteer) ---
+chmod +x "$ROOT/scripts/"*.sh 2>/dev/null || true
+
+# --- Chrome/Puppeteer (obligatorio antes del build; falla sala sin libnspr4) ---
 if command -v apt-get >/dev/null 2>&1; then
   bash "$ROOT/scripts/install-chrome-deps.sh"
 fi

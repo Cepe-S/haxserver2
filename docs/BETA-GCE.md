@@ -28,7 +28,9 @@ chmod +x deploy-linux.sh
 ./deploy-linux.sh
 ```
 
-El script instala deps de Chrome, `npm run build:prod`, levanta PM2 (core :3001, web :3000, UI :5173).
+El script instala deps de Chrome (`scripts/install-chrome-deps.sh`), `npm run build:prod`, levanta PM2 (core :3001, web :3000, UI :5173).
+
+Solo deps Chrome (sin rebuild completo): `npm run install:chrome-deps`
 
 ### Config obligatoria
 
@@ -93,8 +95,8 @@ npm run pm2:delete && ./deploy-linux.sh   # redeploy limpio
 
 | Síntoma | Causa | Fix |
 |---------|-------|-----|
-| Execute sala falla | Chrome/Puppeteer | `bash scripts/install-chrome-deps.sh` → `pm2 restart haxbotron-core` |
-| `libnspr4.so` missing | Deps apt no instaladas | Mismo script arriba |
+| Execute sala falla | Chrome/Puppeteer | `npm run install:chrome-deps` o `./deploy-linux.sh` |
+| `libnspr4.so` / `libasound2` | Deps apt (Ubuntu Resolute t64) | Incluido en `scripts/install-chrome-deps.sh` |
 | Login 404 | URL incorrecta | Usar `:5173`, no `:3000` |
 | EPERM prisma | node bloqueando DLL | `pm2 stop all` → `npm run db:setup` |
 | Sala no arranca | Token inválido/expirado | Nuevo token en Execute |
