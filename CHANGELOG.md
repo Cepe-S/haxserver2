@@ -38,4 +38,6 @@ Formato PROB cerrado: `PROB-xxx` · fecha · descripción breve · archivos clav
 | 2026-06-22 | Puppeteer: fallback Chrome sistema Windows + `postinstall` browsers install. |
 | 2026-06-22 | Changelog movido a este archivo; PROBs resueltos sacados de tabla activa. |
 | 2026-06-22 | Plan cuentas jugador (!register/!login) **diferido** — ver docs/plans/DEFERRED-player-accounts.md. |
+| 2026-06-23 | PM2 registrado en systemd vía `scripts/pm2-systemd-setup.sh`; deploy sobrevive cierre SSH y reboot. |
+| 2026-06-24 | Deploy hardened: root obligatorio, validación secrets, verify-deploy, sync huérfanos, Execute recovery. |
 | 2026-06-23 | Chrome deps GCE: paquetes t64 mínimos verificados en install-chrome-deps.sh + npm run install:chrome-deps. |

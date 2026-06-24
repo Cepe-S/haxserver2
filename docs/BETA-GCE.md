@@ -1,40 +1,44 @@
 # Beta en Google Cloud VM (Linux)
 
-Checklist para **2–3 días de prueba**. Stack: Node 20, PM2, SQLite, Puppeteer/Chrome headless.
-
-## Antes de subir
-
-| Item | Estado |
-|------|--------|
-| Sprint 1 BD/identidad (PROB-001, 003, 007, 012) | ✅ Cerrado |
-| PROB-008 panel partidos | ⚠️ Solo lectura — no bloquea juego |
-| PROB-011 balance PRO | ⚠️ Rating fijo 1000 — modo JT OK |
-| PROB-016 auth web | ⚠️ Beta privada: cambiar `ADMIN_PASSWORD` y `JWT_SECRET` |
-| PROB-017 token Haxball | Manual: pegar `thr1.…` al Execute en panel |
-| PROB-020 SQLite compartido | OK para beta corta; no escalar carga |
+Checklist para **2–3 días de prueba**. Stack: Node 20, PM2 + systemd, SQLite, Puppeteer/Chrome headless.
 
 ## VM recomendada (GCE)
 
 - **SO:** Ubuntu 22.04 o 24.04 LTS  
-- **Tipo:** `e2-standard-2` (2 vCPU, 8 GB) — Puppeteer + sala consume RAM  
+- **Tipo:** `e2-standard-2` (2 vCPU, 8 GB)  
 - **Disco:** 20 GB  
-- **Firewall:** regla entrante **TCP 5173** (panel). No exponer 3001 al público salvo debug.
+- **Firewall:** regla entrante **TCP 5173** (panel). No exponer 3001/3000 al público.
 
-## Deploy en la VM
+## Primer deploy (VM nueva)
 
 ```bash
-git clone <repo> haxserver2 && cd haxserver2
-chmod +x deploy-linux.sh
+# Node 20 (si la imagen GCE no lo trae)
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs git
+
+# Siempre como root — PM2 queda en pm2-root.service (sobrevive SSH + reboot)
+sudo -i
+cd ~
+git clone https://github.com/Cepe-S/haxserver2.git
+cd haxserver2
+
+cp .env.example .env
+nano .env   # JWT_SECRET (16+ chars) y ADMIN_PASSWORD (no admin123)
+
+chmod +x deploy-linux.sh scripts/*.sh
 ./deploy-linux.sh
 ```
 
-El script instala deps de Chrome (`scripts/install-chrome-deps.sh`), `npm run build:prod`, levanta PM2 (core :3001, web :3000, UI :5173).
+`deploy-linux.sh` hace en orden:
 
-Solo deps Chrome (sin rebuild completo): `npm run install:chrome-deps`
+1. Chrome deps (`libnspr4`, t64, puppeteer chrome, `ldd` verify)  
+2. Valida Node 18+, secrets en `.env`  
+3. `npm run build:prod`  
+4. PM2 start/reload + `pm2 save`  
+5. `scripts/pm2-systemd-setup.sh` → unit `pm2-root`  
+6. `scripts/verify-deploy.sh` → health + systemd (falla si algo crítico mal)
 
-### Config obligatoria
-
-Editar `.env` en la raíz del repo:
+## Config obligatoria (`.env` en raíz)
 
 ```env
 NODE_ENV=production
@@ -45,73 +49,61 @@ CORE_HOST=0.0.0.0
 WEB_HOST=0.0.0.0
 ```
 
-Reiniciar tras cambios: `npm run pm2:restart`
-
-### Persistir tras reboot
-
-```bash
-pm2 startup    # copiar y ejecutar el comando que imprime
-pm2 save
-```
+El deploy **aborta** si `JWT_SECRET` o `ADMIN_PASSWORD` siguen en defaults.
 
 ## Verificación post-deploy
 
 ```bash
-pm2 status
-curl -s http://localhost:3001/health | jq .
-curl -s http://localhost:3000/api/health | jq .
-curl -s -o /dev/null -w "%{http_code}" http://localhost:5173/   # 200
+systemctl status pm2-root    # enabled + active
+pm2 status                     # 3 online
+npm run deploy:verify
+
+curl -s http://localhost:3001/health
+curl -s http://localhost:3000/api/health
 ```
 
-Desde tu PC: `http://<IP_EXTERNA_VM>:5173` → login con `ADMIN_PASSWORD`.
+Panel: `http://<IP_VM>:5173` → login → Server Images → **Execute** con token `thr1.…`.
 
-## Flujo operativo beta
+**Prueba SSH:** cerrar sesión, reconectar, `pm2 status` debe seguir online.
 
-1. Panel → **Server Images** → **Execute** con token Haxball (`thr1.…` desde haxball.com/headless).
-2. Esperar link de sala en panel.
-3. Entrar a la sala; probar join, balance, partido, admin `!login` con contraseña del Server Image.
+## Actualizar código
+
+```bash
+sudo -i
+cd ~/haxserver2
+git pull
+./deploy-linux.sh
+```
+
+Solo deps Chrome (sin rebuild): `npm run install:chrome-deps`
 
 ## Puertos
 
 | Puerto | Servicio | Exponer |
 |--------|----------|---------|
 | 5173 | Panel (Vite preview + proxy `/api`) | Sí |
-| 3000 | Web API | No (proxy interno desde 5173) |
+| 3000 | Web API | No |
 | 3001 | Core + Haxball | No |
 
-## Logs y emergencia
+## Logs
 
-Ver **`docs/LOGGING.md`** — todos los errores en `logs/errors.log` (JSON + stack).
+Ver **`docs/LOGGING.md`**.
 
 ```bash
-tail -f logs/errors.log          # errores unificados core+web
+tail -f logs/errors.log
 npm run pm2:logs
-grep '"level":"error"' logs/errors.log | tail -30
-npm run pm2:restart
-npm run pm2:delete && ./deploy-linux.sh   # redeploy limpio
 ```
 
 ## Problemas frecuentes
 
 | Síntoma | Causa | Fix |
 |---------|-------|-----|
-| Execute sala falla | Chrome/Puppeteer | `npm run install:chrome-deps` o `./deploy-linux.sh` |
-| `libnspr4.so` / `libasound2` | Deps apt (Ubuntu Resolute t64) | Incluido en `scripts/install-chrome-deps.sh` |
-| Login 404 | URL incorrecta | Usar `:5173`, no `:3000` |
-| EPERM prisma | node bloqueando DLL | `pm2 stop all` → `npm run db:setup` |
-| Sala no arranca | Token inválido/expirado | Nuevo token en Execute |
-| OOM / VM lenta | RAM insuficiente | Subir a e2-standard-4 o 1 sala max (ya limitado) |
+| Execute 409 "already running" | BD huérfana tras caída PM2 | Auto-sync cada 60s; o `curl -X POST localhost:3000/api/server-images/sync-states -H 'Content-Type: application/json' -d '{}'` |
+| Stack murió ~06:19 sin tocar VM | PM2 en sesión SSH + apt-daily | `./deploy-linux.sh` (systemd) |
+| `libnspr4.so` | Deps Chrome | Incluido en deploy |
+| `haxbotron-core doesn't exist` | PM2 sin procesos | `sudo -i && cd ~/haxserver2 && ./deploy-linux.sh` |
+| Login 404 | URL incorrecta | Usar `:5173` |
 
-## Actualizar código durante la beta
+## Incidente conocido (23-Jun)
 
-```bash
-git pull
-npm run build:prod
-npm run pm2:restart
-```
-
-## Fuera de alcance (beta)
-
-- Cuentas `!register/!login` (diferido)
-- HTTPS / dominio (usar IP + firewall restringido a IPs de testers)
-- PostgreSQL (SQLite suficiente para beta)
+PM2 corría en `session-1` SSH. `apt-daily-upgrade` cerró la sesión → systemd mató PM2 + Chrome. **Fix:** `pm2-root.service` vía deploy (no depender de SSH).

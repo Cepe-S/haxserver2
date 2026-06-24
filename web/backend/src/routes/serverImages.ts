@@ -8,16 +8,71 @@ const logger = createLogger('SERVER-IMAGES');
 
 const CORE_SERVER_URL = `http://localhost:${process.env.CORE_PORT || 3001}`;
 
-export async function serverImageRoutes(fastify: FastifyInstance) {
-  // Auto-sync states on startup
-  setTimeout(async () => {
-    try {
-      const response = await axios.post(`http://localhost:${process.env.WEB_PORT || 3000}/api/server-images/sync-states`);
-      logger.system('Auto-sync completed on startup', response.data);
-    } catch (error) {
-      logger.debug('Auto-sync failed (normal during startup)', { error: error.message });
+const INACTIVE_IMAGE_DATA = {
+  status: 'inactive' as const,
+  ruid: null,
+  roomLink: null,
+  token: null
+};
+
+async function getActiveRoomRuids(): Promise<string[]> {
+  try {
+    const response = await axios.get(`${CORE_SERVER_URL}/api/rooms`, { timeout: 5000 });
+    return response.data.rooms.map((room: { ruid: string }) => room.ruid);
+  } catch (error: any) {
+    logger.warn('Failed to get active rooms from core server', { error: error.message });
+    return [];
+  }
+}
+
+/** Resetea imágenes "running" en BD sin sala activa en core. */
+export async function syncServerImageStates(): Promise<{
+  synced: number;
+  totalRunning: number;
+  activeRooms: number;
+}> {
+  const runningImages = await db.serverImage.findMany({ where: { status: 'running' } });
+  const activeRooms = await getActiveRoomRuids();
+  let synced = 0;
+
+  for (const image of runningImages) {
+    if (!image.ruid || !activeRooms.includes(image.ruid)) {
+      await db.serverImage.update({
+        where: { id: image.id },
+        data: INACTIVE_IMAGE_DATA
+      });
+      synced++;
+      logger.info('Synced orphaned server image to inactive', { id: image.id, ruid: image.ruid });
     }
-  }, 5000); // Wait 5 seconds after startup
+  }
+
+  return {
+    synced,
+    totalRunning: runningImages.length,
+    activeRooms: activeRooms.length
+  };
+}
+
+async function isRoomActiveInCore(ruid: string | null): Promise<boolean> {
+  if (!ruid) return false;
+  const active = await getActiveRoomRuids();
+  return active.includes(ruid);
+}
+
+export async function serverImageRoutes(fastify: FastifyInstance) {
+  const runSync = async (reason: string) => {
+    try {
+      const result = await syncServerImageStates();
+      if (result.synced > 0) {
+        logger.system(`Server image sync (${reason})`, result);
+      }
+    } catch (error: any) {
+      logger.warn(`Server image sync failed (${reason})`, { error: error.message });
+    }
+  };
+
+  setTimeout(() => runSync('startup'), 5000);
+  setInterval(() => runSync('interval'), 60_000);
   // Get all server images
   fastify.get('/api/server-images', async (request, reply) => {
     try {
@@ -190,27 +245,40 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
       if (!image) {
         return reply.code(404).send({ error: 'Server image not found' });
       }
-      
-      // CRITICAL: Validate current state before execution
+
+      // Recuperar huérfanos (BD running sin sala en core)
+      if (image.status === 'running' && !(await isRoomActiveInCore(image.ruid))) {
+        logger.warn('Resetting orphan running image before execute', { id, ruid: image.ruid });
+        await db.serverImage.update({
+          where: { id },
+          data: INACTIVE_IMAGE_DATA
+        });
+        image = await db.serverImage.findUnique({ where: { id } });
+        if (!image) {
+          return reply.code(404).send({ error: 'Server image not found' });
+        }
+      }
+
       if (image.status === 'running') {
         logger.warn('Attempted to execute already running image', { id, currentStatus: image.status });
-        return reply.code(409).send({ 
+        return reply.code(409).send({
           error: 'Server image is already running',
           currentStatus: image.status,
           ruid: image.ruid
         });
       }
-      
-      // Check if any other image is currently running (optional constraint)
-      const runningImages = await db.serverImage.count({
-        where: { status: 'running' }
+
+      await syncServerImageStates();
+
+      const otherRunning = await db.serverImage.count({
+        where: { status: 'running', id: { not: id } }
       });
-      
-      if (runningImages > 0) {
-        logger.warn('Another server image is already running', { runningCount: runningImages });
-        return reply.code(409).send({ 
+
+      if (otherRunning > 0) {
+        logger.warn('Another server image is already running', { runningCount: otherRunning });
+        return reply.code(409).send({
           error: 'Another server image is already running. Stop it first.',
-          runningCount: runningImages
+          runningCount: otherRunning
         });
       }
       
@@ -424,63 +492,15 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
     }
   });
 
-  // Sync room states with core server
-  fastify.post('/api/server-images/sync-states', async (request, reply) => {
+  fastify.post('/api/server-images/sync-states', async (_request, reply) => {
     try {
       logger.info('Syncing server image states with core server');
-      
-      // Get all running images from database
-      const runningImages = await db.serverImage.findMany({
-        where: { status: 'running' }
-      });
-      
-      // Get active rooms from core server
-      let activeRooms: string[] = [];
-      try {
-        const response = await axios.get(`${CORE_SERVER_URL}/api/rooms`, {
-          timeout: 5000
-        });
-        activeRooms = response.data.rooms.map((room: any) => room.ruid);
-      } catch (error) {
-        logger.warn('Failed to get active rooms from core server', { error: error.message });
-        // Continue with empty array
-      }
-      
-      let syncedCount = 0;
-      
-      // Check each running image
-      for (const image of runningImages) {
-        if (image.ruid && !activeRooms.includes(image.ruid)) {
-          // Image is marked as running but room doesn't exist in core
-          await db.serverImage.update({
-            where: { id: image.id },
-            data: {
-              status: 'inactive',
-              ruid: null,
-              roomLink: null,
-              token: null
-            }
-          });
-          syncedCount++;
-          logger.debug('Synced orphaned image to inactive', { id: image.id, ruid: image.ruid });
-        }
-      }
-      
-      logger.success('Server image states synchronized', { 
-        totalRunning: runningImages.length,
-        activeRooms: activeRooms.length,
-        syncedCount
-      });
-      
-      return { 
-        synced: syncedCount,
-        totalRunning: runningImages.length,
-        activeRooms: activeRooms.length
-      };
-      
-    } catch (error) {
+      const result = await syncServerImageStates();
+      logger.success('Server image states synchronized', result);
+      return result;
+    } catch (error: any) {
       logger.error('Failed to sync server image states', error);
-      return reply.code(500).send({ 
+      return reply.code(500).send({
         error: 'Failed to sync server image states',
         details: error.message
       });

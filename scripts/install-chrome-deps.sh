@@ -100,7 +100,7 @@ else
   echo "WARN: no se encontró ejecutable Chrome para verificar"
 fi
 
-if command -v pm2 >/dev/null 2>&1 && pm2 describe haxbotron-core >/dev/null 2>&1; then
+if [ -z "${DEPLOY_NO_PM2_RESTART:-}" ] && command -v pm2 >/dev/null 2>&1 && pm2 describe haxbotron-core >/dev/null 2>&1; then
   echo "==> [chrome-deps] Reiniciando haxbotron-core..."
   pm2 restart haxbotron-core
 fi

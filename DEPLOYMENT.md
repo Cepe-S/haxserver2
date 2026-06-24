@@ -84,14 +84,17 @@ graph TD
 
 ### **Método 1: Script Automático (Recomendado)**
 ```bash
-# Clonar repositorio
-git clone <repo-url> mikuserverpro
-cd mikuserverpro
-
-# Ejecutar deployment automático
-chmod +x deploy-linux.sh
+# GCE / Linux — siempre como root
+sudo -i
+git clone <repo-url> haxserver2
+cd haxserver2
+cp .env.example .env && nano .env   # JWT_SECRET + ADMIN_PASSWORD
+chmod +x deploy-linux.sh scripts/*.sh
 ./deploy-linux.sh
+# o: npm run deploy:linux
 ```
+
+El script valida secrets, instala Chrome deps, build, PM2, systemd (`pm2-root`) y corre `npm run deploy:verify`.
 
 ### **Método 2: Manual**
 ```bash
@@ -198,12 +201,26 @@ module.exports = {
 };
 ```
 
+### **PM2 + systemd (sobrevive SSH logout y reboot)**
+
+`deploy-linux.sh` y `npm run pm2:setup` ejecutan `scripts/pm2-systemd-setup.sh`, que registra el unit `pm2-<user>` (ej. `pm2-root`).
+
+```bash
+# Tras deploy o manualmente
+npm run pm2:setup
+pm2 save
+systemctl status pm2-root   # enabled + active
+```
+
+En GCE usar **root** para el deploy si el repo está en `/root/haxserver2`. PM2 atado solo a una sesión SSH muere cuando systemd cierra `session-N.scope` (p. ej. tras `apt-daily-upgrade`).
+
 ### **Comandos PM2**
 ```bash
-npm run pm2:start    # Iniciar procesos
+npm run pm2:start    # Build + start + systemd setup
+npm run pm2:setup    # Solo registrar PM2 en systemd
 npm run pm2:stop     # Detener procesos
 npm run pm2:restart  # Reiniciar procesos
-npm run pm2:delete   # Eliminar procesos
+npm run pm2:delete   # Eliminar procesos (no quita systemd)
 npm run pm2:logs     # Ver logs en tiempo real
 npm run pm2:status   # Estado de procesos
 ```

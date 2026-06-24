@@ -441,22 +441,13 @@ export class PowershotManager {
   private setBallProperties(props: { color?: number; invMass?: number }): void {
     if (!this.haxballRoom?.setDiscProperties) return;
 
-    try {
-      // Solo modificar las propiedades específicas
-      const ballProps: any = {};
-      
-      if (props.color !== undefined) {
-        ballProps.color = props.color;
-      }
-      
-      if (props.invMass !== undefined) {
-        ballProps.invMass = props.invMass;
-      }
-      
-      this.haxballRoom.setDiscProperties(0, ballProps);
-    } catch (error) {
+    const ballProps: Record<string, number> = {};
+    if (props.color !== undefined) ballProps.color = props.color;
+    if (props.invMass !== undefined) ballProps.invMass = props.invMass;
+
+    void this.haxballRoom.setDiscProperties(0, ballProps).catch((error) => {
       this.logger.error('Error setting ball properties', error);
-    }
+    });
   }
 
   private initializeBallProperties(): void {

@@ -414,7 +414,14 @@ async function cleanupExistingRooms(): Promise<void> {
 /**
  * Graceful shutdown
  */
+let shuttingDown = false;
+
 async function gracefulShutdown() {
+  if (shuttingDown) {
+    return;
+  }
+  shuttingDown = true;
+
   logger.system('Starting graceful shutdown');
   
   // Close all rooms with proper cleanup
