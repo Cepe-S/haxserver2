@@ -61,17 +61,24 @@ export class PlayerLeaveHandler {
 
   private async updatePlayerLeaveTime(player: any, timestamp: number): Promise<void> {
     try {
-      // Actualizar conexión activa con tiempo de salida
       const { db } = require('@mikuserverpro/database');
-      
+      const leftAt = new Date(timestamp);
+      const cached = this.playerCache.getPlayerByHaxballId(player.id);
+
+      const orConditions: Array<{ conn?: string; haxballId?: number; playerId?: string }> = [
+        { conn: player.conn },
+        { haxballId: player.id }
+      ];
+      if (cached?.identityId) {
+        orConditions.push({ playerId: cached.identityId });
+      }
+
       await db.connection.updateMany({
         where: {
-          conn: player.conn,
-          leftAt: null
+          leftAt: null,
+          OR: orConditions
         },
-        data: {
-          leftAt: new Date(timestamp)
-        }
+        data: { leftAt }
       });
       
       this.logger.debug(`[PlayerLeave] Leave time updated for ${player.name}`);

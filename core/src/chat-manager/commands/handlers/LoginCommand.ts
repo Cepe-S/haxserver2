@@ -27,16 +27,27 @@ export class LoginCommand implements CommandHandler {
     const password = args[0];
 
     try {
-      const success = await this.adminManager.login(player, password);
+      const result = await this.adminManager.login(player, password);
 
-      if (success) {
+      if (result === 'success') {
         return { success: true }; // AdminManager ya envía los mensajes
-      } else {
+      }
+
+      if (result === 'no_identity') {
+        return { success: false }; // AdminManager ya envió el mensaje de identidad
+      }
+
+      if (result === 'grant_failed') {
         return {
           success: false,
-          error: '❌ Contraseña incorrecta.'
+          error: '❌ No se pudieron otorgar permisos de admin. Intenta de nuevo.'
         };
       }
+
+      return {
+        success: false,
+        error: '❌ Contraseña incorrecta.'
+      };
     } catch (error) {
       return {
         success: false,

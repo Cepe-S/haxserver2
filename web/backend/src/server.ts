@@ -79,7 +79,13 @@ fastify.post('/api/auth/login', async (request, reply) => {
   const { password } = request.body as any;
   
   // Simple password check for FASE 1
-  if (password === process.env.ADMIN_PASSWORD || password === 'admin123') {
+  const expectedPassword = process.env.ADMIN_PASSWORD;
+  const isDev = process.env.NODE_ENV !== 'production';
+  const passwordValid =
+    (expectedPassword && password === expectedPassword) ||
+    (isDev && password === 'admin123');
+
+  if (passwordValid) {
     const token = fastify.jwt.sign({ 
       role: 'admin',
       timestamp: Date.now()
@@ -228,7 +234,7 @@ fastify.addHook('preHandler', async (request, reply) => {
       request.url === '/api/health' ||
       request.url.startsWith('/api/debug/') ||
       request.url.startsWith('/api/player/') ||
-      request.url === '/api/server-images' ||
+      request.url.startsWith('/api/server-images') ||
       request.url.startsWith('/api/config/') ||
       request.url.includes('/admin-passwords') ||
       request.url.startsWith('/api/teams') ||

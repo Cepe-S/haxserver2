@@ -22,6 +22,12 @@ Formato PROB cerrado: `PROB-xxx` · fecha · descripción breve · archivos clav
 | PROB-003 | 2026-06-22 | `@@unique([identityId, name])` + upsert + dedupe pre-push | `schema.prisma`, `PlayerIdentityManager.ts`, `dedupe-player-names.js` |
 | PROB-007 | 2026-06-22 | Permisos por `identityId`; admin login sin auth Haxball | `PermissionManager.ts`, `AdminManager.ts` |
 | PROB-012 | 2026-06-22 | Eliminado stub `saveMatchStatistics`; persistencia vía `endMatch()` | `MatchLoop.ts` |
+| PROB-028 | 2026-06-24 | `EventBus.offEvent` no removía wrappers → listeners de loops acumulados; timeLimit/scoreLimit incorrectos por fase | `EventBus.ts`, `GameLoop.ts`, `GameEventHandlers.ts` |
+| PROB-024 | 2026-06-26 | Stats partido solo en MatchLoop; `startMatch` tras `safeStartGame` (evento durante STARTING); guards `isMatchActive` en `endMatch` | `MatchLoop.ts`, `MatchStatsManager.ts` |
+| PROB-022 | 2026-06-26 | `forceRefresh` backfill vía `PlayerIdentityManager` cuando jugador en sala falta en cache; grace 5s antes de warn | `PlayerCacheManager.ts`, `HaxballRoom.ts` |
+| PROB-023 | 2026-06-26 | Rejoin sin leave: refrescar conexión activa en BD (haxballId/name) en lugar de cerrar+crear; leave handler cierra por conn/haxballId/identityId | `PlayerIdentityManager.ts`, `PlayerLeaveHandler.ts` |
+| PROB-025 | 2026-06-26 | `initializePlayer` idempotente por `identityId` — actualiza haxballId/name en reconnect sin warn spam | `MatchStatsManager.ts` |
+| PROB-030 | 2026-06-21 | Admin passwords panel aplicadas in-game vía `serverImageId`; auth web sin fallback `admin123` en prod; errores `!login` diferenciados | `EventManager.ts`, `serverImages.ts`, `AdminManager.ts`, `LoginCommand.ts`, `server.ts` |
 
 ---
 
@@ -40,4 +46,9 @@ Formato PROB cerrado: `PROB-xxx` · fecha · descripción breve · archivos clav
 | 2026-06-22 | Plan cuentas jugador (!register/!login) **diferido** — ver docs/plans/DEFERRED-player-accounts.md. |
 | 2026-06-23 | PM2 registrado en systemd vía `scripts/pm2-systemd-setup.sh`; deploy sobrevive cierre SSH y reboot. |
 | 2026-06-24 | Deploy hardened: root obligatorio, validación secrets, verify-deploy, sync huérfanos, Execute recovery. |
+| 2026-06-24 | **PROB-028:** fix crítico GameLoop — `EventBus.offEvent` no desregistraba listeners; TrainingLoop aplicaba 0/0 sobre partido activo. |
+| 2026-06-26 | **DEPLOY-001 / PROB-024:** lifecycle stats en MatchLoop; fix `startMatch` omitido en primer partido; menos spam `Match was not started`. |
+| 2026-06-26 | **DEPLOY-002 / PROB-022:** backfill identity en `PlayerCacheManager.forceRefresh` — jugadores en sala siempre en cache para `recordGoal`. |
+| 2026-06-26 | **DEPLOY-003 / PROB-023, PROB-025:** rejoin refresh conexión activa; init stats idempotente por identityId. |
+| 2026-06-21 | **DEPLOY-005 / PROB-030:** admin passwords por `serverImageId` al execute; auth web sin fallback `admin123` en prod. |
 | 2026-06-23 | Chrome deps GCE: paquetes t64 mínimos verificados en install-chrome-deps.sh + npm run install:chrome-deps. |

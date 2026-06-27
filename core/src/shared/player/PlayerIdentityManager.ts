@@ -326,24 +326,38 @@ export class PlayerIdentityManager {
       }
     });
 
+    const ipAddress = this.decodeHexConn(haxPlayer.conn);
+    const geoData = await this.geoService.getLocationData(ipAddress);
+
     if (existingConnection) {
-      // ERROR: Jugador se unió sin haber salido de la conexión anterior
-      this.logger.warn('Player joined without proper leave - closing previous connection', {
+      // Rejoin sin leave event: refrescar conexión activa en lugar de cerrar+crear
+      this.logger.debug('Refreshing active connection after rejoin', {
         identityId,
         ruid,
         haxballId: haxPlayer.id,
-        previousConnectionId: existingConnection.id
+        connectionId: existingConnection.id,
+        previousHaxballId: existingConnection.haxballId
       });
-      
-      // Cerrar la conexión anterior
+
       await db.connection.update({
         where: { id: existingConnection.id },
-        data: { leftAt: new Date() }
+        data: {
+          haxballId: haxPlayer.id,
+          auth: haxPlayer.auth || null,
+          conn: haxPlayer.conn,
+          name: haxPlayer.name,
+          ipAddress,
+          country: geoData.country,
+          region: geoData.region,
+          city: geoData.city,
+          isp: geoData.isp,
+          isVpn: geoData.isVpn,
+          isProxy: geoData.isProxy,
+          threatLevel: geoData.threatLevel
+        }
       });
+      return;
     }
-
-    const ipAddress = this.decodeHexConn(haxPlayer.conn);
-    const geoData = await this.geoService.getLocationData(ipAddress);
     
     await db.connection.create({
       data: {

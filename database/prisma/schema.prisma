@@ -70,6 +70,7 @@ model PlayerIdentity {
   gameConnections Connection[]
   sanctions   PlayerSanction[]
   permissions PlayerPermission[]
+  statEvents  StatEvent[]
   
   @@unique([primaryConn])
   @@index([primaryAuth])
@@ -172,6 +173,21 @@ model PlayerStats {
   @@unique([ruid, playerId])
   @@index([ruid, rating])
   @@map("player_stats")
+}
+
+// Eventos de stats por período (goles/asistencias con timestamp)
+model StatEvent {
+  id         String   @id @default(cuid())
+  ruid       String
+  identityId String
+  type       String   // goal | assist
+  recordedAt DateTime @default(now())
+
+  identity   PlayerIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+
+  @@index([ruid, type, recordedAt])
+  @@index([identityId, recordedAt])
+  @@map("stat_events")
 }
 
 // Conexiones individuales de jugadores

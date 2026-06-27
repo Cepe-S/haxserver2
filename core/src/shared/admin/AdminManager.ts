@@ -9,6 +9,8 @@ interface AdminPassword {
   level: 'admin' | 'superadmin';
 }
 
+export type AdminLoginResult = 'success' | 'wrong_password' | 'no_identity' | 'grant_failed';
+
 /**
  * Gestor de administradores - Login y chat privado
  */
@@ -42,11 +44,11 @@ export class AdminManager {
   /**
    * Intenta hacer login como admin
    */
-  public async login(player: any, password: string): Promise<boolean> {
+  public async login(player: any, password: string): Promise<AdminLoginResult> {
     // Verificar contraseña
     const adminConfig = this.adminPasswords.find(p => p.password === password);
     if (!adminConfig) {
-      return false;
+      return 'wrong_password';
     }
 
     // Otorgar permisos en BD (por identityId en cache, no requiere auth Haxball)
@@ -56,7 +58,7 @@ export class AdminManager {
         target: player.id,
         color: 0xFF0000
       });
-      return false;
+      return 'no_identity';
     }
 
     const isSuperAdmin = adminConfig.level === 'superadmin';
@@ -67,7 +69,7 @@ export class AdminManager {
     );
 
     if (!success) {
-      return false;
+      return 'grant_failed';
     }
 
     // Marcar como logueado
@@ -111,7 +113,7 @@ export class AdminManager {
     });
 
     this.logger.info(`Admin login successful: ${player.name} (${adminType})`);
-    return true;
+    return 'success';
   }
 
   /**

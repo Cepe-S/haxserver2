@@ -44,8 +44,8 @@
 
 #### Comandos de Estadísticas
 - `!ranking` - Top 20 jugadores
-- `!goleadores [dia|mes]` - Top goleadores
-- `!asistidores [dia|mes]` - Top asistidores
+- `!goleadores [semana|mes|global]` - Top goleadores del día por defecto (✅ DEPLOY-004)
+- `!asistidores [semana|mes|global]` - Top asistidores del día por defecto (✅ DEPLOY-004)
 - `!statsreset` - Reset estadísticas
 
 #### Comandos de Juego
@@ -120,7 +120,10 @@ enum PermissionLevel {
 !mute #5                // Mutear jugador #5
 !ban #3 30 spam         // Banear jugador #3 por 30 min por spam
 !afk comiendo           // AFK con razón
-!goleadores dia         // Top goleadores del día
+!goleadores             // Top goleadores del día (default, 24h)
+!goleadores semana      // Top goleadores de la semana (7d)
+!asistidores mes        // Top asistidores del mes (30d)
+!goleadores global      // Top goleadores lifetime (PlayerStats)
 ```
 
 ## VALIDACIONES REQUERIDAS

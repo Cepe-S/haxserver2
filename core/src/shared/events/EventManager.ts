@@ -245,7 +245,7 @@ export class EventManager {
       
       if (chatHandler) {
         // Cargar contraseñas desde la base de datos
-        await this.loadAdminPasswordsFromDB(haxballRoom.ruid, chatHandler);
+        await this.loadAdminPasswordsFromDB(haxballRoom, chatHandler);
       }
     } catch (error) {
       this.logger.error('[EventManager] Failed to configure admin passwords:', error);
@@ -255,11 +255,38 @@ export class EventManager {
   /**
    * Carga las contraseñas de admin desde la base de datos
    */
-  private async loadAdminPasswordsFromDB(ruid: string, chatHandler: any): Promise<void> {
+  private async loadAdminPasswordsFromDB(haxballRoom: any, chatHandler: any): Promise<void> {
+    const ruid: string = haxballRoom.ruid;
+    const serverImageId: string | undefined = haxballRoom.config?._meta?.serverImageId;
+
+    const defaultPasswords = [
+      { password: 'admin123', description: 'Admin por defecto', level: 'admin' },
+      { password: 'super123', description: 'Super admin por defecto', level: 'superadmin' }
+    ];
+
+    const applyPasswords = (records: Array<{ password: string; description: string; level: string }>, source: string) => {
+      const passwords = records.map((pwd) => ({
+        password: pwd.password,
+        description: pwd.description,
+        level: pwd.level
+      }));
+      chatHandler.setAdminPasswords(passwords);
+      this.logger.info(`[EventManager] Loaded ${passwords.length} admin passwords from database (${source})`);
+    };
+
     try {
       const { db } = require('@mikuserverpro/database');
-      
-      // Buscar la imagen del servidor por ruid
+
+      if (serverImageId) {
+        const byImageId = await db.adminPassword.findMany({
+          where: { serverImageId, isActive: true }
+        });
+        if (byImageId.length > 0) {
+          applyPasswords(byImageId, `serverImageId=${serverImageId}`);
+          return;
+        }
+      }
+
       const serverImage = await db.serverImage.findFirst({
         where: { ruid },
         include: {
@@ -270,33 +297,14 @@ export class EventManager {
       });
 
       if (serverImage?.adminPasswords?.length > 0) {
-        const passwords = serverImage.adminPasswords.map((pwd: any) => ({
-          password: pwd.password,
-          description: pwd.description,
-          level: pwd.level
-        }));
-        
-        chatHandler.setAdminPasswords(passwords);
-        this.logger.info(`[EventManager] Loaded ${passwords.length} admin passwords from database`);
-      } else {
-        // Configuración por defecto para testing
-        const defaultPasswords = [
-          { password: 'admin123', description: 'Admin por defecto', level: 'admin' },
-          { password: 'super123', description: 'Super admin por defecto', level: 'superadmin' }
-        ];
-        
-        chatHandler.setAdminPasswords(defaultPasswords);
-        this.logger.info('[EventManager] Using default admin passwords (no DB config found)');
+        applyPasswords(serverImage.adminPasswords, `ruid=${ruid}`);
+        return;
       }
+
+      chatHandler.setAdminPasswords(defaultPasswords);
+      this.logger.info('[EventManager] Using default admin passwords (no DB config found)');
     } catch (error) {
       this.logger.error('[EventManager] Failed to load admin passwords from DB:', error);
-      
-      // Fallback a configuración por defecto
-      const defaultPasswords = [
-        { password: 'admin123', description: 'Admin por defecto', level: 'admin' },
-        { password: 'super123', description: 'Super admin por defecto', level: 'superadmin' }
-      ];
-      
       chatHandler.setAdminPasswords(defaultPasswords);
       this.logger.info('[EventManager] Using default admin passwords (DB error fallback)');
     }

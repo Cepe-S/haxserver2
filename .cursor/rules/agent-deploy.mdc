@@ -1,0 +1,17 @@
+---
+description: Deploy de agentes — worker sigue manifest; coordinador revisa handoff
+globs: docs/deploys/**
+alwaysApply: false
+---
+
+# Agent Deploy activo
+
+Cuando trabajes en `docs/deploys/` o te asignen `DEPLOY-xxx`:
+
+1. **Worker:** leer `.cursor/skills/agent-deploy-worker/SKILL.md` + manifest + `SystemStatus.md`
+2. **Coordinador:** leer `.cursor/skills/agent-deploy-coordinator/SKILL.md` — no implementar fixes
+3. Solo archivos listados en **Archivos permitidos** del manifest
+4. Obligatorio: `npm run build` + `npm run agent-deploy:gate -- DEPLOY-xxx` antes de handoff
+5. GameLoop tiene prioridad máxima — no duplicar listeners ni stats
+
+Proceso completo: `docs/AGENT-DEPLOY.md`

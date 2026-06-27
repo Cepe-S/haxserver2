@@ -102,6 +102,8 @@ export class MatchLoop extends GameLoop {
       // 7. Iniciar juego
       await this.delay(500);
       await this.safeStartGame();
+      // game.start may fire while state is STARTING (before RUNNING) — ensure stats tracking
+      this.ensureMatchStatsStarted();
 
       this.logger.success('Match mode activated');
 
@@ -133,6 +135,9 @@ export class MatchLoop extends GameLoop {
    */
   protected async onExit(): Promise<void> {
     this.logger.info('Exiting match mode');
+    if (this.matchStatsManager?.isMatchActive()) {
+      this.matchStatsManager.clearCache();
+    }
     this.currentMatch = null;
     this.isApplyingSettings = false;
     this.gameStartProcessed = false;
@@ -148,12 +153,16 @@ export class MatchLoop extends GameLoop {
     this.logger.info('Match game started');
 
     try {
-      // Iniciar tracking de estadísticas
-      if (this.matchStatsManager) {
-        this.matchStatsManager.startMatch();
-      }
+      this.ensureMatchStatsStarted();
     } catch (error) {
       this.logger.error('Error in handleGameStart:', error);
+    }
+  }
+
+  /** Start match stats if not already tracking (idempotent). */
+  private ensureMatchStatsStarted(): void {
+    if (this.matchStatsManager && !this.matchStatsManager.isMatchActive()) {
+      this.matchStatsManager.startMatch();
     }
   }
 
@@ -168,8 +177,7 @@ export class MatchLoop extends GameLoop {
     this.logger.info('Match game stopped - processing...');
 
     try {
-      // Guardar estadísticas del partido en BD y limpiar cache
-      if (this.matchStatsManager) {
+      if (this.matchStatsManager?.isMatchActive()) {
         await this.matchStatsManager.endMatch();
         this.logger.success('Match stats saved and cache cleared');
       }
@@ -239,6 +247,7 @@ export class MatchLoop extends GameLoop {
       if (this.isStopping) return;
       
       await this.safeStartGame();
+      this.ensureMatchStatsStarted();
 
       this.logger.success('Match restarted');
 

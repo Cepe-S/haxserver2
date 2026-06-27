@@ -15,13 +15,15 @@ const INACTIVE_IMAGE_DATA = {
   token: null
 };
 
-async function getActiveRoomRuids(): Promise<string[]> {
+const ORPHAN_GRACE_MS = 90_000;
+
+async function getActiveRoomRuids(): Promise<string[] | null> {
   try {
     const response = await axios.get(`${CORE_SERVER_URL}/api/rooms`, { timeout: 5000 });
     return response.data.rooms.map((room: { ruid: string }) => room.ruid);
   } catch (error: any) {
     logger.warn('Failed to get active rooms from core server', { error: error.message });
-    return [];
+    return null;
   }
 }
 
@@ -29,14 +31,31 @@ async function getActiveRoomRuids(): Promise<string[]> {
 export async function syncServerImageStates(): Promise<{
   synced: number;
   totalRunning: number;
-  activeRooms: number;
+  activeRooms: number | null;
+  skipped?: boolean;
 }> {
   const runningImages = await db.serverImage.findMany({ where: { status: 'running' } });
   const activeRooms = await getActiveRoomRuids();
+
+  if (activeRooms === null) {
+    logger.warn('Skipping server image orphan sync: core server unreachable');
+    return {
+      synced: 0,
+      totalRunning: runningImages.length,
+      activeRooms: null,
+      skipped: true
+    };
+  }
+
+  const now = Date.now();
   let synced = 0;
 
   for (const image of runningImages) {
     if (!image.ruid || !activeRooms.includes(image.ruid)) {
+      if (now - image.updatedAt.getTime() < ORPHAN_GRACE_MS) {
+        logger.debug('Skipping orphan reset within grace period', { id: image.id, ruid: image.ruid });
+        continue;
+      }
       await db.serverImage.update({
         where: { id: image.id },
         data: INACTIVE_IMAGE_DATA
@@ -53,9 +72,10 @@ export async function syncServerImageStates(): Promise<{
   };
 }
 
-async function isRoomActiveInCore(ruid: string | null): Promise<boolean> {
+async function isRoomActiveInCore(ruid: string | null): Promise<boolean | null> {
   if (!ruid) return false;
   const active = await getActiveRoomRuids();
+  if (active === null) return null;
   return active.includes(ruid);
 }
 
@@ -238,7 +258,7 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
     try {
       logger.info('Executing server image', { id, hasToken: !!token });
       
-      const image = await db.serverImage.findUnique({
+      let image = await db.serverImage.findUnique({
         where: { id }
       });
       
@@ -247,7 +267,8 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
       }
 
       // Recuperar huérfanos (BD running sin sala en core)
-      if (image.status === 'running' && !(await isRoomActiveInCore(image.ruid))) {
+      const roomActive = await isRoomActiveInCore(image.ruid);
+      if (image.status === 'running' && roomActive === false) {
         logger.warn('Resetting orphan running image before execute', { id, ruid: image.ruid });
         await db.serverImage.update({
           where: { id },
@@ -284,6 +305,7 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
       
       const config: ServerImageConfig = JSON.parse(image.config);
       config._config.token = token;
+      config._meta = { ...(config._meta ?? {}), serverImageId: id };
       
       // Usar RUID directamente de la configuración de la imagen
       const ruid = config.ruid;
@@ -306,69 +328,41 @@ export async function serverImageRoutes(fastify: FastifyInstance) {
       
       logger.info('Using RUID from image config', { id, ruid });
       
-      logger.debug('Setting image status to running', { id, ruid });
+      logger.debug('Creating Haxball room in core server', { ruid });
       
-      // Update image status to running BEFORE creating room
+      const response = await axios.post(`${CORE_SERVER_URL}/api/rooms`, {
+        ruid,
+        config: config
+      }, {
+        timeout: 45000 // 45 seconds timeout for Haxball
+      });
+      
+      logger.success('Haxball room created successfully', { 
+        ruid, 
+        roomLink: response.data.link 
+      });
+      
+      // Persist running state only after core confirms the room exists
       await db.serverImage.update({
         where: { id },
         data: {
           status: 'running',
           ruid,
-          token
+          token,
+          roomLink: response.data.link
         }
       });
       
-      // Send to core server to actually create the Haxball room
-      try {
-        logger.debug('Creating Haxball room in core server', { ruid });
-        
-        const response = await axios.post(`${CORE_SERVER_URL}/api/rooms`, {
+      return { 
+        image: { 
+          ...image, 
+          status: 'running', 
           ruid,
-          config: config
-        }, {
-          timeout: 45000 // 45 seconds timeout for Haxball
-        });
-        
-        logger.success('Haxball room created successfully', { 
-          ruid, 
+          token,
           roomLink: response.data.link 
-        });
-        
-        // Update image with room link
-        await db.serverImage.update({
-          where: { id },
-          data: {
-            roomLink: response.data.link
-          }
-        });
-        
-        return { 
-          image: { 
-            ...image, 
-            status: 'running', 
-            ruid, 
-            roomLink: response.data.link 
-          }, 
-          haxballRoom: response.data 
-        };
-        
-      } catch (error) {
-        logger.error('Haxball room creation failed', error, { ruid, id });
-        
-        // CRITICAL: Reset image status to inactive on failure
-        await db.serverImage.update({
-          where: { id },
-          data: {
-            status: 'inactive',
-            ruid: null,
-            token: null,
-            roomLink: null
-          }
-        });
-        
-        const errorMessage = error.response?.data?.details || error.message || 'Unknown error';
-        throw new Error(`Failed to create Haxball room: ${errorMessage}`);
-      }
+        }, 
+        haxballRoom: response.data 
+      };
       
     } catch (error) {
       logger.error('Failed to execute server image', error, { id });

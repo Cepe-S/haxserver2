@@ -78,3 +78,14 @@ Features analizadas pero **no** en scope actual → [`docs/plans/`](docs/plans/)
 | 2 Panel/datos | 008, 011, 012 |
 
 Próximo ID nuevo: ver **Próximo ID libre** en SystemStatus.md.
+
+## Deploy de agentes (obligatorio para fixes en sprint)
+
+Proceso estándar — **no improvisar**:
+
+1. Coordinador crea/actualiza `docs/deploys/DEPLOY-xxx.md`
+2. Worker lee `.cursor/skills/agent-deploy-worker/SKILL.md` + manifest
+3. Worker: fix mínimo → `npm run build` → `npm run agent-deploy:gate -- DEPLOY-xxx` → handoff
+4. Coordinador revisa con `.cursor/skills/agent-deploy-coordinator/SKILL.md`
+
+Documentación: [`docs/AGENT-DEPLOY.md`](docs/AGENT-DEPLOY.md) · Índice: [`docs/deploys/README.md`](docs/deploys/README.md)

@@ -32,23 +32,28 @@ export class MatchStatsManager {
    * Inicializa un jugador en las estadísticas del partido
    */
   public async initializePlayer(haxballId: number, playerName: string, identityId: string): Promise<void> {
-    if (!this.matchStats.has(identityId)) {
-      this.matchStats.set(identityId, {
-        haxballId,
-        identityId,
-        playerName,
-        goals: 0,
-        assists: 0,
-        ownGoals: 0,
-        saves: 0,
-        ballTouches: 0
-      });
-      // Cache unificado maneja el mapeo automáticamente
-      this.logger.info(`🎮 PLAYER INITIALIZED: ${playerName}#${haxballId} → ${identityId}`);
-      this.logger.info(`   Mapping created: haxballId ${haxballId} → identityId ${identityId}`);
-    } else {
-      this.logger.warn(`Player already initialized: ${playerName}#${haxballId} (${identityId})`);
+    const existing = this.matchStats.get(identityId);
+    if (existing) {
+      if (existing.haxballId !== haxballId || existing.playerName !== playerName) {
+        existing.haxballId = haxballId;
+        existing.playerName = playerName;
+        this.logger.debug(`Player stats refreshed on rejoin: ${playerName}#${haxballId} → ${identityId}`);
+      }
+      return;
     }
+
+    this.matchStats.set(identityId, {
+      haxballId,
+      identityId,
+      playerName,
+      goals: 0,
+      assists: 0,
+      ownGoals: 0,
+      saves: 0,
+      ballTouches: 0
+    });
+    this.logger.info(`🎮 PLAYER INITIALIZED: ${playerName}#${haxballId} → ${identityId}`);
+    this.logger.info(`   Mapping created: haxballId ${haxballId} → identityId ${identityId}`);
   }
 
   /**
@@ -155,7 +160,7 @@ export class MatchStatsManager {
    */
   public async endMatch(): Promise<void> {
     if (!this.matchStartTime) {
-      this.logger.warn('Match was not started, skipping stats save');
+      this.logger.debug('Match was not started, skipping stats save');
       return;
     }
 
@@ -207,10 +212,31 @@ export class MatchStatsManager {
       this.logger.info(`   Match: ${stats.goals}G ${stats.assists}A ${stats.ownGoals}OG ${stats.ballTouches}T`);
       this.logger.info(`   Total: ${result.goals}G ${result.assists}A ${result.ogs}OG ${result.balltouch}T (${result.totals} matches)`);
       this.logger.info(`   RUID: ${this.ruid}`);
+
+      await this.insertStatEvents(stats);
       
     } catch (error) {
       this.logger.error(`Failed to save stats for ${stats.playerName}`, error);
     }
+  }
+
+  /**
+   * Inserta eventos de gol/asistencia para tops por período
+   */
+  private async insertStatEvents(stats: PlayerMatchStats): Promise<void> {
+    if (stats.goals === 0 && stats.assists === 0) return;
+
+    const recordedAt = new Date();
+    const events: { ruid: string; identityId: string; type: string; recordedAt: Date }[] = [];
+
+    for (let i = 0; i < stats.goals; i++) {
+      events.push({ ruid: this.ruid, identityId: stats.identityId, type: 'goal', recordedAt });
+    }
+    for (let i = 0; i < stats.assists; i++) {
+      events.push({ ruid: this.ruid, identityId: stats.identityId, type: 'assist', recordedAt });
+    }
+
+    await db.statEvent.createMany({ data: events });
   }
 
   /**

@@ -65,10 +65,7 @@ export class GameEventHandlers {
     this.logger.info(`[GameStart] Game started${byPlayer ? ` by ${byPlayer.name}#${byPlayer.id}` : ''}`);
 
     try {
-      // Iniciar tracking de estadísticas
-      if (this.matchStatsManager) {
-        this.matchStatsManager.startMatch();
-      }
+      // Match stats lifecycle is owned by MatchLoop (training uses 0/0 limits)
       this.ballTracker.clear();
 
       // Marcar que el juego está activo
@@ -95,10 +92,7 @@ export class GameEventHandlers {
     this.logger.info(`[GameStop] Game stopped${byPlayer ? ` by ${byPlayer.name}#${byPlayer.id}` : ''}`);
 
     try {
-      // Guardar estadísticas en BD y limpiar cache
-      if (this.matchStatsManager) {
-        await this.matchStatsManager.endMatch();
-      }
+      // Match stats persist/clear is owned by MatchLoop.handleGameStop
       this.ballTracker.clear();
 
       // Marcar que el juego está inactivo

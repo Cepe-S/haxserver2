@@ -100,9 +100,18 @@ export abstract class GameLoop {
   protected setupEventListeners(): void {
     this.cleanupEventListeners();
     
-    const gameStartListener = (event: any) => this.handleGameStart(event);
-    const gameStopListener = (event: any) => this.handleGameStop(event);
-    const teamVictoryListener = (event: any) => this.handleTeamVictory(event);
+    const gameStartListener = (event: any) => {
+      if (this.state !== GameLoopState.RUNNING || this.isStopping) return;
+      return this.handleGameStart(event);
+    };
+    const gameStopListener = (event: any) => {
+      if (this.state !== GameLoopState.RUNNING || this.isStopping) return;
+      return this.handleGameStop(event);
+    };
+    const teamVictoryListener = (event: any) => {
+      if (this.state !== GameLoopState.RUNNING || this.isStopping) return;
+      return this.handleTeamVictory(event);
+    };
     
     eventBus.onEvent('haxball.game.start', gameStartListener);
     eventBus.onEvent('haxball.game.stop', gameStopListener);

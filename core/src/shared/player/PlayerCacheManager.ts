@@ -1,5 +1,8 @@
 import { createLogger } from '../logger/Logger';
 import { AfkCommand } from '../../chat-manager/commands/handlers/AfkCommand';
+import { PlayerIdentityManager, HaxballPlayer } from './PlayerIdentityManager';
+
+const JOIN_GRACE_MS = 5000;
 
 export interface SanctionInfo {
   id: string;
@@ -44,8 +47,11 @@ export class PlayerCacheManager {
   private players: Map<number, CachedPlayer> = new Map(); // Key: haxballId
   private identityToHaxball: Map<string, number> = new Map(); // Key: identityId
   private haxballRoom: any = null;
+  private ruid = '';
   private lastGlobalUpdate = 0;
   private loggedWarnings = new Set<string>(); // Track already logged warnings
+  private firstSeenMissing = new Map<number, number>();
+  private pendingBackfill = new Set<number>();
 
   private constructor() {}
 
@@ -58,6 +64,10 @@ export class PlayerCacheManager {
 
   public setHaxballRoom(room: any): void {
     this.haxballRoom = room;
+  }
+
+  public setRuid(ruid: string): void {
+    this.ruid = ruid;
   }
 
   /**
@@ -220,6 +230,46 @@ export class PlayerCacheManager {
     }
   }
 
+  private async backfillPlayer(realPlayer: HaxballPlayer): Promise<boolean> {
+    if (this.pendingBackfill.has(realPlayer.id) || !this.ruid) {
+      return false;
+    }
+
+    if (!realPlayer.conn?.trim() || !realPlayer.name?.trim()) {
+      this.logger.debug(`Skipping backfill for player#${realPlayer.id}: conn or name not yet available`, {
+        hasConn: !!realPlayer.conn?.trim(),
+        hasName: !!realPlayer.name?.trim()
+      });
+      return false;
+    }
+
+    this.pendingBackfill.add(realPlayer.id);
+    try {
+      const identityId = await PlayerIdentityManager.getInstance().identifyPlayer(this.ruid, {
+        ...realPlayer,
+        auth: realPlayer.auth ?? ''
+      });
+      await this.updatePlayer(realPlayer.id, {
+        name: realPlayer.name,
+        team: realPlayer.team,
+        auth: realPlayer.auth,
+        conn: realPlayer.conn,
+        admin: realPlayer.admin,
+        identityId,
+        isAfk: AfkCommand.isPlayerAfk(realPlayer.id)
+      });
+      return true;
+    } catch (error) {
+      this.logger.error('Failed to backfill player cache', error, {
+        playerId: realPlayer.id,
+        playerName: realPlayer.name
+      });
+      return false;
+    } finally {
+      this.pendingBackfill.delete(realPlayer.id);
+    }
+  }
+
   public async forceRefresh(): Promise<void> {
     if (!this.haxballRoom) return;
 
@@ -244,18 +294,33 @@ export class PlayerCacheManager {
           cached.isAfk = AfkCommand.isPlayerAfk(realPlayer.id);
           cached.lastUpdate = now;
           
+          this.firstSeenMissing.delete(realPlayer.id);
           existingIds.delete(realPlayer.id);
         } else {
-          const warningKey = `MISSING_IDENTITY_${realPlayer.id}_${realPlayer.name}`;
-          if (!this.loggedWarnings.has(warningKey)) {
-            this.loggedWarnings.add(warningKey);
-            this.logger.warn(`Player ${realPlayer.name}#${realPlayer.id} in room but not in cache - needs identity`);
+          if (!this.firstSeenMissing.has(realPlayer.id)) {
+            this.firstSeenMissing.set(realPlayer.id, now);
+          }
+
+          const backfilled = await this.backfillPlayer(realPlayer);
+          if (backfilled) {
+            this.firstSeenMissing.delete(realPlayer.id);
+            continue;
+          }
+
+          const firstSeen = this.firstSeenMissing.get(realPlayer.id) ?? now;
+          if (now - firstSeen >= JOIN_GRACE_MS) {
+            const warningKey = `MISSING_IDENTITY_${realPlayer.id}_${realPlayer.name}`;
+            if (!this.loggedWarnings.has(warningKey)) {
+              this.loggedWarnings.add(warningKey);
+              this.logger.warn(`Player ${realPlayer.name}#${realPlayer.id} in room but not in cache - needs identity`);
+            }
           }
         }
       }
       
       // Remover jugadores que ya no están
       for (const obsoleteId of existingIds) {
+        this.firstSeenMissing.delete(obsoleteId);
         this.removePlayer(obsoleteId);
       }
       
@@ -360,7 +425,10 @@ export class PlayerCacheManager {
     this.players.clear();
     this.identityToHaxball.clear();
     this.loggedWarnings.clear();
+    this.firstSeenMissing.clear();
+    this.pendingBackfill.clear();
     this.haxballRoom = null;
+    this.ruid = '';
     this.logger.debug('PlayerCacheManager cleaned up');
   }
 }

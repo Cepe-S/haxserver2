@@ -5,6 +5,7 @@ import { appConfig } from '../shared/config/AppConfig';
 import { createLogger } from '../shared/logger/Logger';
 import { StadiumManager } from '../shared/stadiums/StadiumManager';
 import { PlayerIdentityManager, HaxballPlayer } from '../shared/player/PlayerIdentityManager';
+import { PlayerCacheManager } from '../shared/player/PlayerCacheManager';
 import { EventManager } from '../shared/events/EventManager';
 import { BalanceManager, BalanceMode, BalanceConfig } from '../shared/balance/BalanceManager';
 import { PowershotManager, PowershotMode } from '../shared/powershot/PowershotManager';
@@ -148,6 +149,9 @@ export class HaxballRoom {
       });
 
       // Connect managers to this room (except ChatManager, needs page ready)
+      const playerCache = PlayerCacheManager.getInstance();
+      playerCache.setRuid(this.ruid);
+      playerCache.setHaxballRoom(this);
       this.balanceManager.setHaxballRoom(this);
       this.powershotManager.setHaxballRoom(this);
       

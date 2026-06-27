@@ -126,6 +126,10 @@ export interface ServerImageConfig {
   _config: HaxballRoomConfig;
   settings: GameSettings;
   rules: GameRules;
+  /** Metadatos runtime — no persistidos en JSON de imagen; inyectados al execute */
+  _meta?: {
+    serverImageId?: string;
+  };
 }
 
 // Modos de balance disponibles

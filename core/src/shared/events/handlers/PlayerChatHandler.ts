@@ -348,6 +348,12 @@ export class PlayerChatHandler {
     this.commandExecutor.registerCommand(new AcomerCommand());
     this.commandExecutor.registerCommand(new MemideCommand());
     
+    // Comandos de stats / tops
+    const { GoleadoresCommand } = require('../../../chat-manager/commands/handlers/GoleadoresCommand');
+    const { AsistidoresCommand } = require('../../../chat-manager/commands/handlers/AsistidoresCommand');
+    this.commandExecutor.registerCommand(new GoleadoresCommand());
+    this.commandExecutor.registerCommand(new AsistidoresCommand());
+    
     // Registrar HelpCommand al final para que tenga acceso a todos los comandos
     this.commandExecutor.registerCommand(new HelpCommand(this.commandExecutor.getRegistry(), this.chatManager));
 
