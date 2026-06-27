@@ -20,6 +20,8 @@
     "deploy:linux": "bash deploy-linux.sh",
     "deploy:verify": "bash scripts/verify-deploy.sh",
     "agent-deploy:gate": "bash scripts/agent-deploy-gate.sh",
+    "debug-players": "npm run start --prefix scripts/debug-players",
+    "debug-players:install": "npm install --prefix scripts/debug-players",
     "db:clean": "cd database && npm run clean",
     "start": "npm run build && concurrently --names \"CORE,WEB,UI\" --prefix-colors \"blue,green,magenta\" \"cd core && npm run dev\" \"cd web/backend && npm run dev\" \"cd web/frontend && npm run dev\"",
     "start:prod": "npm run build && concurrently --names \"CORE,WEB,UI\" --prefix-colors \"blue,green,magenta\" \"cd core && npx tsx src/app.ts\" \"cd web/backend && npx tsx src/server.ts\" \"cd web/frontend && npm run preview\"",

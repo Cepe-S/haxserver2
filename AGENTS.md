@@ -88,4 +88,4 @@ Proceso estándar — **no improvisar**:
 3. Worker: fix mínimo → `npm run build` → `npm run agent-deploy:gate -- DEPLOY-xxx` → handoff
 4. Coordinador revisa con `.cursor/skills/agent-deploy-coordinator/SKILL.md`
 
-Documentación: [`docs/AGENT-DEPLOY.md`](docs/AGENT-DEPLOY.md) · Índice: [`docs/deploys/README.md`](docs/deploys/README.md)
+Documentación: [`docs/AGENT-DEPLOY.md`](docs/AGENT-DEPLOY.md) · Reporte debug: [`docs/DEBUG-AGENT-REPORT.md`](docs/DEBUG-AGENT-REPORT.md) · Índice: [`docs/deploys/README.md`](docs/deploys/README.md)

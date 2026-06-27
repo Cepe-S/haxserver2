@@ -1,0 +1,15 @@
+{
+  "name": "@mikuserverpro/debug-players",
+  "version": "1.0.0",
+  "private": true,
+  "description": "External Haxball client bots for local gameplay debugging — NOT part of core runtime",
+  "type": "module",
+  "scripts": {
+    "start": "node repl.mjs",
+    "scenario": "node run-scenario.mjs",
+    "install-deps": "npm install"
+  },
+  "dependencies": {
+    "node-haxball": "^2.3.0"
+  }
+}

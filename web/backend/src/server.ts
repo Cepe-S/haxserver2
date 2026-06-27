@@ -213,6 +213,28 @@ fastify.get('/api/rooms/:ruid/balance-debug', async (request, reply) => {
   }
 });
 
+fastify.get('/api/rooms/:ruid/events', async (request, reply) => {
+  const { ruid } = request.params as any;
+  try {
+    const response = await axios.get(`${CORE_SERVER_URL}/api/rooms/${ruid}/events`);
+    return response.data;
+  } catch (error) {
+    logger.error('Failed to get room events from core server', error, { ruid });
+    return reply.code(500).send({ error: 'Failed to get room events' });
+  }
+});
+
+fastify.get('/api/rooms/:ruid/stats-debug', async (request, reply) => {
+  const { ruid } = request.params as any;
+  try {
+    const response = await axios.get(`${CORE_SERVER_URL}/api/rooms/${ruid}/stats-debug`);
+    return response.data;
+  } catch (error) {
+    logger.error('Failed to get stats debug from core server', error, { ruid });
+    return reply.code(500).send({ error: 'Failed to get stats debug' });
+  }
+});
+
 fastify.post('/api/rooms/:ruid/balance', async (request, reply) => {
   const { ruid } = request.params as any;
   try {
@@ -240,7 +262,12 @@ fastify.addHook('preHandler', async (request, reply) => {
       request.url.startsWith('/api/teams') ||
       request.url.startsWith('/api/matches') ||
       request.url.startsWith('/api/webhooks') ||
-      request.url.includes('/api/rooms/') && (request.url.includes('/players') || request.url.includes('/balance'))) {
+      request.url.includes('/api/rooms/') && (
+        request.url.includes('/players') ||
+        request.url.includes('/balance') ||
+        request.url.includes('/events') ||
+        request.url.includes('/stats-debug')
+      )) {
     return;
   }
   

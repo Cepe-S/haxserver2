@@ -48,6 +48,19 @@ Sos el **coordinador**. Analizás, priorizás, creás manifests y **derivás wor
 ### Verificación
 - [ ] `npm run build` OK (worker lo reporta; coordinador puede re-correr)
 - [ ] Gate script OK si aplica
+- [ ] **`GET /api/debug/report`** — `@SECTION ALERTS` sin `[FAIL]` relevantes al scope
+- [ ] Si hay sala running: `@SECTION ROOM` coherente con el PROB del deploy
+
+### Loop de fix (cuando el reporte falla)
+
+1. Leer **`/api/debug/report`** — no volcar logs manualmente salvo sección faltante
+2. Identificar subsistema en `@SECTION FIX_ROUTING`
+3. Clasificar:
+   - **small_fix** → derivar worker con archivos acotados (ideal)
+   - **rebuild** → PROB mal acotado; reescribir manifest o split DEPLOY
+4. Re-ejecutar worker → volver a reporte
+
+Ver [`docs/DEBUG-AGENT-REPORT.md`](../../docs/DEBUG-AGENT-REPORT.md)
 
 ### Veredicto
 

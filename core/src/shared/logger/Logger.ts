@@ -219,7 +219,9 @@ export class Logger {
    * Log de debug - solo en desarrollo y con filtros
    */
   debug(message: string, meta?: any) {
-    if (process.env.NODE_ENV === 'development' && this.shouldLog('debug', message)) {
+    const level = process.env.LOG_LEVEL || DEFAULT_LOGGER_CONFIG.level;
+    const debugEnabled = level === 'debug' || process.env.NODE_ENV === 'development';
+    if (debugEnabled && this.shouldLog('debug', message)) {
       baseLogger.debug(message, { service: this.service, ...meta });
     }
   }

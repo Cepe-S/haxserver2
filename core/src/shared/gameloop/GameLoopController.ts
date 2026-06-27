@@ -254,17 +254,30 @@ export class GameLoopController {
    */
   public getStats(): any {
     const loopCounts: { [key: string]: number } = {};
-    
-    // Contar transiciones por loop
+
     for (const transition of this.transitionHistory) {
       loopCounts[transition.to] = (loopCounts[transition.to] || 0) + 1;
     }
+
+    const trainingLoop = this.loops.get('training');
+    const matchLoop = this.loops.get('match');
+    const trainingActivations = loopCounts['training'] || 0;
+    const matchActivations = loopCounts['match'] || 0;
 
     return {
       totalTransitions: this.transitionHistory.length,
       loopActivations: loopCounts,
       currentLoop: this.getActiveLoopName(),
-      isTransitioning: this.isTransitioning
+      isTransitioning: this.isTransitioning,
+      training: {
+        activations: trainingActivations,
+        totalTime: trainingLoop?.getDebugInfo()?.uptime ?? 0
+      },
+      match: {
+        activations: matchActivations,
+        totalTime: matchLoop?.getDebugInfo()?.uptime ?? 0,
+        matchesPlayed: matchActivations
+      }
     };
   }
 

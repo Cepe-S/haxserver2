@@ -1,5 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { PlayerCacheManager } from '../../shared/player/PlayerCacheManager';
+import { getMatchDebugLog } from '../../shared/debug/MatchDebugLog';
+import { db } from '@mikuserverpro/database';
 
 // Variable global para almacenar referencias a los sistemas
 // Se configurará desde HaxballRoom cuando se inicialice
@@ -288,8 +290,9 @@ export async function debugRoutes(fastify: FastifyInstance) {
   fastify.get('/api/debug/status', async (request, reply) => {
     try {
       const activeLoopName = gameLoopController?.getActiveLoopName();
-      const playerCache = haxballRoom?.playerCache;
-      const teamCounts = playerCache ? playerCache.getActiveTeamCounts() : { red: 0, blue: 0 };
+      const playerCache = PlayerCacheManager.getInstance();
+      const allPlayers = playerCache.getAllPlayers();
+      const teamCounts = playerCache.getActiveTeamCounts();
 
       return reply.send({
         haxballRoom: {
@@ -307,16 +310,91 @@ export async function debugRoutes(fastify: FastifyInstance) {
           mode: balanceManager?.getConfig().mode || 'unknown'
         },
         players: {
-          total: teamCounts.red + teamCounts.blue,
+          total: allPlayers.length,
           red: teamCounts.red,
           blue: teamCounts.blue
         },
+        matchLog: getMatchDebugLog(20),
         timestamp: new Date().toISOString()
       });
       
     } catch (error) {
       return reply.code(500).send({
         error: 'Failed to get system status',
+        message: error.message
+      });
+    }
+  });
+
+  /**
+   * GET /api/debug/match-log
+   * Ring buffer de acciones de partido (goles, start/stop, etc.)
+   */
+  fastify.get('/api/debug/match-log', async (_request, reply) => {
+    return reply.send({
+      total: getMatchDebugLog(100).length,
+      entries: getMatchDebugLog(50),
+      timestamp: new Date().toISOString()
+    });
+  });
+
+  /**
+   * GET /api/debug/database
+   * Snapshot de tablas Prisma para DatabaseDebug UI
+   */
+  fastify.get('/api/debug/database', async (_request, reply) => {
+    try {
+      const [
+        serverImages,
+        adminPasswords,
+        playerIdentities,
+        playerStats,
+        statEvents,
+        connections,
+        playerSanctions,
+        playerPermissions,
+        webhooks
+      ] = await Promise.all([
+        db.serverImage.findMany({ take: 50 }),
+        db.adminPassword.findMany({ take: 50 }),
+        db.playerIdentity.findMany({ take: 50, orderBy: { lastSeen: 'desc' } }),
+        db.playerStats.findMany({ take: 50, orderBy: { updatedAt: 'desc' } }),
+        db.statEvent.findMany({ take: 50, orderBy: { recordedAt: 'desc' } }),
+        db.connection.findMany({ take: 50, orderBy: { joinedAt: 'desc' } }),
+        db.playerSanction.findMany({ take: 50, orderBy: { createdAt: 'desc' } }),
+        db.playerPermission.findMany({ take: 50 }),
+        db.webhook.findMany({ take: 50 })
+      ]);
+
+      const maskedPasswords = adminPasswords.map((row) => ({
+        ...row,
+        password: '***'
+      }));
+
+      const tables: Record<string, unknown[]> = {
+        serverImages,
+        adminPasswords: maskedPasswords,
+        playerIdentities,
+        playerStats,
+        statEvents,
+        connections,
+        playerSanctions,
+        playerPermissions,
+        webhooks
+      };
+
+      const summary = Object.fromEntries(
+        Object.entries(tables).map(([key, rows]) => [key, rows.length])
+      );
+
+      return reply.send({
+        summary,
+        tables,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error: any) {
+      return reply.code(500).send({
+        error: 'Failed to load database debug snapshot',
         message: error.message
       });
     }

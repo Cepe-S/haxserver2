@@ -1,9 +1,9 @@
 # SystemStatus — MikuServerPro
 
-**Última actualización:** 2026-06-26  
+**Última actualización:** 2026-06-27  
 **Codebase activo:** `haxserver2/` (MikuServerPro — único proyecto en el repo)  
 **Changelog / PROBs cerrados:** `[CHANGELOG.md](./CHANGELOG.md)`  
-**Próximo ID libre:** `PROB-031`  
+**Próximo ID libre:** `PROB-042`  
 **Fuente análisis:** logs beta GCE exportados (`Desktop/_`, sesión 2026-06-23 → 2026-06-24, sala `main-beta-1`)
 
 ---
@@ -17,7 +17,7 @@ Leer **antes** de codear. Actualizar en el **mismo turno**:
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Arreglar un bug (PROB-xxx)            | **Quitar** fila de [Problemas activos](#problemas-activos); actualizar filas del subsistema (A–N); **registrar** cierre en `CHANGELOG.md` |
 | Progreso parcial (PROB sigue abierto) | Actualizar fila del PROB y subsistema en este archivo                                                                                     |
-| Nuevo problema                        | Crear `PROB-031+` en tabla activa                                                                                                         |
+| Nuevo problema                        | Crear `PROB-041+` en tabla activa                                                                                                         |
 | Cambiar prioridad / sprint            | Sección [Priorización](#priorización)                                                                                                     |
 | Cualquier cambio de código verificado | Entrada en `CHANGELOG.md` (historial)                                                                                                     |
 
@@ -26,7 +26,7 @@ Leer **antes** de codear. Actualizar en el **mismo turno**:
 
 **Alcance:** solo fixes y estabilidad; sin features ni seguridad extra salvo orden humana.
 
-**Deploy agentes:** DEPLOY-004 ✅ stats tops · **DEPLOY-005** ✅ admin passwords (PROB-030 cerrado). Plan: [`docs/plans/stats-tops-vNext.md`](docs/plans/stats-tops-vNext.md)
+**Deploy agentes:** DEPLOY-005 ✅ · DEPLOY-006 ✅ · **DEPLOY-007** ✅ — estadio dinámico + `!mapa` ([`docs/deploys/DEPLOY-007-dynamic-stadium.md`](docs/deploys/DEPLOY-007-dynamic-stadium.md))
 
 ---
 
@@ -66,7 +66,7 @@ Leer **antes** de codear. Actualizar en el **mismo turno**:
 | N — Build / deploy      | 6        | 5   | 0   | 0   | 1   |
 
 
-**Build:** ✅ `npm run build` OK (core) · **13 PROBs activos**
+**Build:** ✅ `npm run build` OK (core) · **18 PROBs activos**
 
 **Estado operativo beta:** sala `main-beta-1` **corrió** tras instalar Chrome deps (~01:28 UTC 23-Jun). Errores post-arranque son de **runtime** (cache, stats, sync), no de deploy inicial.
 
@@ -402,6 +402,18 @@ PROB-001, PROB-003, PROB-007, PROB-012 → ver `CHANGELOG.md`
 ### Sprint 2 — Panel y datos juego (en curso)
 
 PROB-008, PROB-011
+
+### Sprint 4 — Debug vNext (EN CURSO)
+
+Plan: [`docs/plans/debug-sprint-vNext.md`](docs/plans/debug-sprint-vNext.md) · Coordinador: [`docs/deploys/DEPLOY-006-debug-sprint.md`](docs/deploys/DEPLOY-006-debug-sprint.md)
+
+| Fase | Deploy | PROB |
+|------|--------|------|
+| 1 paralelo | 006E, 006C, 006A | 035, 033, 031 |
+| 2 | 006B | 032 |
+| 3 | 006D | 034 |
+
+**Humano provee:** token Haxball para Execute en verificación runtime.
 
 ### Sprint 3 — Estabilidad runtime beta GCE (en curso)
 

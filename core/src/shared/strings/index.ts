@@ -53,7 +53,7 @@ export const command = {
     _ErrorWrongCommand : '❌ Comando incorrecto. 📑 Usa !help o !help COMMAND para más detalles.'
     ,_ErrorNoPermission: '❌ Solo los administradores pueden usar este comando.'
     ,_ErrorDisabled: '❌ Este comando no está habilitado en esta sala.'
-    ,help: '📄 !about, notice, stats, statsreset, tier, ranking, avatar, afk, vote, poss, streak, scout, list, powershot, goleadores, asistidores, llamaradmin, memide, discord, nv, bb, cola\n📑 Usa !help COMMAND para más detalles (Ej: !help stats)\n📑 Los super admins tienen acceso a comandos adicionales de administrador.'
+    ,help: '📄 !about, notice, stats, statsreset, tier, ranking, avatar, afk, mapa, vote, poss, streak, scout, list, powershot, goleadores, asistidores, llamaradmin, memide, discord, nv, bb, cola\n📑 Usa !help COMMAND para más detalles (Ej: !help stats)\n📑 Los super admins tienen acceso a comandos adicionales de administrador.'
     ,helpadmin: '📄 !freeze, mute, powershotadmin, balance\n📑 Usa !help COMMAND para más detalles'
     ,helpman: {
         _ErrorWrongMan : '❌ No hay una descripción disponible para el comando solicitado.'
@@ -64,6 +64,7 @@ export const command = {
         ,poss: '📑 !poss : Muestra la posesión del balón de ambos equipos.'
         ,streak: '📑 !streak : Muestra el equipo con racha ganadora actual y la cantidad de victorias consecutivas.'
         ,afk: '📑 !afk [razón] : Activa o desactiva el modo AFK. Te mueve a espectador y te marca como ausente. Incluye una razón opcional. Si permaneces AFK demasiado tiempo, serás expulsado automáticamente.'
+        ,mapa: '📑 !mapa : Vota para cambiar el estadio cuando el mapa no es ideal para la cantidad de jugadores en cancha.'
         ,list: '📑 !list red/blue/spec : Muestra la lista de jugadores en ese equipo con información básica.\n📑 !list mute : Muestra la lista de jugadores silenciados.\n📑 !list afk : Muestra la lista de jugadores ausentes.'
         ,freeze: '📑 !freeze : Activa o desactiva el bloqueo de chat global. Solo administradores pueden usarlo.'
         ,mute: '📑 !mute #ID : Silencia o des-silencia al jugador con el ID especificado. El ID debe ser un número. (Ej: !mute #12)\n📑 Usa !list red,blue,spec,mute para obtener el ID numérico.'
@@ -321,6 +322,18 @@ export const welcomeSystem = {
     }
 };
 
+export const mapVote = {
+    mismatch: '🗺️ El estadio no es ideal para {count} jugadores. Usá !mapa para votar cambio de mapa.',
+    alreadyIdeal: '✅ El mapa ya es el adecuado para la cantidad de jugadores.',
+    mustBePlaying: '❌ Solo pueden votar jugadores en cancha (rojo o azul).',
+    notEnoughPlayers: '❌ Se necesitan al menos 2 jugadores en cancha para votar cambio de mapa.',
+    notInMatch: '❌ !mapa solo está disponible durante un partido.',
+    progress: '🗳️ Voto mapa: {votes}/{required} votos',
+    passed: '🗳️ ¡Votación aprobada! Cambiando mapa al finalizar el partido...',
+    cancelled: '🗳️ Votación cancelada — el mapa ya es el correcto.',
+    changed: '🗺️ Mapa cambiado a {stadium}. ¡Nuevo partido!',
+};
+
 // Legacy compatibility - export as STRINGS for existing code
 export const STRINGS = {
   welcomeSystem,
@@ -342,7 +355,8 @@ export const STRINGS = {
   onTouch,
   balance,
   onAdminChange,
-  onGamePause
+  onGamePause,
+  mapVote
 };
 
 export function interpolateString(template: string, params: Record<string, any>): string {

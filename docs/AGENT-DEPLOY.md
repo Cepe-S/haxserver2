@@ -25,12 +25,43 @@ Proceso estándar para que **workers** implementen fixes y el **coordinador** re
 ## Ciclo de un deploy
 
 ```mermaid
+flowchart TD
+  W[Worker: fix + build] --> H{Health OK?}
+  H -->|no| REP[GET /api/debug/report]
+  H -->|sí| REP
+  REP --> A{@SECTION ALERTS}
+  A -->|OK + criterios| OK[Coordinador APROBADO]
+  A -->|FAIL/WARN| FIX[Coordinador clasifica fix]
+  FIX --> SF[small_fix → derivar worker]
+  FIX --> RB[rebuild → nuevo scope DEPLOY]
+  SF --> W
+  RB --> W
+```
+
+### Pasos numerados
+
+1. **Worker** implementa manifest → `npm run build` → handoff
+2. **Coordinador** verifica stack: `GET /api/health` (web + core)
+3. **Coordinador** lee **`GET /api/debug/report`** (o panel `/debug/report`)
+   - Buscar `[FAIL]`, `[WARN]`, `@SECTION ALERTS`, `@SECTION LOG_ERRORS`
+4. Si **ALERTS ok** y criterios del manifest → **APROBADO**
+5. Si no → **loop de fix:**
+   - Leer reporte (no logs crudos enteros)
+   - Clasificar: **small_fix** (ideal) vs **rebuild** (scope nuevo)
+   - Derivar worker con subsistema de `@SECTION FIX_ROUTING`
+   - Repetir desde paso 1
+
+Formato del reporte: [`docs/DEBUG-AGENT-REPORT.md`](DEBUG-AGENT-REPORT.md)
+
+## Ciclo clásico (manifest)
+
+```mermaid
 flowchart LR
   H[Humano] --> C[Coordinador crea DEPLOY-xxx]
   C --> W[Worker implementa scope]
   W --> G[agent-deploy-gate.sh]
   G --> Hnd[Handoff en manifest]
-  Hnd --> R[Coordinador review]
+  Hnd --> R[Coordinador review + debug report]
   R -->|APROBADO| N[Siguiente DEPLOY]
   R -->|CORREGIR| W
 ```

@@ -1,6 +1,10 @@
 import { GameLoop, GameLoopConfig } from './GameLoop';
 import { MatchManager } from '../teams/MatchManager';
 import { ChatManager } from '../../chat-manager/ChatManager';
+import { eventBus } from '../events/EventBus';
+import { StadiumSelector } from '../stadiums/StadiumSelector';
+import { MapVoteManager } from '../stadiums/MapVoteManager';
+import { STRINGS } from '../strings';
 
 /**
  * Match Loop
@@ -22,6 +26,10 @@ export class MatchLoop extends GameLoop {
   private currentMatch: any = null;
   private isApplyingSettings = false;
   private gameStartProcessed = false;
+  private stadiumSelector: StadiumSelector | null = null;
+  private mapVoteManager: MapVoteManager | null = null;
+  private isMapVoteRestart = false;
+  private mapVoteListener: ((data: any) => void) | null = null;
 
   constructor(config: GameLoopConfig, chatManager?: ChatManager) {
     super('MatchLoop', config);
@@ -34,6 +42,18 @@ export class MatchLoop extends GameLoop {
    */
   public setMatchStatsManager(matchStatsManager: any): void {
     this.matchStatsManager = matchStatsManager;
+  }
+
+  public setStadiumSelector(selector: StadiumSelector): void {
+    this.stadiumSelector = selector;
+  }
+
+  public setMapVoteManager(manager: MapVoteManager): void {
+    this.mapVoteManager = manager;
+  }
+
+  public getCurrentStadiumName(): string {
+    return this.config.stadiumName;
   }
 
   /**
@@ -62,9 +82,14 @@ export class MatchLoop extends GameLoop {
         this.logger.warn('No match selected, using default configuration');
       }
 
-      // 3. Cargar estadio
-      this.logger.info(`Loading game stadium: ${this.config.stadiumName}`);
+      // 3. Cargar estadio según cantidad de jugadores
+      const count = this.getPlayerCount().total;
+      if (this.stadiumSelector) {
+        this.config.stadiumName = this.stadiumSelector.pick(count);
+      }
+      this.logger.info(`Loading game stadium: ${this.config.stadiumName} (${count} players)`);
       await this.safeChangeStadium(this.config.stadiumName);
+      this.setupMapVoteListener();
       
       // 4. Aplicar camisetas INMEDIATAMENTE después del estadio (antes de cualquier delay)
       // Esto evita que se vean los colores por defecto del estadio
@@ -135,12 +160,15 @@ export class MatchLoop extends GameLoop {
    */
   protected async onExit(): Promise<void> {
     this.logger.info('Exiting match mode');
+    this.teardownMapVoteListener();
+    this.mapVoteManager?.clearVote();
     if (this.matchStatsManager?.isMatchActive()) {
       this.matchStatsManager.clearCache();
     }
     this.currentMatch = null;
     this.isApplyingSettings = false;
     this.gameStartProcessed = false;
+    this.isMapVoteRestart = false;
   }
 
   /**
@@ -182,20 +210,31 @@ export class MatchLoop extends GameLoop {
         this.logger.success('Match stats saved and cache cleared');
       }
 
-      // 3. Delay antes de reiniciar (reducido para sistema más rápido)
+      const mapVoteRestart = this.isMapVoteRestart;
+      if (mapVoteRestart) {
+        this.isMapVoteRestart = false;
+      }
+
       await this.delay(1000);
-      
       if (this.isStopping) return;
 
-      // 4. Checkear si hay suficientes jugadores
       const { total } = this.getPlayerCount();
 
       if (total >= this.config.minPlayers) {
-        // Hay suficientes jugadores, iniciar nuevo partido
+        if (mapVoteRestart) {
+          this.logger.info('Restarting after map vote...');
+          await this.applyStadiumForCount(total, true);
+          this.mapVoteManager?.clearVote();
+          if (this.chatManager) {
+            await this.chatManager.send(
+              STRINGS.mapVote.changed.replace('{stadium}', this.config.stadiumName),
+              { color: 0x00FF00, sound: 1 }
+            ).catch(() => {});
+          }
+        }
         this.logger.info('Restarting with new match...');
-        await this.startNewMatch();
+        await this.startNewMatch(mapVoteRestart);
       } else {
-        // No hay suficientes jugadores, la transición a training se hará desde onUpdate
         this.logger.info('Not enough players, waiting for transition to training...');
       }
 
@@ -229,10 +268,14 @@ export class MatchLoop extends GameLoop {
    * Reinicia el partido actual (después de que termine uno)
    * NO cambia camisetas - usa las que se aplicaron en onEnter()
    */
-  private async startNewMatch(): Promise<void> {
+  private async startNewMatch(skipStadiumReeval = false): Promise<void> {
     if (this.isStopping) return;
     
     try {
+      if (!skipStadiumReeval) {
+        await this.applyStadiumForCount(this.getPlayerCount().total, false);
+      }
+
       this.logger.info(`Restarting match: ${this.currentMatch?.homeTeam || 'unknown'} vs ${this.currentMatch?.awayTeam || 'unknown'}`);
 
       // Aplicar configuraciones (sin cambiar camisetas)
@@ -364,6 +407,41 @@ export class MatchLoop extends GameLoop {
    */
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  private setupMapVoteListener(): void {
+    this.teardownMapVoteListener();
+    this.mapVoteListener = async () => {
+      if (this.isStopping || this.isMapVoteRestart) return;
+      this.isMapVoteRestart = true;
+      this.logger.info('Map vote passed — stopping game for stadium change');
+      await this.safeStopGame();
+    };
+    eventBus.onEvent('map.vote.passed', this.mapVoteListener);
+  }
+
+  private teardownMapVoteListener(): void {
+    if (this.mapVoteListener) {
+      eventBus.offEvent('map.vote.passed', this.mapVoteListener);
+      this.mapVoteListener = null;
+    }
+  }
+
+  private async applyStadiumForCount(count: number, forceNewMatch: boolean): Promise<void> {
+    if (!this.stadiumSelector) return;
+
+    const ideal = this.stadiumSelector.pick(count);
+    if (ideal === this.config.stadiumName && !forceNewMatch) return;
+
+    this.config.stadiumName = ideal;
+    await this.safeChangeStadium(ideal);
+
+    if (forceNewMatch) {
+      this.currentMatch = this.matchManager.selectRandomMatch();
+      if (this.currentMatch && this.haxballRoom) {
+        this.matchManager.applyMatchToHaxball(this.haxballRoom, this.currentMatch);
+      }
+    }
   }
 
   /**

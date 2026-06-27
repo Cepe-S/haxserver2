@@ -125,6 +125,16 @@ interface ServerImageConfig {
     defaultMapName: string;
     readyMapName: string;
     customJSONOptions: string;
+    mapVote?: {
+      enabled: boolean;
+      thresholdPercent: number;
+      stadiums: Array<{
+        name: string;
+        enabled: boolean;
+        minPlayers: number;
+        maxPlayers: number;
+      }>;
+    };
   };
 }
 
@@ -139,11 +149,35 @@ export function ServerImageConfigForm({ config, onChange, serverImageId }: Props
   const [localConfig, setLocalConfig] = useState<ServerImageConfig>(config);
   const [balanceModes, setBalanceModes] = useState<any>({});
   const [stadiums, setStadiums] = useState<any>({});
+  const [mapVoteDefaults, setMapVoteDefaults] = useState<ServerImageConfig['rules']['mapVote'] | null>(null);
   const [configLoading, setConfigLoading] = useState(true);
+  const [mapVoteErrors, setMapVoteErrors] = useState<Record<string, string>>({});
+
+  const ensureMapVoteConfig = (cfg: ServerImageConfig): ServerImageConfig => {
+    if (cfg.rules.mapVote?.stadiums?.length) return cfg;
+    const defaults = mapVoteDefaults ?? {
+      enabled: true,
+      thresholdPercent: 60,
+      stadiums: [
+        { name: 'futx2', enabled: true, minPlayers: 1, maxPlayers: 4 },
+        { name: 'futx3', enabled: true, minPlayers: 1, maxPlayers: 6 },
+        { name: 'futx4', enabled: true, minPlayers: 5, maxPlayers: 8 },
+        { name: 'futx5', enabled: true, minPlayers: 7, maxPlayers: 10 },
+        { name: 'futx7', enabled: true, minPlayers: 9, maxPlayers: 14 },
+      ],
+    };
+    return {
+      ...cfg,
+      rules: {
+        ...cfg.rules,
+        mapVote: JSON.parse(JSON.stringify(defaults)),
+      },
+    };
+  };
 
   useEffect(() => {
-    setLocalConfig(config);
-  }, [config]);
+    setLocalConfig(ensureMapVoteConfig(config));
+  }, [config, mapVoteDefaults]);
 
   useEffect(() => {
     // Load balance modes and stadiums from API
@@ -152,6 +186,9 @@ export function ServerImageConfigForm({ config, onChange, serverImageId }: Props
         const response = await axios.get('/api/config/all');
         setBalanceModes(response.data.balanceModes);
         setStadiums(response.data.stadiums);
+        if (response.data.mapVoteDefaults) {
+          setMapVoteDefaults(response.data.mapVoteDefaults);
+        }
       } catch (error) {
         console.error('Failed to load config options:', error);
       } finally {
@@ -177,6 +214,56 @@ export function ServerImageConfigForm({ config, onChange, serverImageId }: Props
     setLocalConfig(newConfig);
     onChange(newConfig);
   };
+
+  const updateMapVoteStadium = (index: number, field: string, value: number | boolean) => {
+    const cfg = ensureMapVoteConfig({ ...localConfig });
+    const stadiums = [...(cfg.rules.mapVote!.stadiums)];
+    stadiums[index] = { ...stadiums[index], [field]: value };
+    const newConfig = {
+      ...cfg,
+      rules: {
+        ...cfg.rules,
+        mapVote: { ...cfg.rules.mapVote!, stadiums },
+      },
+    };
+    validateMapVote(newConfig);
+    setLocalConfig(newConfig);
+    onChange(newConfig);
+  };
+
+  const updateMapVoteField = (field: 'enabled' | 'thresholdPercent', value: boolean | number) => {
+    const cfg = ensureMapVoteConfig({ ...localConfig });
+    const newConfig = {
+      ...cfg,
+      rules: {
+        ...cfg.rules,
+        mapVote: { ...cfg.rules.mapVote!, [field]: value },
+      },
+    };
+    validateMapVote(newConfig);
+    setLocalConfig(newConfig);
+    onChange(newConfig);
+  };
+
+  const restoreMapVoteDefaults = () => {
+    if (!mapVoteDefaults) return;
+    const newConfig = ensureMapVoteConfig({ ...localConfig });
+    newConfig.rules.mapVote = JSON.parse(JSON.stringify(mapVoteDefaults));
+    setMapVoteErrors({});
+    setLocalConfig(newConfig);
+    onChange(newConfig);
+  };
+
+  const validateMapVote = (cfg: ServerImageConfig) => {
+    const errors: Record<string, string> = {};
+    cfg.rules.mapVote?.stadiums.forEach((s) => {
+      if (s.minPlayers < 1) errors[s.name] = 'Min debe ser ≥ 1';
+      else if (s.maxPlayers < s.minPlayers) errors[s.name] = 'Max debe ser ≥ Min';
+    });
+    setMapVoteErrors(errors);
+  };
+
+  const hasMapVoteErrors = Object.keys(mapVoteErrors).length > 0;
 
   // const formatTime = (milliseconds: number) => {
   //   const minutes = Math.floor(milliseconds / 60000);
@@ -401,6 +488,92 @@ export function ServerImageConfigForm({ config, onChange, serverImageId }: Props
                   />
                   <Label htmlFor="statsRecord">Registrar Estadísticas</Label>
                 </div>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-medium">Mapa dinámico (!mapa)</h4>
+                  <button
+                    type="button"
+                    className="text-xs text-blue-600 hover:underline"
+                    onClick={restoreMapVoteDefaults}
+                    disabled={!mapVoteDefaults}
+                  >
+                    Restaurar defaults
+                  </button>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="mapVoteEnabled"
+                    checked={localConfig.rules.mapVote?.enabled ?? true}
+                    onCheckedChange={(checked) => updateMapVoteField('enabled', checked)}
+                  />
+                  <Label htmlFor="mapVoteEnabled">Activar votación !mapa</Label>
+                </div>
+
+                <div className="space-y-2 max-w-xs">
+                  <Label htmlFor="mapVoteThreshold">Umbral de votos (%)</Label>
+                  <Input
+                    id="mapVoteThreshold"
+                    type="number"
+                    min={1}
+                    max={100}
+                    value={localConfig.rules.mapVote?.thresholdPercent ?? 60}
+                    onChange={(e) => updateMapVoteField('thresholdPercent', parseInt(e.target.value) || 60)}
+                  />
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="border-b text-left">
+                        <th className="p-2">Estadio</th>
+                        <th className="p-2">Habilitado</th>
+                        <th className="p-2">Min</th>
+                        <th className="p-2">Max</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(localConfig.rules.mapVote?.stadiums ?? []).map((stadium, index) => (
+                        <tr key={stadium.name} className="border-b">
+                          <td className="p-2 font-medium">{stadium.name}</td>
+                          <td className="p-2">
+                            <Switch
+                              checked={stadium.enabled}
+                              onCheckedChange={(checked) => updateMapVoteStadium(index, 'enabled', checked)}
+                            />
+                          </td>
+                          <td className="p-2">
+                            <Input
+                              type="number"
+                              min={1}
+                              className="w-20"
+                              value={stadium.minPlayers}
+                              onChange={(e) => updateMapVoteStadium(index, 'minPlayers', parseInt(e.target.value) || 1)}
+                            />
+                          </td>
+                          <td className="p-2">
+                            <Input
+                              type="number"
+                              min={1}
+                              className="w-20"
+                              value={stadium.maxPlayers}
+                              onChange={(e) => updateMapVoteStadium(index, 'maxPlayers', parseInt(e.target.value) || 1)}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {hasMapVoteErrors && (
+                  <p className="text-xs text-red-600">
+                    Corregí los rangos inválidos antes de guardar: {Object.entries(mapVoteErrors).map(([k, v]) => `${k}: ${v}`).join('; ')}
+                  </p>
+                )}
               </div>
 
               <Separator />

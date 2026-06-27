@@ -360,6 +360,14 @@ export class PlayerChatHandler {
     this.logger.info('Basic commands registered');
   }
 
+  /** Registers !mapa after MapVoteManager is wired (post game-loop init). */
+  public registerMapVoteCommand(getManager: () => import('../../stadiums/MapVoteManager').MapVoteManager | null): void {
+    if (!this.commandExecutor) return;
+    const { MapaCommand } = require('../../../chat-manager/commands/handlers/MapaCommand');
+    this.commandExecutor.registerCommand(new MapaCommand(getManager));
+    this.logger.info('Mapa command registered');
+  }
+
   private async handleAdminChat(player: any, message: string): Promise<void> {
     if (!this.adminManager) {
       return;

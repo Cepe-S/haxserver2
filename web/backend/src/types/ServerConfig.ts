@@ -119,6 +119,57 @@ export interface GameRules {
   defaultMapName: string;
   readyMapName: string;
   customJSONOptions: string;
+  mapVote?: MapVoteConfig;
+}
+
+export interface MapVoteStadiumConfig {
+  name: string;
+  enabled: boolean;
+  minPlayers: number;
+  maxPlayers: number;
+}
+
+export interface MapVoteConfig {
+  enabled: boolean;
+  thresholdPercent: number;
+  stadiums: MapVoteStadiumConfig[];
+}
+
+/** Canonical match stadium defaults — keep in sync with core StadiumRegistry.ts */
+export const DEFAULT_MATCH_STADIUMS: MapVoteStadiumConfig[] = [
+  { name: 'futx2', enabled: true, minPlayers: 1, maxPlayers: 4 },
+  { name: 'futx3', enabled: true, minPlayers: 1, maxPlayers: 6 },
+  { name: 'futx4', enabled: true, minPlayers: 5, maxPlayers: 8 },
+  { name: 'futx5', enabled: true, minPlayers: 7, maxPlayers: 10 },
+  { name: 'futx7', enabled: true, minPlayers: 9, maxPlayers: 14 },
+];
+
+export function buildDefaultMapVoteConfig(): MapVoteConfig {
+  return {
+    enabled: true,
+    thresholdPercent: 60,
+    stadiums: DEFAULT_MATCH_STADIUMS.map(s => ({ ...s })),
+  };
+}
+
+export function resolveMapVoteConfig(mapVote?: MapVoteConfig | null): MapVoteConfig {
+  if (!mapVote) return buildDefaultMapVoteConfig();
+  return {
+    enabled: mapVote.enabled !== false,
+    thresholdPercent: Math.min(100, Math.max(1, mapVote.thresholdPercent ?? 60)),
+    stadiums: DEFAULT_MATCH_STADIUMS.map(def => {
+      const override = mapVote.stadiums?.find(s => s.name === def.name);
+      if (!override) return { ...def };
+      const minPlayers = Math.max(1, override.minPlayers ?? def.minPlayers);
+      const maxPlayers = Math.max(minPlayers, override.maxPlayers ?? def.maxPlayers);
+      return {
+        name: def.name,
+        enabled: override.enabled !== false,
+        minPlayers,
+        maxPlayers,
+      };
+    }),
+  };
 }
 
 export interface ServerImageConfig {
@@ -253,6 +304,17 @@ export const DEFAULT_SERVER_CONFIG: ServerImageConfig = {
     "balanceMode": "jt",
     "defaultMapName": "futx7",
     "readyMapName": "training",
-    "customJSONOptions": ""
+    "customJSONOptions": "",
+    "mapVote": {
+      "enabled": true,
+      "thresholdPercent": 60,
+      "stadiums": [
+        { "name": "futx2", "enabled": true, "minPlayers": 1, "maxPlayers": 4 },
+        { "name": "futx3", "enabled": true, "minPlayers": 1, "maxPlayers": 6 },
+        { "name": "futx4", "enabled": true, "minPlayers": 5, "maxPlayers": 8 },
+        { "name": "futx5", "enabled": true, "minPlayers": 7, "maxPlayers": 10 },
+        { "name": "futx7", "enabled": true, "minPlayers": 9, "maxPlayers": 14 }
+      ]
+    }
   }
 };

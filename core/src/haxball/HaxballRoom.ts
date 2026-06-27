@@ -17,6 +17,13 @@ import { TrainingLoop } from '../shared/gameloop/TrainingLoop';
 import { MatchLoop } from '../shared/gameloop/MatchLoop';
 import { setupDebugReferences } from '../api/routes/debug';
 import { db } from '@mikuserverpro/database';
+import {
+  resolveStadiumDefinitions,
+  buildDefaultMapVoteConfig,
+  StadiumSelector,
+  MapVoteManager,
+} from '../shared/stadiums';
+import { MapVoteEventHandler } from '../shared/events/handlers/MapVoteEventHandler';
 
 /**
  * Wrapper único para room de Haxball
@@ -65,6 +72,8 @@ export class HaxballRoom {
   private matchStatsManager: MatchStatsManager;
   private gameEventHandlers: GameEventHandlers;
   private gameLoopController: GameLoopController | null = null;
+  private mapVoteManager: MapVoteManager | null = null;
+  private mapVoteEventHandler: MapVoteEventHandler | null = null;
   private config: any;
 
   constructor(ruid: string, config?: any) {
@@ -219,6 +228,26 @@ export class HaxballRoom {
     const matchLoop = new MatchLoop(matchConfig, this.chatManager);
     matchLoop.setHaxballRoom(this);
     matchLoop.setMatchStatsManager(this.matchStatsManager);
+
+    const mapVoteConfig = this.config?.rules?.mapVote ?? buildDefaultMapVoteConfig();
+    const stadiumDefs = resolveStadiumDefinitions(mapVoteConfig);
+    const stadiumSelector = new StadiumSelector(stadiumDefs);
+    matchLoop.setStadiumSelector(stadiumSelector);
+
+    this.mapVoteManager = new MapVoteManager(
+      stadiumSelector,
+      this.chatManager,
+      mapVoteConfig,
+      () => this.gameLoopController?.getActiveLoopName() ?? null,
+      () => matchLoop.getCurrentStadiumName()
+    );
+    matchLoop.setMapVoteManager(this.mapVoteManager);
+
+    this.mapVoteEventHandler = new MapVoteEventHandler();
+    this.mapVoteEventHandler.setMapVoteManager(this.mapVoteManager);
+    this.mapVoteEventHandler.start();
+
+    this.eventManager.registerMapVoteCommand(() => this.mapVoteManager);
     
     // Crear GameLoopController
     this.gameLoopController = new GameLoopController(minPlayers);
@@ -512,6 +541,12 @@ export class HaxballRoom {
         this.gameLoopController = null;
         logger.debug('GameLoopController cleaned up');
       }
+
+      if (this.mapVoteEventHandler) {
+        this.mapVoteEventHandler.stop();
+        this.mapVoteEventHandler = null;
+      }
+      this.mapVoteManager = null;
 
       // 2. Cleanup managers in proper order
       if (this.gameEventHandlers) {
@@ -905,6 +940,14 @@ export class HaxballRoom {
    */
   getGameLoopController(): GameLoopController | null {
     return this.gameLoopController;
+  }
+
+  getMapVoteManager(): MapVoteManager | null {
+    return this.mapVoteManager;
+  }
+
+  getMatchStatsManager(): MatchStatsManager {
+    return this.matchStatsManager;
   }
 
   /**

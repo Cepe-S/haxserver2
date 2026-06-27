@@ -28,6 +28,17 @@ Formato PROB cerrado: `PROB-xxx` · fecha · descripción breve · archivos clav
 | PROB-023 | 2026-06-26 | Rejoin sin leave: refrescar conexión activa en BD (haxballId/name) en lugar de cerrar+crear; leave handler cierra por conn/haxballId/identityId | `PlayerIdentityManager.ts`, `PlayerLeaveHandler.ts` |
 | PROB-025 | 2026-06-26 | `initializePlayer` idempotente por `identityId` — actualiza haxballId/name en reconnect sin warn spam | `MatchStatsManager.ts` |
 | PROB-030 | 2026-06-21 | Admin passwords panel aplicadas in-game vía `serverImageId`; auth web sin fallback `admin123` en prod; errores `!login` diferenciados | `EventManager.ts`, `serverImages.ts`, `AdminManager.ts`, `LoginCommand.ts`, `server.ts` |
+| PROB-031 | 2026-06-27 | Debug Hub + zip logs (`/api/debug/logs/list`, `/api/debug/logs/download`) | `web/backend/routes/debug.ts`, `DebugHubPage.tsx` |
+| PROB-032 | 2026-06-27 | GameLoop debug alineado — stats training/match, BalanceDebugPage con `?ruid=` | `GameLoopController.ts`, `BalanceDebugPage.tsx`, `balance.ts` |
+| PROB-033 | 2026-06-27 | `GET /api/debug/database` en core; DatabaseDebug carga tablas | `core/api/routes/debug.ts` |
+| PROB-034 | 2026-06-27 | Match debug ring buffer + endpoints events/stats/match-log + Debug Hub | `MatchDebugLog.ts`, `GameEventHandlers.ts`, `DebugHubPage.tsx` |
+| PROB-035 | 2026-06-27 | `logger.debug()` respeta `LOG_LEVEL=debug` sin `NODE_ENV=development` | `Logger.ts`, `docs/LOGGING.md` |
+| PROB-036 | 2026-06-27 | Registry estadios + `DEFAULT_MATCH_STADIUMS` + `resolveStadiumDefinitions` | `StadiumRegistry.ts` |
+| PROB-037 | 2026-06-27 | `StadiumSelector` — pick/isIdeal/mismatch por count | `StadiumSelector.ts` |
+| PROB-038 | 2026-06-27 | Votación `!mapa` + MapVoteManager + hooks count/afk | `MapVoteManager.ts`, `MapaCommand.ts` |
+| PROB-039 | 2026-06-27 | MatchLoop elige estadio al entrar/restart; cierre por voto 60% | `MatchLoop.ts` |
+| PROB-040 | 2026-06-27 | Panel mapVote — min/max editables + defaults canónicos | `ServerImageConfigForm.tsx`, `ServerConfig.ts` |
+| PROB-041 | 2026-06-27 | Quórum !mapa: mín. 2 jugadores en cancha y mín. 2 votos | `MapVoteManager.ts` |
 
 ---
 
@@ -50,5 +61,5 @@ Formato PROB cerrado: `PROB-xxx` · fecha · descripción breve · archivos clav
 | 2026-06-26 | **DEPLOY-001 / PROB-024:** lifecycle stats en MatchLoop; fix `startMatch` omitido en primer partido; menos spam `Match was not started`. |
 | 2026-06-26 | **DEPLOY-002 / PROB-022:** backfill identity en `PlayerCacheManager.forceRefresh` — jugadores en sala siempre en cache para `recordGoal`. |
 | 2026-06-26 | **DEPLOY-003 / PROB-023, PROB-025:** rejoin refresh conexión activa; init stats idempotente por identityId. |
-| 2026-06-21 | **DEPLOY-005 / PROB-030:** admin passwords por `serverImageId` al execute; auth web sin fallback `admin123` en prod. |
+| 2026-06-27 | **DEPLOY-007 / PROB-036–041:** estadio dinámico, `!mapa`, panel mapVote, scripts debug-players, quórum mínimo 2 votos. |
 | 2026-06-23 | Chrome deps GCE: paquetes t64 mínimos verificados en install-chrome-deps.sh + npm run install:chrome-deps. |

@@ -44,7 +44,9 @@ grep 'PROB\|ruid\|PlayerJoin' logs/core-app.log
 
 | Variable | Default beta | Efecto |
 |----------|--------------|--------|
-| `LOG_LEVEL` | `info` | Más debug: `LOG_LEVEL=debug` + `pm2 restart all --update-env` |
+| `LOG_LEVEL` | `info` | Más detalle loops/stats: `LOG_LEVEL=debug` + reiniciar procesos |
+
+Con `LOG_LEVEL=debug` los mensajes `logger.debug()` se escriben en consola y en `core-app.log` / `web-app.log` **sin** requerir `NODE_ENV=development`.
 
 ## Formato JSON (ejemplo)
 

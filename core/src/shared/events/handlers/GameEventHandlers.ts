@@ -299,8 +299,8 @@ export class GameEventHandlers {
 
 
   private logMatchDebugAction(action: string, playerName: string, details: string): void {
-    // TODO: Implementar sistema de debug de match
-    // Basado en window.gameRoom.matchDebugActions del sistema viejo
+    const { pushMatchDebug } = require('../../debug/MatchDebugLog');
+    pushMatchDebug(action, playerName, details);
     this.logger.debug(`[MatchDebug] ${action}: ${playerName} - ${details}`);
   }
 }

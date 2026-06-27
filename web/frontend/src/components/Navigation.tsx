@@ -1,5 +1,5 @@
 interface NavigationProps {
-  currentPage: 'server-images' | 'players' | 'teams' | 'global-config' | 'database-debug';
+  currentPage: 'server-images' | 'players' | 'teams' | 'global-config' | 'database-debug' | 'debug';
 }
 
 export function Navigation({ currentPage }: NavigationProps) {
@@ -8,6 +8,7 @@ export function Navigation({ currentPage }: NavigationProps) {
     { id: 'players', label: 'Players', href: '/players' },
     { id: 'teams', label: 'Teams & Matches', href: '/teams' },
     { id: 'global-config', label: 'Global Config', href: '/global-config' },
+    { id: 'debug', label: 'Debug', href: '/debug' },
     { id: 'database-debug', label: 'Database Debug', href: '/database-debug' }
   ];
 

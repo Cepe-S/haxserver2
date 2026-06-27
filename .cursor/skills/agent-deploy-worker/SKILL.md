@@ -39,6 +39,17 @@ Sos un **agente worker**. Implementás **solo** lo que dice el manifest. El coor
 6. Reportar al coordinador — NO auto-mergear ni deploy VM
 ```
 
+## Verificación post-fix (coordinador usa esto)
+
+Tras tu handoff, el coordinador corre:
+
+```powershell
+Invoke-RestMethod http://localhost:3000/api/health
+Invoke-WebRequest http://localhost:3000/api/debug/report -OutFile report.txt
+```
+
+Vos podés pre-validar lo mismo antes del handoff. Si `@SECTION ALERTS` tiene `[FAIL]` causado por tu cambio, corregí antes de entregar.
+
 ## Handoff obligatorio (copiar al manifest)
 
 ```markdown

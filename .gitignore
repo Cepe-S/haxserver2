@@ -63,3 +63,6 @@ coverage/
 
 # Runtime
 .node-persist/
+
+# Local debug secrets (Haxball tokens)
+tokenfordebug.txt

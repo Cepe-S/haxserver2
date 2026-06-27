@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { BALANCE_MODES, AVAILABLE_STADIUMS } from '../types/ServerConfig';
+import { BALANCE_MODES, AVAILABLE_STADIUMS, DEFAULT_MATCH_STADIUMS, buildDefaultMapVoteConfig } from '../types/ServerConfig';
 import { createLogger } from '../shared/logger';
 
 const logger = createLogger('CONFIG-API');
@@ -38,6 +38,8 @@ export async function configRoutes(fastify: FastifyInstance) {
       return {
         balanceModes: BALANCE_MODES,
         stadiums: AVAILABLE_STADIUMS,
+        mapVoteDefaults: buildDefaultMapVoteConfig(),
+        matchStadiumDefaults: DEFAULT_MATCH_STADIUMS,
         defaults: {
           balanceMode: 'jt',
           stadium: 'futx4',

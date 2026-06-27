@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 
 interface DebugData {
   loop: {
@@ -78,6 +79,8 @@ interface DebugData {
 }
 
 export function BalanceDebugPage() {
+  const [searchParams] = useSearchParams();
+  const ruid = searchParams.get('ruid') || '';
   const [debugData, setDebugData] = useState<DebugData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -90,12 +93,58 @@ export function BalanceDebugPage() {
       const interval = setInterval(fetchDebugData, 2000);
       return () => clearInterval(interval);
     }
-  }, [autoRefresh]);
+  }, [autoRefresh, ruid]);
+
+  const normalizeBalanceDebug = (data: any): DebugData => ({
+    loop: {
+      active: data.gameLoop?.activeLoop || 'none',
+      state: data.gameLoop?.state || 'IDLE',
+      uptime: data.gameLoop?.uptime
+        ? `${Math.floor(data.gameLoop.uptime / 3600000).toString().padStart(2, '0')}:${Math.floor((data.gameLoop.uptime % 3600000) / 60000).toString().padStart(2, '0')}:${Math.floor((data.gameLoop.uptime % 60000) / 1000).toString().padStart(2, '0')}`
+        : '00:00:00',
+      isTransitioning: data.gameLoop?.isTransitioning ?? false
+    },
+    players: {
+      total: data.players?.total ?? 0,
+      red: data.players?.red ?? 0,
+      blue: data.players?.blue ?? 0,
+      spectators: data.players?.spectators ?? 0,
+      minRequired: 0
+    },
+    balance: data.status ? {
+      mode: data.status.mode,
+      enabled: data.status.enabled,
+      maxPlayersPerTeam: data.status.maxPlayersPerTeam ?? 0,
+      queue: [],
+      queueLength: 0,
+      isProcessing: false,
+      recentActions: data.debugActions || []
+    } : null,
+    currentMatch: data.currentMatch ? {
+      stadium: data.currentMatch.stadium,
+      settings: {
+        timeLimit: data.currentMatch.settings?.timeLimit ?? 0,
+        scoreLimit: data.currentMatch.settings?.scoreLimit ?? 0,
+        teamLock: true
+      },
+      teams: data.currentMatch.teams
+    } : null,
+    transitions: {
+      total: data.gameLoop?.transitions?.length ?? 0,
+      recent: data.gameLoop?.transitions ?? []
+    },
+    stats: data.gameLoop?.stats ?? undefined,
+    timestamp: data.timestamp || new Date().toISOString()
+  });
 
   const fetchDebugData = async () => {
     try {
-      const response = await axios.get('/api/debug/gameloop');
-      setDebugData(response.data);
+      const response = ruid
+        ? await axios.get(`/api/rooms/${encodeURIComponent(ruid)}/balance-debug`)
+        : await axios.get('/api/debug/gameloop');
+
+      const payload = ruid ? normalizeBalanceDebug(response.data) : response.data;
+      setDebugData(payload);
       setError(null);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to fetch debug data');
@@ -209,8 +258,10 @@ export function BalanceDebugPage() {
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">🔧 System Debug Panel</h1>
-                <p className="text-gray-600 mt-1">Complete system monitoring</p>
+                <h1 className="text-2xl font-bold text-gray-900">System Debug Panel</h1>
+                <p className="text-gray-600 mt-1">
+                  {ruid ? `Sala: ${ruid}` : 'Sin ruid — vista global (arrancá una Server Image)'}
+                </p>
               </div>
               <div className="flex items-center space-x-4">
                 <label className="flex items-center">

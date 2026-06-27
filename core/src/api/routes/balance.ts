@@ -1,5 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { createLogger } from '../../shared/logger/Logger';
+import { PlayerCacheManager } from '../../shared/player/PlayerCacheManager';
+import { getMatchDebugLog } from '../../shared/debug/MatchDebugLog';
 
 const logger = createLogger('BALANCE-API');
 
@@ -17,7 +19,7 @@ export async function balanceRoutes(fastify: FastifyInstance, rooms: Map<string,
 
       const debugData = room.getBalanceDebugData();
       const gameLoopController = room.getGameLoopController();
-      const playerCache = room.playerCache;
+      const playerCache = PlayerCacheManager.getInstance();
       
       const teamCounts = playerCache ? playerCache.getActiveTeamCounts() : { red: 0, blue: 0 };
       const activeLoop = gameLoopController?.getActiveLoop();
@@ -183,7 +185,7 @@ export async function balanceRoutes(fastify: FastifyInstance, rooms: Map<string,
 
       const balanceManager = room.getBalanceManager();
       const gameLoopController = room.getGameLoopController();
-      const playerCache = room.playerCache;
+      const playerCache = PlayerCacheManager.getInstance();
       
       const teamCounts = playerCache ? playerCache.getActiveTeamCounts() : { red: 0, blue: 0 };
       const activeLoop = gameLoopController?.getActiveLoop();
@@ -226,6 +228,32 @@ export async function balanceRoutes(fastify: FastifyInstance, rooms: Map<string,
     } catch (error) {
       logger.error('Failed to get debug state', error, { ruid });
       return reply.code(500).send({ error: 'Failed to get debug state' });
+    }
+  });
+
+  fastify.get('/api/rooms/:ruid/stats-debug', async (request, reply) => {
+    const { ruid } = request.params as any;
+
+    try {
+      const room = rooms.get(ruid);
+      if (!room) {
+        return reply.code(404).send({ error: 'Room not found' });
+      }
+
+      const matchStats = room.getMatchStatsManager();
+      const eventStats = room.getEventStats();
+
+      return {
+        ruid,
+        isMatchActive: matchStats.isMatchActive(),
+        mapping: matchStats.getMappingState(),
+        matchLog: getMatchDebugLog(30),
+        eventSystem: eventStats,
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      logger.error('Failed to get stats debug', error, { ruid });
+      return reply.code(500).send({ error: 'Failed to get stats debug' });
     }
   });
 }

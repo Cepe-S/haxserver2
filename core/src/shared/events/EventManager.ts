@@ -236,6 +236,16 @@ export class EventManager {
   }
 
   /**
+   * Registra !mapa una vez que MapVoteManager está disponible.
+   */
+  public registerMapVoteCommand(getManager: () => any): void {
+    const chatHandler = this.handlers.find(h => h.constructor.name === 'PlayerChatHandler');
+    if (chatHandler?.registerMapVoteCommand) {
+      chatHandler.registerMapVoteCommand(getManager);
+    }
+  }
+
+  /**
    * Configura las contraseñas de admin desde la configuración del servidor
    */
   private async configureAdminPasswords(haxballRoom: any, chatManager: any): Promise<void> {

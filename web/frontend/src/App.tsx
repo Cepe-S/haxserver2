@@ -9,6 +9,8 @@ import { BalanceDebugPage } from './pages/BalanceDebugPage';
 import { TeamsPage } from './pages/TeamsPage';
 import { GlobalConfigPage } from './pages/GlobalConfigPage';
 import DatabaseDebug from './pages/DatabaseDebug';
+import { DebugHubPage } from './pages/DebugHubPage';
+import { AgentDebugReportPage } from './pages/AgentDebugReportPage';
 
 /**
  * FASE 1.1: App principal con autenticación básica
@@ -31,6 +33,8 @@ function App() {
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/global-config" element={<GlobalConfigPage />} />
         <Route path="/database-debug" element={<DatabaseDebug />} />
+        <Route path="/debug" element={<DebugHubPage />} />
+        <Route path="/debug/report" element={<AgentDebugReportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
